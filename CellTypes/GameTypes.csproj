@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82F1318C-3DA8-46B1-92BD-91547F884BB3}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>MainLogic</RootNamespace>
-    <AssemblyName>MainLogic</AssemblyName>
+    <ProjectGuid>{2FBD9431-F865-4EAC-86A9-235A468A4215}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CellTypes</RootNamespace>
+    <AssemblyName>CellTypes</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -22,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\MainLogic.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\CellTypes.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,11 +33,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cells\CharacterCells.cs" />
+    <Compile Include="Cells\MapCells.cs" />
+    <Compile Include="Layers\!BasicLayer.cs" />
+    <Compile Include="Layers\CharacterLayer.cs" />
+    <Compile Include="Layers\MapLayer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

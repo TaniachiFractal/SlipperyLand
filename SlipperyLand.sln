@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36121.58 d17.14
+VisualStudioVersion = 17.14.36121.58
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand", "SlipperyLand\SlipperyLand.csproj", "{6AA27A8C-CFBE-45B6-908E-06D8F7DD655F}"
 EndProject
@@ -10,6 +10,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{362DB6C7-A5D7-4D15-BD8D-DD32F4BAD8BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{1C0E8A2C-0C3D-403A-94A9-514C6931B822}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTypes", "CellTypes\GameTypes.csproj", "{2FBD9431-F865-4EAC-86A9-235A468A4215}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +40,10 @@ Global
 		{1C0E8A2C-0C3D-403A-94A9-514C6931B822}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C0E8A2C-0C3D-403A-94A9-514C6931B822}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C0E8A2C-0C3D-403A-94A9-514C6931B822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBD9431-F865-4EAC-86A9-235A468A4215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBD9431-F865-4EAC-86A9-235A468A4215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBD9431-F865-4EAC-86A9-235A468A4215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBD9431-F865-4EAC-86A9-235A468A4215}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
