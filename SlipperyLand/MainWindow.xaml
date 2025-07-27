@@ -9,16 +9,30 @@
         xmlns:res="clr-namespace:SlipperyLand.Properties"
         d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"
+        Title="{x:Static res:Resources.AppName}"
         ResizeMode="NoResize"
         FontFamily="Cascadia Mono"
         WindowStyle="None"
-        Background="Black"
         Width="512"
-        Height="512">
+        Height="512"
+        >
+
     <Window.Resources>
         <ResourceDictionary>
 
             <conv:BitmapConverter x:Key="BitmapConverter" />
+
+            <Style TargetType="{x:Type Window}">
+                <Setter Property="Background"
+                        Value="Black" />
+                <Style.Triggers>
+                    <Trigger Property="{Binding Path=IsActive, RelativeSource={RelativeSource Self}}"
+                             Value="False">
+                        <Setter Property="Background"
+                                Value="LightGray" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
 
             <Style x:Key="ExitButton"
                    TargetType="Label">
