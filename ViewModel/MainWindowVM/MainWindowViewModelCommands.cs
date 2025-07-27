@@ -1,5 +1,6 @@
 ﻿using Common;
 using Common.Types;
+using GameTypes.Cells;
 
 namespace ViewModel
 {
@@ -15,6 +16,11 @@ namespace ViewModel
         /// </summary>
         public NoParamAction ChangeRandomCellCommand { get; private set; }
 
+        /// <summary>
+        /// Close the app
+        /// </summary>
+        public NoParamAction CloseCommand { get; private set; }
+
         #endregion
 
         #region methods for commands
@@ -23,8 +29,13 @@ namespace ViewModel
         {
             var col = RandomSh.Shared.Next(Cols);
             var row = RandomSh.Shared.Next(Rows);
-            MapLayer.SetCell(row, col, GameTypes.Cells.MapCellType.Wall);
+            MapLayer.SetCell(row, col, (MapCellType)RandomSh.Shared.Next(1, 6));
             PropertyHasChanged();
+        }
+
+        private void CloseAction()
+        {
+            application.Close();
         }
 
         #endregion

@@ -39,7 +39,7 @@ namespace GraphicsEngine
                 }
             }
 
-            return output.Scale(4);
+            return output.Scale(2);
         }
 
         private static Bitmap Scale(this Bitmap originalImage, int scale)

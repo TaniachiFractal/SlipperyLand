@@ -12,6 +12,7 @@ namespace ViewModel
     public partial class MainWindowViewModel : NotifyPropertyChanged
     {
         private readonly IDialogProvider dialogProvider;
+        private readonly IApplication application;
 
         #region cols rows
 

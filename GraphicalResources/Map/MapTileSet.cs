@@ -17,14 +17,22 @@ namespace GraphicalResources.Map
         /// <inheritdoc cref="MapCellType.Wall"/>
         public readonly Bitmap Wall;
 
+        /// <inheritdoc cref="MapCellType.Start"/>
+        public readonly Bitmap Start;
+
+        /// <inheritdoc cref="MapCellType.End"/>
+        public readonly Bitmap End;
+
         /// <summary>
         /// ctor
         /// </summary>
-        public MapTileSet(Bitmap slippery, Bitmap rough, Bitmap wall)
+        public MapTileSet(Bitmap slippery, Bitmap rough, Bitmap wall, Bitmap start, Bitmap end)
         {
             Slippery = slippery;
             Rough = rough;
             Wall = wall;
+            Start = start;
+            End = end;
         }
 
         /// <summary>
@@ -37,6 +45,8 @@ namespace GraphicalResources.Map
                 MapCellType.Slippery => Slippery,
                 MapCellType.Rough => Rough,
                 MapCellType.Wall => Wall,
+                MapCellType.Start => Start,
+                MapCellType.End => End,
                 MapCellType.None => MapTiles.Default,
                 _ => MapTiles.Default,
             };

@@ -14,7 +14,7 @@ namespace SlipperyLand
         {
             var app = new App();
             var dialogProvider = new DialogProvider();
-            var mainWindowModel = new MainWindowViewModel(dialogProvider);
+            var mainWindowModel = new MainWindowViewModel(dialogProvider, app);
             var mainWindow = new MainWindow(mainWindowModel);
             app.Run(mainWindow);
         }

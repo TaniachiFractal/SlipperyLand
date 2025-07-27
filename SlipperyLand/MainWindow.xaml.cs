@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using ViewModel;
 
 namespace SlipperyLand
@@ -19,8 +20,19 @@ namespace SlipperyLand
 
             this.viewModel = viewModel;
             DataContext = viewModel;
+        }
 
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+        }
 
+        private void ExitButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            viewModel.CloseCommand.Execute();
         }
     }
 }

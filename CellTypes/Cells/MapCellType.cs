@@ -23,6 +23,16 @@
         /// <summary>
         /// Stop moving and stay on previous
         /// </summary>
-        Wall
+        Wall,
+
+        /// <summary>
+        /// The start cell
+        /// </summary>
+        Start,
+
+        /// <summary>
+        /// The end cell
+        /// </summary>
+        End,
     }
 }

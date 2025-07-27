@@ -10,7 +10,8 @@ namespace GraphicalResources.Map
     {
         private readonly static Dictionary<MapTileSetType, MapTileSet> dict = new()
         {
-            {MapTileSetType.Ice, new MapTileSet(MapTiles.Ice, MapTiles.IceGround, MapTiles.IceWall) }
+            {MapTileSetType.Ice, new MapTileSet(MapTiles.Ice, MapTiles.IceGround, MapTiles.IceWall,
+                MapTiles.IceStart, MapTiles.IceEnd) }
         };
 
         /// <param name="type">The tile set ID</param>

@@ -6,11 +6,13 @@
         xmlns:conv="clr-namespace:SlipperyLand.Converters"
         xmlns:local="clr-namespace:SlipperyLand"
         xmlns:viewmodel="clr-namespace:ViewModel;assembly=ViewModel"
+        xmlns:res="clr-namespace:SlipperyLand.Properties"
         d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         FontFamily="Cascadia Mono"
-        Title="MainWindow"
+        WindowStyle="None"
+        Background="Black"
         Width="512"
         Height="512">
     <Window.Resources>
@@ -18,19 +20,65 @@
 
             <conv:BitmapConverter x:Key="BitmapConverter" />
 
+            <Style x:Key="ExitButton"
+                   TargetType="Label">
+                <Setter Property="Focusable"
+                        Value="True" />
+                <Setter Property="Foreground"
+                        Value="White" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="FontFamily"
+                        Value="Wingdings 2" />
+                <Setter Property="Content"
+                        Value="Î" />
+                <Setter Property="Width"
+                        Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Right" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver"
+                             Value="True">
+                        <Setter Property="Background"
+                                Value="Red" />
+                        <Setter Property="Content"
+                                Value="Ò" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
         </ResourceDictionary>
     </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Key="C"
                     Command="{Binding ChangeRandomCellCommand}" />
     </Window.InputBindings>
+
     <Grid>
+        <Grid Margin="3">
 
-        <Image Source="{Binding MapLayerImage, Converter={StaticResource BitmapConverter}}"
-               Stretch="UniformToFill"
-               SnapsToDevicePixels="True"
-               UseLayoutRounding="True"
-               RenderOptions.BitmapScalingMode="HighQuality" />
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="16*" />
+            </Grid.RowDefinitions>
 
+            <Grid Grid.Row="0"
+                  MouseDown="Grid_MouseDown">
+                <Label Content="{x:Static res:Resources.AppName}"
+                       Foreground="White" />
+                <Label Name="ExitButton"
+                       Style="{StaticResource ExitButton}"
+                       MouseDown="ExitButton_MouseDown" />
+            </Grid>
+
+            <Image Grid.Row="1"
+                   Source="{Binding MapLayerImage, Converter={StaticResource BitmapConverter}}"
+                   Stretch="None"
+                   SnapsToDevicePixels="True"
+                   UseLayoutRounding="True"
+                   RenderOptions.BitmapScalingMode="HighQuality" />
+        </Grid>
     </Grid>
 </Window>

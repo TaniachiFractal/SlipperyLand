@@ -12,17 +12,20 @@ namespace ViewModel
         /// <summary>
         /// ctor
         /// </summary>
-        public MainWindowViewModel(IDialogProvider dialogProvider)
+        public MainWindowViewModel(IDialogProvider dialogProvider, IApplication application)
         {
-            ChangeRandomCellCommand = new NoParamAction(ChangeRandomCellAction);
+            this.dialogProvider = dialogProvider;
+            this.application = application;
 
-            cols = 6;
-            rows = 6;
+            ChangeRandomCellCommand = new NoParamAction(ChangeRandomCellAction);
+            CloseCommand = new NoParamAction(CloseAction);
+
+            cols = 8;
+            rows = 8;
 
             MapLayer = new MapLayer(rows, cols);
             MapTileSetType = GameTypes.TileSetTypes.MapTileSetType.Ice;
-
-            this.dialogProvider = dialogProvider;
+            MapLayer.FillWithSlippery();
         }
     }
 }

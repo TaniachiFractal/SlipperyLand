@@ -83,9 +83,29 @@ namespace GraphicalResources.Map {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IceEnd {
+            get {
+                object obj = ResourceManager.GetObject("IceEnd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IceGround {
             get {
                 object obj = ResourceManager.GetObject("IceGround", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IceStart {
+            get {
+                object obj = ResourceManager.GetObject("IceStart", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
