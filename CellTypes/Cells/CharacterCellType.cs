@@ -3,12 +3,12 @@
     /// <summary>
     /// The possible cell states of the character layer
     /// </summary>
-    public enum CharacterCells
+    public enum CharacterCellType : byte
     {
         /// <summary>
         /// Default
         /// </summary>
-        _None = 0,
+        None = 0,
 
         /// <summary>
         /// Player cell

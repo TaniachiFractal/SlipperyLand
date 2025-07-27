@@ -40,11 +40,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cells\CharacterCells.cs" />
-    <Compile Include="Cells\MapCells.cs" />
+    <Compile Include="Cells\CharacterCellType.cs" />
+    <Compile Include="Cells\MapCellType.cs" />
     <Compile Include="Layers\!BasicLayer.cs" />
     <Compile Include="Layers\CharacterLayer.cs" />
     <Compile Include="Layers\MapLayer.cs" />
+    <Compile Include="TileSetTypes\MapTileSetType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

@@ -1,6 +1,8 @@
-﻿using CellTypes.Layers;
+﻿using System.Drawing;
+using CellTypes.Layers;
 using Common;
 using Common.Interfaces;
+using GameTypes.TileSetTypes;
 
 namespace ViewModel
 {
@@ -37,6 +39,21 @@ namespace ViewModel
 
         #region mapLayer
 
+        private MapTileSetType mapTileSetType;
+
+        /// <summary>
+        /// The tile set type
+        /// </summary>
+        public MapTileSetType MapTileSetType
+        {
+            get => mapTileSetType;
+            set
+            {
+                mapTileSetType = value;
+                PropertyHasChanged();
+            }
+        }
+
         private MapLayer mapLayer;
 
         /// <summary>
@@ -52,10 +69,7 @@ namespace ViewModel
             }
         }
 
-        /// <summary>
-        /// The map layer as text
-        /// </summary>
-        public string MapText => MapLayer.AsText;
+        public Bitmap MapLayerImage => GraphicsEngine.MapRenderer.Render(MapLayer)
 
         #endregion
     }

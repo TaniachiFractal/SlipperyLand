@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Text;
-using Common;
 
 namespace CellTypes.Layers
 {
@@ -16,11 +15,11 @@ namespace CellTypes.Layers
         /// <summary>
         /// Col count of the grid
         /// </summary>
-        readonly protected int cols;
+        public readonly int Cols;
         /// <summary>
         /// Row count of the grid
         /// </summary>
-        readonly protected int rows;
+        public readonly int Rows;
 
         private TCells[,] grid;
         /// <summary>
@@ -40,12 +39,12 @@ namespace CellTypes.Layers
         /// <summary>
         /// Empty grid constructor
         /// </summary>
-        /// <param name="cols">Grid cols</param>
-        /// <param name="rows">Grid rows</param>
+        /// <param name="cols">Grid Cols</param>
+        /// <param name="rows">Grid Rows</param>
         public BasicLayer(int rows, int cols)
         {
-            this.cols = cols;
-            this.rows = rows;
+            Cols = cols;
+            Rows = rows;
 
             grid = new TCells[rows, cols];
         }
@@ -57,9 +56,9 @@ namespace CellTypes.Layers
         {
             var output = new StringBuilder();
 
-            for (var row = 0; row < rows; row++)
+            for (var row = 0; row < Rows; row++)
             {
-                for (var col = 0; col < cols; col++)
+                for (var col = 0; col < Cols; col++)
                 {
                     output.Append(ReadCell(row, col).ToString()[0]);
                 }

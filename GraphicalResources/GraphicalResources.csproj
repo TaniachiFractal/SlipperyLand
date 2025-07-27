@@ -2,6 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E4891D8F-D409-4C0D-9657-53BA72ABB681}</ProjectGuid>
@@ -41,15 +42,17 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapImg.Designer.cs">
+    <Compile Include="Map\MapTiles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MapImg.resx</DependentUpon>
+      <DependentUpon>MapTiles.resx</DependentUpon>
     </Compile>
+    <Compile Include="Map\MapTileSetDict.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MapImg.resx">
+    <Compile Include="Map\MapTileSet.cs" />
+    <EmbeddedResource Include="Map\MapTiles.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>MapImg.Designer.cs</LastGenOutput>
+      <LastGenOutput>MapTiles.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -72,6 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CellTypes\GameTypes.csproj">
+      <Project>{2fbd9431-f865-4eac-86a9-235a468a4215}</Project>
+      <Name>GameTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

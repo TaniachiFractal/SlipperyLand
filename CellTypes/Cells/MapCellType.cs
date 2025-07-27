@@ -3,12 +3,12 @@
     /// <summary>
     /// The possible cell states of the map layer
     /// </summary>
-    public enum MapCells
+    public enum MapCellType : byte
     {
         /// <summary>
         /// Default
         /// </summary>
-        _None = 0,
+        None = 0,
 
         /// <summary>
         /// Continue moving

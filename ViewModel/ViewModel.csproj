@@ -53,6 +53,13 @@
       <Project>{1c0e8a2c-0c3d-403a-94a9-514c6931b822}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GraphicsEngine\GraphicsEngine.csproj">
+      <Project>{8dd48272-7a07-404c-8bc8-f505f1025007}</Project>
+      <Name>GraphicsEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

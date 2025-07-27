@@ -23,7 +23,7 @@ namespace ViewModel
         {
             var col = RandomSh.Shared.Next(Cols);
             var row = RandomSh.Shared.Next(Rows);
-            MapLayer.SetCell(row, col, GameTypes.Cells.MapCells.Wall);
+            MapLayer.SetCell(row, col, GameTypes.Cells.MapCellType.Wall);
             PropertyHasChanged();
         }
 
