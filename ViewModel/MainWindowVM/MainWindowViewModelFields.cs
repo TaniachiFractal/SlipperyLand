@@ -69,7 +69,10 @@ namespace ViewModel
             }
         }
 
-        public Bitmap MapLayerImage => GraphicsEngine.MapRenderer.Render(MapLayer)
+        /// <summary>
+        /// The image for map layer
+        /// </summary>
+        public Bitmap MapLayerImage => GraphicsEngine.MapRenderer.Render(MapLayer, MapTileSetType);
 
         #endregion
     }

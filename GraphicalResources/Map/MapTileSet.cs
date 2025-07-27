@@ -37,8 +37,8 @@ namespace GraphicalResources.Map
                 MapCellType.Slippery => Slippery,
                 MapCellType.Rough => Rough,
                 MapCellType.Wall => Wall,
-                MapCellType.None => null,
-                _ => null,
+                MapCellType.None => MapTiles.Default,
+                _ => MapTiles.Default,
             };
         }
     }

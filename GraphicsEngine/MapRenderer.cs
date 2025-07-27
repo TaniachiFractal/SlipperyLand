@@ -26,17 +26,36 @@ namespace GraphicsEngine
             var outHeight = map.Rows * tileSize;
 
             var output = new Bitmap(outWidth, outHeight);
-            var canvas = Graphics.FromImage(output);
 
-            for (var col = 0; col < map.Cols; col++)
+            using (var canvas = Graphics.FromImage(output))
             {
-                for (var row = 0; row < map.Rows; row++)
+                for (var col = 0; col < map.Cols; col++)
                 {
-                    var tile = tileSet.Get(map.ReadCell(row, col));
-                    canvas.DrawImage(tile, col * tileSize, row * tileSize);
+                    for (var row = 0; row < map.Rows; row++)
+                    {
+                        var tile = tileSet.Get(map.ReadCell(row, col));
+                        canvas.DrawImageUnscaled(tile, col * tileSize, row * tileSize);
+                    }
                 }
             }
 
+            return output.Scale(4);
+        }
+
+        private static Bitmap Scale(this Bitmap originalImage, int scale)
+        {
+            var newWidth = originalImage.Width * scale;
+            var newHeight = originalImage.Height * scale;
+
+            var scaledImage = new Bitmap(newWidth, newHeight);
+
+            using (var canvas = Graphics.FromImage(scaledImage))
+            {
+                canvas.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                canvas.DrawImage(originalImage, 0, 0, newWidth, newHeight);
+            }
+
+            return scaledImage;
         }
     }
 }

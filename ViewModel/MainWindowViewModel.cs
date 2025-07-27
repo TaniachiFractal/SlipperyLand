@@ -16,10 +16,11 @@ namespace ViewModel
         {
             ChangeRandomCellCommand = new NoParamAction(ChangeRandomCellAction);
 
-            cols = 12;
+            cols = 6;
             rows = 6;
 
             MapLayer = new MapLayer(rows, cols);
+            MapTileSetType = GameTypes.TileSetTypes.MapTileSetType.Ice;
 
             this.dialogProvider = dialogProvider;
         }
