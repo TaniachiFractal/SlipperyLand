@@ -8,7 +8,7 @@ namespace CellTypes.Layers
     internal class CharacterLayer : BasicLayer<CharacterCells>
     {
         /// <inheritdoc/>
-        public CharacterLayer(int width, int height) : base(width, height)
+        public CharacterLayer(int rows, int cols) : base(rows, cols)
         {
         }
     }

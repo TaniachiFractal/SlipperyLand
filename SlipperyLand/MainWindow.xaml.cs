@@ -19,6 +19,8 @@ namespace SlipperyLand
 
             this.viewModel = viewModel;
             DataContext = viewModel;
+
+
         }
     }
 }

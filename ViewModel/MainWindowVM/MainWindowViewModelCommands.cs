@@ -1,4 +1,5 @@
-﻿using Common.Types;
+﻿using Common;
+using Common.Types;
 
 namespace ViewModel
 {
@@ -9,15 +10,21 @@ namespace ViewModel
     {
         #region commands
 
-        public NoParamAction TestCommand { get; private set; } 
+        /// <summary>
+        /// Change a random map cell
+        /// </summary>
+        public NoParamAction ChangeRandomCellCommand { get; private set; }
 
         #endregion
 
         #region methods for commands
 
-        private void TestAction()
+        private void ChangeRandomCellAction()
         {
-            dialogProvider.ShowErrorMessage("lol");
+            var col = RandomSh.Shared.Next(Cols);
+            var row = RandomSh.Shared.Next(Rows);
+            MapLayer.SetCell(row, col, GameTypes.Cells.MapCells.Wall);
+            PropertyHasChanged();
         }
 
         #endregion

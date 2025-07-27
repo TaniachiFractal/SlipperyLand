@@ -8,7 +8,7 @@
         /// <summary>
         /// Default
         /// </summary>
-        None = 0,
+        _None = 0,
 
         /// <summary>
         /// Player cell

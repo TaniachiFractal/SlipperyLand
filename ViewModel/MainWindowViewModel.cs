@@ -1,4 +1,5 @@
-﻿using Common.Interfaces;
+﻿using CellTypes.Layers;
+using Common.Interfaces;
 using Common.Types;
 
 namespace ViewModel
@@ -11,9 +12,14 @@ namespace ViewModel
         /// <summary>
         /// ctor
         /// </summary>
-        public MainWindowViewModel(IDialogProvider dialogProvider) 
+        public MainWindowViewModel(IDialogProvider dialogProvider)
         {
-            TestCommand = new NoParamAction(TestAction);
+            ChangeRandomCellCommand = new NoParamAction(ChangeRandomCellAction);
+
+            cols = 12;
+            rows = 6;
+
+            MapLayer = new MapLayer(rows, cols);
 
             this.dialogProvider = dialogProvider;
         }

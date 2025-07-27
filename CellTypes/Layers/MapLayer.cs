@@ -1,4 +1,5 @@
-﻿using GameTypes.Cells;
+﻿using System.Text;
+using GameTypes.Cells;
 
 namespace CellTypes.Layers
 {
@@ -8,7 +9,7 @@ namespace CellTypes.Layers
     public class MapLayer : BasicLayer<MapCells>
     {
         /// <inheritdoc/>
-        public MapLayer(int width, int height) : base(width, height)
+        public MapLayer(int rows, int cols) : base(rows, cols)
         {
         }
     }
