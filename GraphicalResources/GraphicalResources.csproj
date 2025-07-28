@@ -42,6 +42,13 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Characters\MainChara\MainCharaSpriteSet.cs" />
+    <Compile Include="Characters\MainChara\MainCharaSprites.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainCharaSprites.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Characters\MainChara\MainCharaSpriteSetDict.cs" />
     <Compile Include="Map\MapTiles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -50,6 +57,10 @@
     <Compile Include="Map\MapTileSetDict.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Map\MapTileSet.cs" />
+    <EmbeddedResource Include="Characters\MainChara\MainCharaSprites.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainCharaSprites.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Map\MapTiles.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MapTiles.Designer.cs</LastGenOutput>
@@ -82,5 +93,6 @@
       <Name>GameTypes</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

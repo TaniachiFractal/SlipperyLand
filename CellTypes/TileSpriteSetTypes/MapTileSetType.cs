@@ -1,9 +1,9 @@
-﻿namespace GameTypes.TileSetTypes
+﻿namespace GameTypes.TileSpriteSetTypes
 {
     /// <summary>
     /// The possible tile sets
     /// </summary>
-    public enum MapTileSetType
+    public enum MapTileSetType : byte
     {
         /// <summary>
         /// Default

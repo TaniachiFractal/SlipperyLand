@@ -24,7 +24,7 @@ namespace ViewModel
             rows = 8;
 
             MapLayer = new MapLayer(rows, cols);
-            MapTileSetType = GameTypes.TileSetTypes.MapTileSetType.Ice;
+            MapTileSetType = GameTypes.TileSpriteSetTypes.MapTileSetType.Ice;
             MapLayer.FillWithSlippery();
         }
     }

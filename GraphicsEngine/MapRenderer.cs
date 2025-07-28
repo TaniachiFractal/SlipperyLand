@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using CellTypes.Layers;
 using GameTypes.Cells;
-using GameTypes.TileSetTypes;
+using GameTypes.TileSpriteSetTypes;
 using GraphicalResources.Map;
 
 namespace GraphicsEngine

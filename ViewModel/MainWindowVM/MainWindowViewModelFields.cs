@@ -2,7 +2,7 @@
 using CellTypes.Layers;
 using Common;
 using Common.Interfaces;
-using GameTypes.TileSetTypes;
+using GameTypes.TileSpriteSetTypes;
 
 namespace ViewModel
 {

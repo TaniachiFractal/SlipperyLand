@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GameTypes.TileSetTypes;
+using GameTypes.TileSpriteSetTypes;
 
 namespace GraphicalResources.Map
 {

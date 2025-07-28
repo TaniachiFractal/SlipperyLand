@@ -11,9 +11,24 @@
         None = 0,
 
         /// <summary>
-        /// Player cell
+        /// Player looks front
         /// </summary>
-        Hero,
+        PFront,
+
+        /// <summary>
+        /// Player looks back
+        /// </summary>
+        PBack,
+
+        /// <summary>
+        /// Player looks to left
+        /// </summary>
+        PtoLeft,
+
+        /// <summary>
+        /// Player looks to right
+        /// </summary>
+        PtoRight,
 
         /// <summary>
         /// Cell with no characters
