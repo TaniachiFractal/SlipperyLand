@@ -1,9 +1,9 @@
-﻿namespace CellTypes.TileSpriteSetTypes
+﻿namespace GameTypes.TileSpriteSetTypes
 {
     /// <summary>
-    /// The list of main characters
+    /// The list of characters
     /// </summary>
-    public enum MainCharaSpriteSets : byte
+    public enum Chara : byte
     {
         /// <summary>
         /// Default

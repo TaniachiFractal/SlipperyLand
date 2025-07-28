@@ -1,6 +1,6 @@
 ﻿using GameTypes.Cells;
 
-namespace CellTypes.Layers
+namespace GameTypes.Layers
 {
     /// <summary>
     /// The map layer

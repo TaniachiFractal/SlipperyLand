@@ -1,8 +1,9 @@
 ﻿using System.Drawing;
-using CellTypes.Layers;
+using GameTypes.Layers;
 using Common;
 using Common.Interfaces;
 using GameTypes.TileSpriteSetTypes;
+using GraphicsEngine;
 
 namespace ViewModel
 {
@@ -73,7 +74,46 @@ namespace ViewModel
         /// <summary>
         /// The image for map layer
         /// </summary>
-        public Bitmap MapLayerImage => GraphicsEngine.MapRenderer.Render(MapLayer, MapTileSetType);
+        public Bitmap MapLayerImage => MapLayer.Render(MapTileSetType);
+
+        #endregion
+
+        #region charaLayer
+
+        private Chara mainChara;
+
+        /// <summary>
+        /// The main character
+        /// </summary>
+        public Chara MainChara
+        {
+            get => mainChara;
+            set
+            {
+                mainChara = value;
+                PropertyHasChanged();
+            }
+        }
+
+        private CharaLayer charaLayer;
+
+        /// <summary>
+        /// The character layer
+        /// </summary>
+        public CharaLayer CharaLayer
+        {
+            get => charaLayer;
+            set
+            {
+                charaLayer = value;
+                PropertyHasChanged();
+            }
+        }
+
+        /// <summary>
+        /// The image for the character layer
+        /// </summary>
+        public Bitmap CharaLayerImage => CharaLayer.Render(MainChara);
 
         #endregion
     }

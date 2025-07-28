@@ -1,6 +1,7 @@
-﻿using CellTypes.Layers;
-using Common.Interfaces;
+﻿using Common.Interfaces;
 using Common.Types;
+using GameTypes.Layers;
+using GameTypes.TileSpriteSetTypes;
 
 namespace ViewModel
 {
@@ -18,14 +19,19 @@ namespace ViewModel
             this.application = application;
 
             ChangeRandomCellCommand = new NoParamAction(ChangeRandomCellAction);
+            SetRandomCharacterCommand = new NoParamAction(SetRandomCharacterAction);
             CloseCommand = new NoParamAction(CloseAction);
+
 
             cols = 8;
             rows = 8;
 
             MapLayer = new MapLayer(rows, cols);
-            MapTileSetType = GameTypes.TileSpriteSetTypes.MapTileSetType.Ice;
+            MapTileSetType = MapTileSetType.Ice;
             MapLayer.FillWithSlippery();
+
+            CharaLayer = new CharaLayer(rows, cols);
+            MainChara = Chara.RedCat;
         }
     }
 }

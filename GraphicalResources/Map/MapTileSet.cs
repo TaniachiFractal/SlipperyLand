@@ -8,48 +8,37 @@ namespace GraphicalResources.Map
     /// </summary>
     public class MapTileSet
     {
-        /// <inheritdoc cref="MapCellType.Slippery"/>
-        public readonly Bitmap Slippery;
-
-        /// <inheritdoc cref="MapCellType.Rough"/>
-        public readonly Bitmap Rough;
-
-        /// <inheritdoc cref="MapCellType.Wall"/>
-        public readonly Bitmap Wall;
-
-        /// <inheritdoc cref="MapCellType.Start"/>
-        public readonly Bitmap Start;
-
-        /// <inheritdoc cref="MapCellType.End"/>
-        public readonly Bitmap End;
+        private readonly Bitmap slippery;
+        private readonly Bitmap rough;
+        private readonly Bitmap wall;
+        private readonly Bitmap start;
+        private readonly Bitmap end;
 
         /// <summary>
         /// ctor
         /// </summary>
         public MapTileSet(Bitmap slippery, Bitmap rough, Bitmap wall, Bitmap start, Bitmap end)
         {
-            Slippery = slippery;
-            Rough = rough;
-            Wall = wall;
-            Start = start;
-            End = end;
+            this.slippery = slippery;
+            this.rough = rough;
+            this.wall = wall;
+            this.start = start;
+            this.end = end;
         }
 
         /// <summary>
         /// Get the desired image by <see cref="MapCellType"/>
         /// </summary>
         public Bitmap Get(MapCellType type)
-        {
-            return type switch
+            => type switch
             {
-                MapCellType.Slippery => Slippery,
-                MapCellType.Rough => Rough,
-                MapCellType.Wall => Wall,
-                MapCellType.Start => Start,
-                MapCellType.End => End,
+                MapCellType.Slippery => slippery,
+                MapCellType.Rough => rough,
+                MapCellType.Wall => wall,
+                MapCellType.Start => start,
+                MapCellType.End => end,
                 MapCellType.None => MapTiles.Default,
                 _ => MapTiles.Default,
             };
-        }
     }
 }

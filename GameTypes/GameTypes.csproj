@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2FBD9431-F865-4EAC-86A9-235A468A4215}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CellTypes</RootNamespace>
-    <AssemblyName>CellTypes</AssemblyName>
+    <RootNamespace>GameTypes</RootNamespace>
+    <AssemblyName>GameTypes</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -22,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\CellTypes.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\GameTypes.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,12 +40,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cells\CharacterCellType.cs" />
+    <Compile Include="Cells\CharaCellGroup.cs" />
+    <Compile Include="Cells\CharaCellStateType.cs" />
+    <Compile Include="Cells\CharaCellType.cs" />
     <Compile Include="Cells\MapCellType.cs" />
     <Compile Include="Layers\!BasicLayer.cs" />
-    <Compile Include="Layers\CharacterLayer.cs" />
+    <Compile Include="Layers\CharaLayer.cs" />
     <Compile Include="Layers\MapLayer.cs" />
-    <Compile Include="TileSpriteSetTypes\MainCharaSpriteSets.cs" />
+    <Compile Include="TileSpriteSetTypes\Chara.cs" />
     <Compile Include="TileSpriteSetTypes\MapTileSetType.cs" />
   </ItemGroup>
   <ItemGroup>

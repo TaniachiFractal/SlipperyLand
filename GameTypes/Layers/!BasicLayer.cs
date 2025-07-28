@@ -1,8 +1,7 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text;
 
-namespace CellTypes.Layers
+namespace GameTypes.Layers
 {
     /// <summary>
     /// Template for a layer class
@@ -10,7 +9,6 @@ namespace CellTypes.Layers
     /// <typeparam name="TCells">Possible cell types</typeparam>
     [DebuggerDisplay("{AsText}")]
     public abstract class BasicLayer<TCells>
-    where TCells : Enum
     {
         /// <summary>
         /// Col count of the grid

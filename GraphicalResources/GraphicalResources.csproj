@@ -42,13 +42,13 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Characters\MainChara\MainCharaSpriteSet.cs" />
-    <Compile Include="Characters\MainChara\MainCharaSprites.Designer.cs">
+    <Compile Include="Characters\CharaSprites.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MainCharaSprites.resx</DependentUpon>
+      <DependentUpon>CharaSprites.resx</DependentUpon>
     </Compile>
-    <Compile Include="Characters\MainChara\MainCharaSpriteSetDict.cs" />
+    <Compile Include="Characters\CharaSpriteSet.cs" />
+    <Compile Include="Characters\CharaSpriteSetDict.cs" />
     <Compile Include="Map\MapTiles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -57,9 +57,9 @@
     <Compile Include="Map\MapTileSetDict.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Map\MapTileSet.cs" />
-    <EmbeddedResource Include="Characters\MainChara\MainCharaSprites.resx">
+    <EmbeddedResource Include="Characters\CharaSprites.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>MainCharaSprites.Designer.cs</LastGenOutput>
+      <LastGenOutput>CharaSprites.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Map\MapTiles.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -88,11 +88,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CellTypes\GameTypes.csproj">
-      <Project>{2fbd9431-f865-4eac-86a9-235a468a4215}</Project>
+    <Content Include="Resources\Chara\Default.png" />
+    <Content Include="Resources\Chara\RedCat\RCbackStand.png" />
+    <Content Include="Resources\Chara\RedCat\RCfrontStand.png" />
+    <Content Include="Resources\Chara\RedCat\RCtoLeftStand.png" />
+    <Content Include="Resources\Chara\RedCat\RCtoRightStand.png" />
+    <Content Include="Resources\Map\Default.png" />
+    <Content Include="Resources\Map\Ice\Ice.png" />
+    <Content Include="Resources\Map\Ice\IceEnd.png" />
+    <Content Include="Resources\Map\Ice\IceGround.png" />
+    <Content Include="Resources\Map\Ice\IceStart.png" />
+    <Content Include="Resources\Map\Ice\IceWall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameTypes\GameTypes.csproj">
+      <Project>{2FBD9431-F865-4EAC-86A9-235A468A4215}</Project>
       <Name>GameTypes</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

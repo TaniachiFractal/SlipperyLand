@@ -40,11 +40,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapRenderer.cs" />
+    <Compile Include="Renderer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CellTypes\GameTypes.csproj">
-      <Project>{2fbd9431-f865-4eac-86a9-235a468a4215}</Project>
+    <ProjectReference Include="..\GameTypes\GameTypes.csproj">
+      <Project>{2FBD9431-F865-4EAC-86A9-235A468A4215}</Project>
       <Name>GameTypes</Name>
     </ProjectReference>
     <ProjectReference Include="..\GraphicalResources\GraphicalResources.csproj">

@@ -52,11 +52,18 @@
                 </Style.Triggers>
             </Style>
 
+            <Style TargetType="Image">
+                <Setter Property="Stretch"
+                        Value="None" />
+            </Style>
+
         </ResourceDictionary>
     </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Key="C"
                     Command="{Binding ChangeRandomCellCommand}" />
+        <KeyBinding Key="X"
+                    Command="{Binding SetRandomCharacterCommand}" />
     </Window.InputBindings>
 
     <Grid>
@@ -76,12 +83,13 @@
                        MouseDown="ExitButton_MouseDown" />
             </Grid>
 
-            <Image Grid.Row="1"
-                   Source="{Binding MapLayerImage, Converter={StaticResource BitmapConverter}}"
-                   Stretch="None"
-                   SnapsToDevicePixels="True"
-                   UseLayoutRounding="True"
-                   RenderOptions.BitmapScalingMode="HighQuality" />
+            <Grid Grid.Row="1">
+                <Image Source="{Binding MapLayerImage, Converter={StaticResource BitmapConverter}}" />
+                <Image Source="{Binding CharaLayerImage, Converter={StaticResource BitmapConverter}}" />
+            </Grid>
+
+
+
         </Grid>
     </Grid>
 </Window>

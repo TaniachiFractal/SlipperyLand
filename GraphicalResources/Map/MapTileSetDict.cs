@@ -4,7 +4,7 @@ using GameTypes.TileSpriteSetTypes;
 namespace GraphicalResources.Map
 {
     /// <summary>
-    /// Holds a Dictionary of <see cref="MapTileSetType"/> to <see cref="MapTileSet"/>
+    /// Holds a Dictionary of <see cref="MapTileSet"/>s
     /// </summary>
     public static class MapTileSetDict
     {

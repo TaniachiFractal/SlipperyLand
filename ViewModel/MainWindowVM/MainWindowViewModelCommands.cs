@@ -17,6 +17,11 @@ namespace ViewModel
         public NoParamAction ChangeRandomCellCommand { get; private set; }
 
         /// <summary>
+        /// Put a character onto a random tile
+        /// </summary>
+        public NoParamAction SetRandomCharacterCommand { get; private set; }
+
+        /// <summary>
         /// Close the app
         /// </summary>
         public NoParamAction CloseCommand { get; private set; }
@@ -30,6 +35,14 @@ namespace ViewModel
             var col = RandomSh.Shared.Next(Cols);
             var row = RandomSh.Shared.Next(Rows);
             MapLayer.SetCell(row, col, (MapCellType)RandomSh.Shared.Next(1, 6));
+            PropertyHasChanged();
+        }
+
+        private void SetRandomCharacterAction()
+        {
+            var col = RandomSh.Shared.Next(Cols);
+            var row = RandomSh.Shared.Next(Rows);
+            CharaLayer.SetCell(row, col, new CharaCellGroup(CharaCellType.Hero, (CharaCellStateType)RandomSh.Shared.Next(1, 5)));
             PropertyHasChanged();
         }
 

@@ -45,13 +45,17 @@
     <Compile Include="MainWindowVM\MainWindowViewModelCommands.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CellTypes\GameTypes.csproj">
-      <Project>{2FBD9431-F865-4EAC-86A9-235A468A4215}</Project>
-      <Name>GameTypes</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{1c0e8a2c-0c3d-403a-94a9-514c6931b822}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameTypes\GameTypes.csproj">
+      <Project>{2FBD9431-F865-4EAC-86A9-235A468A4215}</Project>
+      <Name>GameTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GraphicalResources\GraphicalResources.csproj">
+      <Project>{E4891D8F-D409-4C0D-9657-53BA72ABB681}</Project>
+      <Name>GraphicalResources</Name>
     </ProjectReference>
     <ProjectReference Include="..\GraphicsEngine\GraphicsEngine.csproj">
       <Project>{8dd48272-7a07-404c-8bc8-f505f1025007}</Project>
