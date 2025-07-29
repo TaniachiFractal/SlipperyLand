@@ -113,7 +113,7 @@ namespace ViewModel
         /// <summary>
         /// The image for the character layer
         /// </summary>
-        public Bitmap CharaLayerImage => CharaLayer.Render(MainChara);
+        public Bitmap CharaLayerImage => CharaLayer.Render(MainChara, MapLayerImage.Width, MapLayerImage.Height);
 
         #endregion
     }

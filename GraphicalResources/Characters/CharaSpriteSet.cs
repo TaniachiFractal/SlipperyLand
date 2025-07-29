@@ -8,21 +8,14 @@ namespace GraphicalResources.Characters
     /// </summary>
     public class CharaSpriteSet
     {
-        private readonly Bitmap front;
-        private readonly Bitmap back;
-        private readonly Bitmap toLeft;
-        private readonly Bitmap toRight;
-
-        /// <summary>
-        /// ctor
-        /// </summary>
-        public CharaSpriteSet(Bitmap front, Bitmap back, Bitmap toLeft, Bitmap toRight)
-        {
-            this.front = front;
-            this.back = back;
-            this.toLeft = toLeft;
-            this.toRight = toRight;
-        }
+        /// <inheritdoc cref="CharaCellStateType.LookFront"/>
+        public Bitmap front = CharaSprites.Default;
+        /// <inheritdoc cref="CharaCellStateType.LookBack"/>
+        public Bitmap back = CharaSprites.Default;
+        /// <inheritdoc cref="CharaCellStateType.LookToLeft"/>
+        public Bitmap toLeft = CharaSprites.Default;
+        /// <inheritdoc cref="CharaCellStateType.LookToRight"/>
+        public Bitmap toRight = CharaSprites.Default;
 
         /// <summary>
         /// Get the desired image

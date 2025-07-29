@@ -4,8 +4,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82F1318C-3DA8-46B1-92BD-91547F884BB3}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{2723701B-EA9B-40D6-814E-514AAD9E78D4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <RootNamespace>MainLogic</RootNamespace>
     <AssemblyName>MainLogic</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -33,11 +33,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameTypes\GameTypes.csproj">
+      <Project>{2FBD9431-F865-4EAC-86A9-235A468A4215}</Project>
+      <Name>GameTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

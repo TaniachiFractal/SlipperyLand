@@ -5,25 +5,38 @@ namespace GameTypes.Layers
     /// <summary>
     /// The map layer
     /// </summary>
-    public class MapLayer : BasicLayer<MapCellType>
+    public class MapLayer
     {
-        /// <inheritdoc/>
-        public MapLayer(int rows, int cols) : base(rows, cols)
+        /// <summary>
+        /// Col count of the grid
+        /// </summary>
+        public readonly int Cols;
+        /// <summary>
+        /// Row count of the grid
+        /// </summary>
+        public readonly int Rows;
+
+        private MapCellType[,] grid;
+        /// <summary>
+        /// The cell grid of the layer
+        /// </summary>
+        public MapCellType[,] Grid
         {
+            get => grid;
+            set => grid = value;
         }
 
         /// <summary>
-        /// Fill the entire map with slippery tiles
+        /// Empty grid constructor
         /// </summary>
-        public void FillWithSlippery()
+        /// <param name="cols">Grid Cols</param>
+        /// <param name="rows">Grid Rows</param>
+        public MapLayer(int rows, int cols)
         {
-            for (var row = 0; row < Rows; row++)
-            {
-                for (var col = 0; col < Cols; col++)
-                {
-                    SetCell(row, col, MapCellType.Slippery);
-                }
-            }
+            Cols = cols;
+            Rows = rows;
+
+            grid = new MapCellType[rows, cols];
         }
     }
 }

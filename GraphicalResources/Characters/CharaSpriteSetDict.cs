@@ -10,8 +10,15 @@ namespace GraphicalResources.Characters
     {
         private readonly static Dictionary<Chara, CharaSpriteSet> dict = new()
         {
-            { Chara.RedCat, new CharaSpriteSet(CharaSprites.RCfrontStand, CharaSprites.RCbackStand,
-                CharaSprites.RCtoLeftStand, CharaSprites.RCtoRightStand) }
+            {
+                Chara.RedCat, new CharaSpriteSet()
+                {
+                    front = CharaSprites.RCfrontStand,
+                    back = CharaSprites.RCbackStand,
+                    toLeft = CharaSprites.RCtoLeftStand,
+                    toRight = CharaSprites.RCtoRightStand,
+                }
+            }
         };
 
         /// <param name="chara">The sprite set ID</param>

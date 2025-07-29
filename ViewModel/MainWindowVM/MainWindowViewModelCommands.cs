@@ -1,6 +1,7 @@
 ﻿using Common;
 using Common.Types;
 using GameTypes.Cells;
+using GameTypes.Extensions;
 
 namespace ViewModel
 {
@@ -35,14 +36,10 @@ namespace ViewModel
             var col = RandomSh.Shared.Next(Cols);
             var row = RandomSh.Shared.Next(Rows);
             MapLayer.SetCell(row, col, (MapCellType)RandomSh.Shared.Next(1, 6));
-            PropertyHasChanged();
         }
 
         private void SetRandomCharacterAction()
         {
-            var col = RandomSh.Shared.Next(Cols);
-            var row = RandomSh.Shared.Next(Rows);
-            CharaLayer.SetCell(row, col, new CharaCellGroup(CharaCellType.Hero, (CharaCellStateType)RandomSh.Shared.Next(1, 5)));
             PropertyHasChanged();
         }
 

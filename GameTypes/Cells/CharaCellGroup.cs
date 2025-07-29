@@ -6,6 +6,16 @@
     public class CharaCellGroup
     {
         /// <summary>
+        /// Horizontal position [col]
+        /// </summary>
+        public int X = 0;
+
+        /// <summary>
+        /// Vertical position [row]
+        /// </summary>
+        public int Y = 0;
+
+        /// <summary>
         /// The character
         /// </summary>
         public CharaCellType chara;

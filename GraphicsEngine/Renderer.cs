@@ -1,9 +1,9 @@
 ﻿using System.Drawing;
-using GameTypes.Layers;
 using GameTypes.Cells;
+using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
-using GraphicalResources.Characters;
 using GraphicalResources.Map;
+using GameTypes.Extensions;
 
 namespace GraphicsEngine
 {
@@ -13,6 +13,7 @@ namespace GraphicsEngine
     public static class Renderer
     {
         private const byte Ups = 2;
+        private const byte CharaMarginDiv = 3;
 
         /// <summary>
         /// Get the image of a map layer
@@ -48,27 +49,12 @@ namespace GraphicsEngine
         /// <summary>
         /// Render the character layer
         /// </summary>
-        public static Bitmap Render(this CharaLayer charas, Chara mainChara)
+        public static Bitmap Render(this CharaLayer charas, Chara mainChara, int outWidth, int outHeight)
         {
-            var spriteSet = CharaSpriteSetDict.Get(mainChara);
-            var front = spriteSet.Get(CharaCellStateType.LookFront);
-            var tileSize = front.Width;
-
-            var outWidth = charas.Cols * tileSize;
-            var outHeight = charas.Rows * tileSize;
-
             var output = new Bitmap(outWidth, outHeight);
 
             using (var canvas = Graphics.FromImage(output))
             {
-                for (var col = 0; col < charas.Cols; col++)
-                {
-                    for (var row = 0; row < charas.Rows; row++)
-                    {
-                        var tile = spriteSet.Get(charas.ReadCell(row, col)?.state);
-                        canvas.DrawImageUnscaled(tile, col * tileSize, row * tileSize);
-                    }
-                }
             }
 
             return output.Scale(Ups);

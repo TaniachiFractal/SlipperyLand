@@ -93,6 +93,7 @@
     <Content Include="Resources\Chara\RedCat\RCfrontStand.png" />
     <Content Include="Resources\Chara\RedCat\RCtoLeftStand.png" />
     <Content Include="Resources\Chara\RedCat\RCtoRightStand.png" />
+    <Content Include="Resources\Chara\Susie.png" />
     <Content Include="Resources\Map\Default.png" />
     <Content Include="Resources\Map\Ice\Ice.png" />
     <Content Include="Resources\Map\Ice\IceEnd.png" />

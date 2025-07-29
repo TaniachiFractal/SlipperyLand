@@ -1,4 +1,5 @@
-﻿using Common.Interfaces;
+﻿using System.Threading;
+using Common.Interfaces;
 using Common.Types;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
@@ -10,6 +11,8 @@ namespace ViewModel
     /// </summary>
     public partial class MainWindowViewModel
     {
+        private const int FrameRate = 10;
+
         /// <summary>
         /// ctor
         /// </summary>
@@ -23,14 +26,12 @@ namespace ViewModel
             CloseCommand = new NoParamAction(CloseAction);
 
 
-            cols = 8;
-            rows = 8;
+            cols = 14;
+            rows = 14;
 
             MapLayer = new MapLayer(rows, cols);
             MapTileSetType = MapTileSetType.Ice;
-            MapLayer.FillWithSlippery();
 
-            CharaLayer = new CharaLayer(rows, cols);
             MainChara = Chara.RedCat;
         }
     }
