@@ -1,7 +1,7 @@
 ﻿namespace GameTypes.Cells
 {
     /// <summary>
-    /// The possible cell states of the character layer
+    /// The possible cell states of the charaLook layer
     /// </summary>
     public enum CharaCellType : byte
     {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameTypes.Cells;
+﻿using GameTypes.Cells;
 
 namespace GameTypes.Extensions
 {
@@ -13,7 +8,7 @@ namespace GameTypes.Extensions
     public static class CharaExtensions
     {
         /// <summary>
-        /// Change chara position
+        /// Change charaType position
         /// </summary>
         public static void ChangePosition(this CharaCellGroup cellGroup, int X, int Y)
         {

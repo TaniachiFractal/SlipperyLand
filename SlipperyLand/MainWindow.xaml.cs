@@ -20,6 +20,7 @@ namespace SlipperyLand
 
             this.viewModel = viewModel;
             DataContext = viewModel;
+
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)

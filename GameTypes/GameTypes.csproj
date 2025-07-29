@@ -48,7 +48,7 @@
     <Compile Include="Layers\CharaLayer.cs" />
     <Compile Include="Extensions\MapExtensions.cs" />
     <Compile Include="Layers\MapLayer.cs" />
-    <Compile Include="TileSpriteSetTypes\Chara.cs" />
+    <Compile Include="TileSpriteSetTypes\CharaLook.cs" />
     <Compile Include="TileSpriteSetTypes\MapTileSetType.cs" />
   </ItemGroup>
   <ItemGroup>

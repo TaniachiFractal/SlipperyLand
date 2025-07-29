@@ -40,9 +40,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Renderer.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\GameTypes\GameTypes.csproj">
       <Project>{2FBD9431-F865-4EAC-86A9-235A468A4215}</Project>
       <Name>GameTypes</Name>
@@ -54,6 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GraphicsRenderer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

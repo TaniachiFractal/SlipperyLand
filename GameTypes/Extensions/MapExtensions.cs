@@ -12,13 +12,12 @@ namespace GameTypes.Extensions
         /// Set a cell on a map
         /// </summary>
         public static void SetCell(this MapLayer map, int row, int col, MapCellType cell)
-        {
-            map.Grid[row, col] = cell;
-        }
+            => map.Grid[row, col] = cell;
 
         /// <summary>
         /// Read a cell on the map
         /// </summary>
-        public static MapCellType ReadCell(this MapLayer map, int row, int col) => map.Grid[row, col];
+        public static MapCellType ReadCell(this MapLayer map, int row, int col)
+            => map.Grid[row, col];
     }
 }

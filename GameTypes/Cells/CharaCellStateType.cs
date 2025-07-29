@@ -1,7 +1,7 @@
 ﻿namespace GameTypes.Cells
 {
     /// <summary>
-    /// The possible additional states of character cells
+    /// The possible additional states of charaLook cells
     /// </summary>
     public enum CharaCellStateType : byte
     {
@@ -11,22 +11,22 @@
         None = 0,
 
         /// <summary>
-        /// Chara looks front
+        /// CharaLook looks front
         /// </summary>
         LookFront,
 
         /// <summary>
-        /// Chara looks back
+        /// CharaLook looks back
         /// </summary>
         LookBack,
 
         /// <summary>
-        /// Chara looks to left
+        /// CharaLook looks to left
         /// </summary>
         LookToLeft,
 
         /// <summary>
-        /// Chara looks to right
+        /// CharaLook looks to right
         /// </summary>
         LookToRight,
     }

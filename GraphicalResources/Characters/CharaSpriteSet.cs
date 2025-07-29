@@ -4,7 +4,7 @@ using GameTypes.Cells;
 namespace GraphicalResources.Characters
 {
     /// <summary>
-    /// A set of character sprites
+    /// A set of charaLook sprites
     /// </summary>
     public class CharaSpriteSet
     {

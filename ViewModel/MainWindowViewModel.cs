@@ -3,6 +3,7 @@ using Common.Interfaces;
 using Common.Types;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
+using GraphicsEngine;
 
 namespace ViewModel
 {
@@ -11,8 +12,6 @@ namespace ViewModel
     /// </summary>
     public partial class MainWindowViewModel
     {
-        private const int FrameRate = 10;
-
         /// <summary>
         /// ctor
         /// </summary>
@@ -21,10 +20,10 @@ namespace ViewModel
             this.dialogProvider = dialogProvider;
             this.application = application;
 
+
             ChangeRandomCellCommand = new NoParamAction(ChangeRandomCellAction);
             SetRandomCharacterCommand = new NoParamAction(SetRandomCharacterAction);
             CloseCommand = new NoParamAction(CloseAction);
-
 
             cols = 14;
             rows = 14;
@@ -32,7 +31,17 @@ namespace ViewModel
             MapLayer = new MapLayer(rows, cols);
             MapTileSetType = MapTileSetType.Ice;
 
-            MainChara = Chara.RedCat;
+            CharaLayer = new CharaLayer();
+
+            renderer = new GraphicsRenderer(MapLayer, MapTileSetType, CharaLayer);
+
+            timer = new Timer(TimerProc, null, 0, FrameRate);
         }
+
+        private void TimerProc(object State)
+        {
+            PropertyHasChanged();
+        }
+
     }
 }

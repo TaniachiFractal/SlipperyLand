@@ -1,7 +1,8 @@
 ﻿using System.Drawing;
-using GameTypes.Layers;
+using System.Threading;
 using Common;
 using Common.Interfaces;
+using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
 using GraphicsEngine;
 
@@ -12,8 +13,13 @@ namespace ViewModel
     /// </summary>
     public partial class MainWindowViewModel : NotifyPropertyChanged
     {
+        private const int FrameRate = 30;
+
         private readonly IDialogProvider dialogProvider;
         private readonly IApplication application;
+
+        private readonly Timer timer;
+        private readonly GraphicsRenderer renderer;
 
         #region cols rows
 
@@ -74,18 +80,18 @@ namespace ViewModel
         /// <summary>
         /// The image for map layer
         /// </summary>
-        public Bitmap MapLayerImage => MapLayer.Render(MapTileSetType);
+        public Bitmap MapLayerImage => renderer.GetMapImage();
 
         #endregion
 
         #region charaLayer
 
-        private Chara mainChara;
+        private CharaLook mainChara;
 
         /// <summary>
-        /// The main character
+        /// The main charaLook
         /// </summary>
-        public Chara MainChara
+        public CharaLook MainChara
         {
             get => mainChara;
             set
@@ -98,7 +104,7 @@ namespace ViewModel
         private CharaLayer charaLayer;
 
         /// <summary>
-        /// The character layer
+        /// The charaLook layer
         /// </summary>
         public CharaLayer CharaLayer
         {
@@ -111,9 +117,9 @@ namespace ViewModel
         }
 
         /// <summary>
-        /// The image for the character layer
+        /// The image for the charaLook layer
         /// </summary>
-        public Bitmap CharaLayerImage => CharaLayer.Render(MainChara, MapLayerImage.Width, MapLayerImage.Height);
+        public Bitmap CharaLayerImage;
 
         #endregion
     }

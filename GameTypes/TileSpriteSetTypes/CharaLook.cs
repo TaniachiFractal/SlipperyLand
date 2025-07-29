@@ -3,7 +3,7 @@
     /// <summary>
     /// The list of characters
     /// </summary>
-    public enum Chara : byte
+    public enum CharaLook : byte
     {
         /// <summary>
         /// Default

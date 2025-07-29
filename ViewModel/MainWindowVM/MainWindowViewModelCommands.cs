@@ -18,7 +18,7 @@ namespace ViewModel
         public NoParamAction ChangeRandomCellCommand { get; private set; }
 
         /// <summary>
-        /// Put a character onto a random tile
+        /// Put a charaLook onto a random tile
         /// </summary>
         public NoParamAction SetRandomCharacterCommand { get; private set; }
 

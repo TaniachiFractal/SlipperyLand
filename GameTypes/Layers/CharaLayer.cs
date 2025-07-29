@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
 using GameTypes.Cells;
+using GameTypes.TileSpriteSetTypes;
 
 namespace GameTypes.Layers
 {
     /// <summary>
-    /// The character layer
+    /// The chara layer
     /// </summary>
     public class CharaLayer
     {
         /// <summary>
-        /// The main character
+        /// The main chara
         /// </summary>
-        public readonly CharaCellGroup MainChara = new CharaCellGroup(CharaCellType.Hero, CharaCellStateType.LookFront);
+        public readonly CharaCellGroup MainChara = new CharaCellGroup(CharaCellType.Hero, CharaCellStateType.LookFront, CharaLook.RedCat);
 
         /// <summary>
         /// The other characters

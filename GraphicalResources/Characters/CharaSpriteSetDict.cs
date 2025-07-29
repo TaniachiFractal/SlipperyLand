@@ -8,10 +8,10 @@ namespace GraphicalResources.Characters
     /// </summary>
     public static class CharaSpriteSetDict
     {
-        private readonly static Dictionary<Chara, CharaSpriteSet> dict = new()
+        private readonly static Dictionary<CharaLook, CharaSpriteSet> dict = new()
         {
             {
-                Chara.RedCat, new CharaSpriteSet()
+                CharaLook.RedCat, new CharaSpriteSet()
                 {
                     front = CharaSprites.RCfrontStand,
                     back = CharaSprites.RCbackStand,
@@ -22,8 +22,8 @@ namespace GraphicalResources.Characters
         };
 
         /// <param name="chara">The sprite set ID</param>
-        /// <returns>Desired chara sprite set</returns>
-        public static CharaSpriteSet Get(Chara chara)
+        /// <returns>Desired charaType sprite set</returns>
+        public static CharaSpriteSet Get(CharaLook chara)
         {
             if (dict.TryGetValue(chara, out var spriteSet))
             {

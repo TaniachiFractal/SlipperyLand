@@ -40,5 +40,10 @@ namespace GraphicalResources.Map
                 MapCellType.None => MapTiles.Default,
                 _ => MapTiles.Default,
             };
+
+        /// <summary>
+        /// Get the default tile
+        /// </summary>
+        public Bitmap GetDefault() => slippery;
     }
 }

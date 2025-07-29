@@ -1,7 +1,9 @@
-﻿namespace GameTypes.Cells
+﻿using GameTypes.TileSpriteSetTypes;
+
+namespace GameTypes.Cells
 {
     /// <summary>
-    /// State of a character cell
+    /// State of a charaLook cell
     /// </summary>
     public class CharaCellGroup
     {
@@ -16,22 +18,28 @@
         public int Y = 0;
 
         /// <summary>
-        /// The character
+        /// The charaLook type
         /// </summary>
-        public CharaCellType chara;
+        public CharaCellType charaType;
 
         /// <summary>
-        /// The character state
+        /// The charaLook state
         /// </summary>
         public CharaCellStateType state;
 
         /// <summary>
+        /// The characterLook
+        /// </summary>
+        public CharaLook charaLook;
+
+        /// <summary>
         /// ctor
         /// </summary>
-        public CharaCellGroup(CharaCellType chara, CharaCellStateType state)
+        public CharaCellGroup(CharaCellType charaType, CharaCellStateType state, CharaLook charaLook)
         {
-            this.chara = chara;
+            this.charaType = charaType;
             this.state = state;
+            this.charaLook = charaLook;
         }
     }
 }
