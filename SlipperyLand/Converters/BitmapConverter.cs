@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Data;
@@ -19,8 +18,9 @@ namespace SlipperyLand.Converters
         {
             if (value is Bitmap bmp && bmp != null)
             {
+                //https://stackoverflow.com/a/96470/
                 var bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                    bmp.GetHbitmap(),
+                    bmp.GetHbitmap(Color.Transparent),
                     IntPtr.Zero,
                     System.Windows.Int32Rect.Empty,
                     BitmapSizeOptions.FromWidthAndHeight(bmp.Width, bmp.Height));

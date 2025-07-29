@@ -40,7 +40,7 @@ namespace ViewModel
 
         private void SetRandomCharacterAction()
         {
-            PropertyHasChanged();
+
         }
 
         private void CloseAction()

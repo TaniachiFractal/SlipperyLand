@@ -17,13 +17,10 @@ namespace ViewModel
         /// </summary>
         public MainWindowViewModel(IDialogProvider dialogProvider, IApplication application)
         {
+            SetCommandActions();
+
             this.dialogProvider = dialogProvider;
             this.application = application;
-
-
-            ChangeRandomCellCommand = new NoParamAction(ChangeRandomCellAction);
-            SetRandomCharacterCommand = new NoParamAction(SetRandomCharacterAction);
-            CloseCommand = new NoParamAction(CloseAction);
 
             cols = 14;
             rows = 14;
@@ -37,6 +34,15 @@ namespace ViewModel
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
         }
+
+        private void SetCommandActions()
+        {
+            ChangeRandomCellCommand = new NoParamAction(ChangeRandomCellAction);
+            SetRandomCharacterCommand = new NoParamAction(SetRandomCharacterAction);
+            CloseCommand = new NoParamAction(CloseAction);
+
+        }
+
 
         private void TimerProc(object State)
         {
