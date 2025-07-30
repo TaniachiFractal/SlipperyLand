@@ -1,4 +1,5 @@
-﻿using GameTypes.Cells;
+﻿using System.Dynamic;
+using GameTypes.Cells;
 using GameTypes.Layers;
 
 namespace GameTypes.Extensions
@@ -11,13 +12,19 @@ namespace GameTypes.Extensions
         /// <summary>
         /// Set a cell on a map
         /// </summary>
-        public static void SetCell(this MapLayer map, int row, int col, MapCellType cell)
+        public static void SetCell(this MapLayer map, int row, int col, MapCell cell)
             => map.Grid[row, col] = cell;
+
+        /// <summary>
+        /// Set a cell with default looks for its type
+        /// </summary>
+        public static void SetCell(this MapLayer map, int row, int col, MapCellType cellType)
+            => map.SetCell(row, col, new MapCell() { mapCellType = cellType });
 
         /// <summary>
         /// Read a cell on the map
         /// </summary>
-        public static MapCellType ReadCell(this MapLayer map, int row, int col)
+        public static MapCell ReadCell(this MapLayer map, int row, int col)
             => map.Grid[row, col];
     }
 }

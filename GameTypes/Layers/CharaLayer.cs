@@ -12,11 +12,16 @@ namespace GameTypes.Layers
         /// <summary>
         /// The main chara
         /// </summary>
-        public readonly CharaCellGroup MainChara = new CharaCellGroup(CharaCellType.Hero, CharaCellStateType.LookFront, CharaLook.RedCat);
+        public readonly CharaCell MainChara = new CharaCell()
+        {
+            charaLook = CharaLook.RedCat,
+            charaState = CharaCellStateType.LookFront,
+            charaType = CharaCellType.Hero,
+        };
 
         /// <summary>
         /// The other characters
         /// </summary>
-        public readonly List<CharaCellGroup> OtherCharas = new List<CharaCellGroup>();
+        public readonly List<CharaCell> OtherCharas = new List<CharaCell>();
     }
 }

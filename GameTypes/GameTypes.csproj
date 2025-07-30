@@ -40,9 +40,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cells\CharaCellGroup.cs" />
+    <Compile Include="Cells\CharaCell.cs" />
     <Compile Include="Cells\CharaCellStateType.cs" />
     <Compile Include="Cells\CharaCellType.cs" />
+    <Compile Include="Cells\MapCell.cs" />
     <Compile Include="Cells\MapCellType.cs" />
     <Compile Include="Extensions\CharaExtensions.cs" />
     <Compile Include="Layers\CharaLayer.cs" />

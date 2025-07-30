@@ -137,4 +137,7 @@
   <data name="IceWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map\Ice\IceWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="IceWallFront" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Map\Ice\IceWallFront.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

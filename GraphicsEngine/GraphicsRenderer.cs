@@ -78,7 +78,8 @@ namespace GraphicsEngine
             {
                 for (var col = 0; col < mapLayer.Cols; col++)
                 {
-                    mapCanvas.DrawImage(mapTileSet.Get(mapLayer.ReadCell(row, col)), col * tileSize, row * tileSize);
+                    var bmp = mapTileSet.Get(mapLayer.ReadCell(row, col));
+                    mapCanvas.DrawImage(bmp, col * tileSize, row * tileSize);
                 }
             }
         }

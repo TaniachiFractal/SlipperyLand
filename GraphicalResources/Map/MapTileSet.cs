@@ -1,5 +1,7 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using GameTypes.Cells;
+using Common;
 
 namespace GraphicalResources.Map
 {
@@ -8,42 +10,49 @@ namespace GraphicalResources.Map
     /// </summary>
     public class MapTileSet
     {
-        private readonly Bitmap slippery;
-        private readonly Bitmap rough;
-        private readonly Bitmap wall;
-        private readonly Bitmap start;
-        private readonly Bitmap end;
+        /// <summary>
+        /// The set of slippery tiles
+        /// </summary>
+        public List<Bitmap> slippery = new();
 
         /// <summary>
-        /// ctor
+        /// The set of rough tiles
         /// </summary>
-        public MapTileSet(Bitmap slippery, Bitmap rough, Bitmap wall, Bitmap start, Bitmap end)
-        {
-            this.slippery = slippery;
-            this.rough = rough;
-            this.wall = wall;
-            this.start = start;
-            this.end = end;
-        }
+        public List<Bitmap> rough = new();
 
         /// <summary>
-        /// Get the desired image by <see cref="MapCellType"/>
+        /// The set of wall tiles
         /// </summary>
-        public Bitmap Get(MapCellType type)
-            => type switch
+        public List<Bitmap> wall = new();
+
+        /// <summary>
+        /// The set of start tiles
+        /// </summary>
+        public List<Bitmap> start = new();
+
+        /// <summary>
+        /// The set of end tiles
+        /// </summary>
+        public List<Bitmap> end = new();
+
+        /// <summary>
+        /// Get the desired image by <see cref="MapCell"/>
+        /// </summary>
+        public Bitmap Get(MapCell cell)
+            => cell != null ? cell.mapCellType switch
             {
-                MapCellType.Slippery => slippery,
-                MapCellType.Rough => rough,
-                MapCellType.Wall => wall,
-                MapCellType.Start => start,
-                MapCellType.End => end,
+                MapCellType.Slippery => slippery.ItemOrFirst(cell.mapCellLookId),
+                MapCellType.Rough => rough.ItemOrFirst(cell.mapCellLookId),
+                MapCellType.Wall => wall.ItemOrFirst(cell.mapCellLookId),
+                MapCellType.Start => start.ItemOrFirst(cell.mapCellLookId),
+                MapCellType.End => end.ItemOrFirst(cell.mapCellLookId),
                 MapCellType.None => MapTiles.Default,
                 _ => MapTiles.Default,
-            };
+            } : MapTiles.Default;
 
         /// <summary>
         /// Get the default tile
         /// </summary>
-        public Bitmap GetDefault() => slippery;
+        public Bitmap GetDefault() => slippery.ItemOrFirst(0);
     }
 }

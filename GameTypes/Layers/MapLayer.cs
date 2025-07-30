@@ -16,11 +16,11 @@ namespace GameTypes.Layers
         /// </summary>
         public readonly int Rows;
 
-        private MapCellType[,] grid;
+        private MapCell[,] grid;
         /// <summary>
         /// The cell grid of the layer
         /// </summary>
-        public MapCellType[,] Grid
+        public MapCell[,] Grid
         {
             get => grid;
             set => grid = value;
@@ -36,7 +36,7 @@ namespace GameTypes.Layers
             Cols = cols;
             Rows = rows;
 
-            grid = new MapCellType[rows, cols];
+            grid = new MapCell[rows, cols];
         }
     }
 }

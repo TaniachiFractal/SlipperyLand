@@ -13,7 +13,7 @@ namespace ViewModel
     /// </summary>
     public partial class MainWindowViewModel : NotifyPropertyChanged
     {
-        private const int FrameRate = 30;
+        private const int FrameRate = 60;
 
         private readonly IDialogProvider dialogProvider;
         private readonly IApplication application;

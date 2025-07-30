@@ -3,9 +3,9 @@
 namespace GameTypes.Cells
 {
     /// <summary>
-    /// State of a charaLook cell
+    /// A character cell
     /// </summary>
-    public class CharaCellGroup
+    public class CharaCell
     {
         /// <summary>
         /// Horizontal position [col]
@@ -18,28 +18,18 @@ namespace GameTypes.Cells
         public int Y = 0;
 
         /// <summary>
-        /// The charaLook type
+        /// The chara type
         /// </summary>
         public CharaCellType charaType;
 
         /// <summary>
-        /// The charaLook state
+        /// The chara state
         /// </summary>
-        public CharaCellStateType state;
+        public CharaCellStateType charaState;
 
         /// <summary>
-        /// The characterLook
+        /// The character look
         /// </summary>
         public CharaLook charaLook;
-
-        /// <summary>
-        /// ctor
-        /// </summary>
-        public CharaCellGroup(CharaCellType charaType, CharaCellStateType state, CharaLook charaLook)
-        {
-            this.charaType = charaType;
-            this.state = state;
-            this.charaLook = charaLook;
-        }
     }
 }
