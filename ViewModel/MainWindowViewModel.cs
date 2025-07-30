@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using Common.Interfaces;
 using Common.Types;
+using GameTypes;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
 using GraphicsEngine;
@@ -32,7 +33,7 @@ namespace ViewModel
             MapTileSetType = MapTileSetType.Ice;
             FillMap();
 
-            CharaLayer = new CharaLayer(CharaLook.IceGolem);
+            CharaLayer = new CharaLayer(CharaLook.RedCat);
 
             renderer = new GraphicsRenderer(MapLayer, MapTileSetType, CharaLayer);
 
@@ -41,10 +42,6 @@ namespace ViewModel
 
         private void SetCommandActions()
         {
-            MoveUpCommand = new NoParamCommand(MoveUp);
-            MoveLeftCommand = new NoParamCommand(MoveLeft);
-            MoveDownCommand = new NoParamCommand(MoveDown);
-            MoveRightCommand = new NoParamCommand(MoveRight);
 
             ChangeRandomCellCommand = new NoParamCommand(ChangeRandomCell);
             CloseCommand = new NoParamCommand(Close);

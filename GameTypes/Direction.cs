@@ -3,7 +3,7 @@
     /// <summary>
     /// Possible directions of movement
     /// </summary>
-    public enum Directions
+    public enum Direction
     {
         /// <summary>
         /// Default

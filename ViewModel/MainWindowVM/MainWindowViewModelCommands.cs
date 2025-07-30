@@ -1,5 +1,6 @@
 ﻿using Common;
 using Common.Types;
+using GameTypes;
 using GameTypes.Cells;
 using GameTypes.Extensions;
 
@@ -54,13 +55,8 @@ namespace ViewModel
 
         #region methods for commands
 
-        #region movement
-
-        private void Move() => ;
-
-        #endregion
-
         #region misc
+
 
         private void ChangeRandomCell()
         {

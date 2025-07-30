@@ -105,6 +105,7 @@ namespace GraphicsEngine
         private void RenderCharas()
         {
             var mc = charaLayer.MainChara;
+            charaCanvas.Clear(Color.Transparent);
             charaCanvas.DrawImage(CharaSpriteSetDict.Get(mc.charaLook).Get(mc.charaState), mc.X, mc.Y);
         }
 

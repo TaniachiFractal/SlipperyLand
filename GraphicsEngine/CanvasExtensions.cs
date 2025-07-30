@@ -15,9 +15,8 @@ namespace GraphicsEngine
             => targetCanvas.DrawImage(sourceBmp, 0, 0, upsWidth, upsHeight);
 
         /// <summary>
-        /// Set the <see cref="Graphics.InterpolationMode"/> of a <see cref="Graphics"/> canvas to <see cref="InterpolationMode.NearestNeighbor"/>
+        /// Set the <see cref="Graphics.InterpolationMode"/> to <b><u><see cref="InterpolationMode.NearestNeighbor"/></u></b>
         /// </summary>
-        /// <param name="canvas"></param>
         public static void SetNearInterMode(this Graphics canvas)
             => canvas.InterpolationMode = InterpolationMode.NearestNeighbor;
     }

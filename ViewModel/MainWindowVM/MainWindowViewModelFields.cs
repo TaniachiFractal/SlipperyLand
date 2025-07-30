@@ -2,6 +2,8 @@
 using System.Threading;
 using Common;
 using Common.Interfaces;
+using GameTypes;
+using GameTypes.Cells;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
 using GraphicsEngine;
@@ -51,7 +53,7 @@ namespace ViewModel
         /// <summary>
         /// The tile set type
         /// </summary>
-        public MapTileSetType MapTileSetType
+        private MapTileSetType MapTileSetType
         {
             get => mapTileSetType;
             set
@@ -66,7 +68,7 @@ namespace ViewModel
         /// <summary>
         /// The map layer
         /// </summary>
-        public MapLayer MapLayer
+        private MapLayer MapLayer
         {
             get => mapLayer;
             set
@@ -85,27 +87,25 @@ namespace ViewModel
 
         #region charaLayer
 
-        private CharaLook mainChara;
-
-        /// <summary>
-        /// The main charaLook
-        /// </summary>
-        public CharaLook MainChara
+        private Direction mainCharaDir;
+        private Direction MainCharaDir
         {
-            get => mainChara;
+            get => mainCharaDir;
             set
             {
-                mainChara = value;
+                mainCharaDir = value;
                 PropertyHasChanged();
             }
         }
+
+        private CharaCell MainChara => CharaLayer.MainChara;
 
         private CharaLayer charaLayer;
 
         /// <summary>
         /// The charaLook layer
         /// </summary>
-        public CharaLayer CharaLayer
+        private CharaLayer CharaLayer
         {
             get => charaLayer;
             set
