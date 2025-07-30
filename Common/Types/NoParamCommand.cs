@@ -6,15 +6,15 @@ namespace Common.Types
     /// <summary>
     /// <see cref="ICommand"/> with no parameters
     /// </summary>
-    public class NoParamAction : ICommand
+    public class NoParamCommand : ICommand
     {
         private readonly Action execute;
         private readonly Predicate<object> canExecute;
 
         /// <summary>
-        /// Constructor for <see cref="NoParamAction"/>
+        /// Constructor for <see cref="NoParamCommand"/>
         /// </summary>
-        public NoParamAction(Action execute, Predicate<object> canExecute = null)
+        public NoParamCommand(Action execute, Predicate<object> canExecute = null)
         {
             this.execute = execute ?? throw new ArgumentNullException(nameof(execute));
             this.canExecute = canExecute;

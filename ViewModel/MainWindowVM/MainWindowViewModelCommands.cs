@@ -12,31 +12,69 @@ namespace ViewModel
     {
         #region commands
 
+        #region movement
+
+        /// <summary>
+        /// Move hero up
+        /// </summary>
+        public NoParamCommand MoveUpCommand { get; private set; }
+
+        /// <summary>
+        /// Move hero down
+        /// </summary>
+        public NoParamCommand MoveDownCommand { get; private set; }
+
+        /// <summary>
+        /// Move hero left
+        /// </summary>
+        public NoParamCommand MoveLeftCommand { get; private set; }
+
+        /// <summary>
+        /// Move hero right
+        /// </summary>
+        public NoParamCommand MoveRightCommand { get; private set; }
+
+        #endregion
+
+        #region misc
+
         /// <summary>
         /// Change a random map cell
         /// </summary>
-        public NoParamAction ChangeRandomCellCommand { get; private set; }
+        public NoParamCommand ChangeRandomCellCommand { get; private set; }
 
         /// <summary>
         /// Close the app
         /// </summary>
-        public NoParamAction CloseCommand { get; private set; }
+        public NoParamCommand CloseCommand { get; private set; }
+
+        #endregion
 
         #endregion
 
         #region methods for commands
 
-        private void ChangeRandomCellAction()
+        #region movement
+
+        private void Move() => ;
+
+        #endregion
+
+        #region misc
+
+        private void ChangeRandomCell()
         {
             var col = RandomSh.Shared.Next(Cols);
             var row = RandomSh.Shared.Next(Rows);
             MapLayer.SetCell(row, col, (MapCellType)RandomSh.Shared.Next(1, 6));
         }
 
-        private void CloseAction()
+        private void Close()
         {
             application.Close();
         }
+
+        #endregion
 
         #endregion
 

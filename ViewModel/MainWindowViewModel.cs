@@ -4,6 +4,7 @@ using Common.Types;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
 using GraphicsEngine;
+using MainLogic;
 
 namespace ViewModel
 {
@@ -29,6 +30,7 @@ namespace ViewModel
 
             MapLayer = new MapLayer(rows, cols);
             MapTileSetType = MapTileSetType.Ice;
+            FillMap();
 
             CharaLayer = new CharaLayer(CharaLook.IceGolem);
 
@@ -39,13 +41,24 @@ namespace ViewModel
 
         private void SetCommandActions()
         {
-            ChangeRandomCellCommand = new NoParamAction(ChangeRandomCellAction);
-            CloseCommand = new NoParamAction(CloseAction);
+            MoveUpCommand = new NoParamCommand(MoveUp);
+            MoveLeftCommand = new NoParamCommand(MoveLeft);
+            MoveDownCommand = new NoParamCommand(MoveDown);
+            MoveRightCommand = new NoParamCommand(MoveRight);
+
+            ChangeRandomCellCommand = new NoParamCommand(ChangeRandomCell);
+            CloseCommand = new NoParamCommand(Close);
         }
 
         private void TimerProc(object State)
         {
             PropertyHasChanged();
+        }
+
+        private void FillMap()
+        {
+            mapLayer.FillWithSlippery();
+            mapLayer.SetWallBorder();
         }
 
     }

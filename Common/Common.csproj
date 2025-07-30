@@ -51,7 +51,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RandomSh.cs" />
-    <Compile Include="Types\NoParamAction.cs" />
+    <Compile Include="Types\NoParamCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

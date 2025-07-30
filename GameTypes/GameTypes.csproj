@@ -45,6 +45,7 @@
     <Compile Include="Cells\CharaCellType.cs" />
     <Compile Include="Cells\MapCell.cs" />
     <Compile Include="Cells\MapCellType.cs" />
+    <Compile Include="Directions.cs" />
     <Compile Include="Extensions\CharaExtensions.cs" />
     <Compile Include="Layers\CharaLayer.cs" />
     <Compile Include="Extensions\MapExtensions.cs" />

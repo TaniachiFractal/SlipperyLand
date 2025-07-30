@@ -61,6 +61,10 @@
       <Project>{8dd48272-7a07-404c-8bc8-f505f1025007}</Project>
       <Name>GraphicsEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MainLogic\MainLogic.csproj">
+      <Project>{2723701b-ea9b-40d6-814e-514aad9e78d4}</Project>
+      <Name>MainLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />

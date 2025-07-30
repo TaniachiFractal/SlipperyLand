@@ -32,7 +32,7 @@ namespace MainLogic
             {
                 mapLayer.SetCell(row, 0, MapCellType.Wall);
             }
-            for (var row = mapLayer.Rows - 1; row < mapLayer.Rows; row++)
+            for (var row = 0; row < mapLayer.Rows; row++)
             {
                 mapLayer.SetCell(row, mapLayer.Cols - 1, MapCellType.Wall);
             }
@@ -40,9 +40,9 @@ namespace MainLogic
             {
                 mapLayer.SetCell(0, col, MapCellType.Wall);
             }
-            for (var col = mapLayer.Cols - 1; col < mapLayer.Cols - 1; col++)
+            for (var col = 1; col < mapLayer.Cols - 1; col++)
             {
-                mapLayer.SetCell(0, col, MapCellType.Wall);
+                mapLayer.SetCell(mapLayer.Rows - 1, col, MapCellType.Wall);
             }
         }
     }
