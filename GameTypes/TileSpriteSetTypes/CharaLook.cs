@@ -14,5 +14,11 @@
         /// A red cat in green overalls
         /// </summary>
         RedCat,
+
+        /// <summary>
+        /// An ice golem with big boots
+        /// </summary>
+        IceGolem,
+
     }
 }

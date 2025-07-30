@@ -83,6 +83,46 @@ namespace GraphicalResources.Characters {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IGbackStand {
+            get {
+                object obj = ResourceManager.GetObject("IGbackStand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IGfrontStand {
+            get {
+                object obj = ResourceManager.GetObject("IGfrontStand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IGtoLeftStand {
+            get {
+                object obj = ResourceManager.GetObject("IGtoLeftStand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IGtoRightStand {
+            get {
+                object obj = ResourceManager.GetObject("IGtoRightStand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap RCbackStand {
             get {
                 object obj = ResourceManager.GetObject("RCbackStand", resourceCulture);

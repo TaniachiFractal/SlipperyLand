@@ -12,6 +12,8 @@ namespace ViewModel
     /// </summary>
     public partial class MainWindowViewModel
     {
+        private readonly Timer timer;
+
         /// <summary>
         /// ctor
         /// </summary>
@@ -28,7 +30,7 @@ namespace ViewModel
             MapLayer = new MapLayer(rows, cols);
             MapTileSetType = MapTileSetType.Ice;
 
-            CharaLayer = new CharaLayer();
+            CharaLayer = new CharaLayer(CharaLook.IceGolem);
 
             renderer = new GraphicsRenderer(MapLayer, MapTileSetType, CharaLayer);
 
@@ -38,11 +40,8 @@ namespace ViewModel
         private void SetCommandActions()
         {
             ChangeRandomCellCommand = new NoParamAction(ChangeRandomCellAction);
-            SetRandomCharacterCommand = new NoParamAction(SetRandomCharacterAction);
             CloseCommand = new NoParamAction(CloseAction);
-
         }
-
 
         private void TimerProc(object State)
         {

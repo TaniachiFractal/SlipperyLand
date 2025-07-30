@@ -125,6 +125,19 @@
   <data name="Empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="IGbackStand" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Chara\IceGolem\IGbackStand.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>by SaltyCube</comment>
+  </data>
+  <data name="IGfrontStand" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Chara\IceGolem\IGfrontStand.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IGtoLeftStand" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Chara\IceGolem\IGtoLeftStand.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IGtoRightStand" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Chara\IceGolem\IGtoRightStand.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="RCbackStand" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Chara\RedCat\RCbackStand.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

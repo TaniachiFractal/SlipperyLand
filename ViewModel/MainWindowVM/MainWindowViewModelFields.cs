@@ -18,7 +18,6 @@ namespace ViewModel
         private readonly IDialogProvider dialogProvider;
         private readonly IApplication application;
 
-        private readonly Timer timer;
         private readonly GraphicsRenderer renderer;
 
         #region cols rows
@@ -119,7 +118,7 @@ namespace ViewModel
         /// <summary>
         /// The image for the charaLook layer
         /// </summary>
-        public Bitmap CharaLayerImage;
+        public Bitmap CharaLayerImage => renderer.GetCharasImage();
 
         #endregion
     }

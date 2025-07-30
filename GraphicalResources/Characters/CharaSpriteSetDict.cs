@@ -18,6 +18,15 @@ namespace GraphicalResources.Characters
                     toLeft = CharaSprites.RCtoLeftStand,
                     toRight = CharaSprites.RCtoRightStand,
                 }
+            },
+            {
+                CharaLook.IceGolem, new CharaSpriteSet()
+                {
+                    front = CharaSprites.IGfrontStand,
+                    back = CharaSprites.IGbackStand,
+                    toLeft = CharaSprites.IGtoLeftStand,
+                    toRight = CharaSprites.IGtoRightStand,
+                }
             }
         };
 

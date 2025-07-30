@@ -12,9 +12,8 @@ namespace GameTypes.Layers
         /// <summary>
         /// The main chara
         /// </summary>
-        public readonly CharaCell MainChara = new CharaCell()
+        public CharaCell MainChara = new CharaCell()
         {
-            charaLook = CharaLook.RedCat,
             charaState = CharaCellStateType.LookFront,
             charaType = CharaCellType.Hero,
         };
@@ -23,5 +22,13 @@ namespace GameTypes.Layers
         /// The other characters
         /// </summary>
         public readonly List<CharaCell> OtherCharas = new List<CharaCell>();
+
+        /// <summary>
+        /// ctor
+        /// </summary>
+        public CharaLayer(CharaLook mainCharacter)
+        {
+            MainChara.charaLook = mainCharacter;
+        }
     }
 }

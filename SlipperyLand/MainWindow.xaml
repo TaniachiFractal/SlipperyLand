@@ -62,8 +62,6 @@
     <Window.InputBindings>
         <KeyBinding Key="C"
                     Command="{Binding ChangeRandomCellCommand}" />
-        <KeyBinding Key="X"
-                    Command="{Binding SetRandomCharacterCommand}" />
     </Window.InputBindings>
 
     <Grid>

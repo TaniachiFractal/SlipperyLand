@@ -1,7 +1,9 @@
 ﻿using System.Drawing;
+using System.Runtime.CompilerServices;
 using GameTypes.Extensions;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
+using GraphicalResources.Characters;
 using GraphicalResources.Map;
 
 namespace GraphicsEngine
@@ -33,6 +35,8 @@ namespace GraphicsEngine
         private readonly CharaLayer charaLayer;
         private readonly Bitmap charaBitmap;
         private readonly Graphics charaCanvas;
+        private readonly Bitmap charaBitmapHigh;
+        private readonly Graphics charaCanvasHigh;
         #endregion
 
         /// <summary>
@@ -54,12 +58,16 @@ namespace GraphicsEngine
             charaBitmap = GenerateEmptyBitmap(width, height);
             charaCanvas = Graphics.FromImage(charaBitmap);
 
+            charaBitmapHigh = GenerateEmptyBitmap(upsWidth, upsHeight);
+            charaCanvasHigh = Graphics.FromImage(charaBitmapHigh);
+            charaCanvasHigh.SetNearInterMode();
+
             mapBitmap = GenerateEmptyBitmap(width, height);
             mapCanvas = Graphics.FromImage(mapBitmap);
 
             mapBitmapHigh = GenerateEmptyBitmap(upsWidth, upsHeight);
             mapCanvasHigh = Graphics.FromImage(mapBitmapHigh);
-            mapCanvasHigh.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            mapCanvasHigh.SetNearInterMode();
         }
 
         /// <summary>
@@ -70,6 +78,16 @@ namespace GraphicsEngine
             RenderMap();
             UpscaleMap();
             return mapBitmapHigh;
+        }
+
+        /// <summary>
+        /// Get the character layer image
+        /// </summary>
+        public Bitmap GetCharasImage()
+        {
+            RenderCharas();
+            UpscaleCharas();
+            return charaBitmapHigh;
         }
 
         private void RenderMap()
@@ -84,9 +102,20 @@ namespace GraphicsEngine
             }
         }
 
+        private void RenderCharas()
+        {
+            var mc = charaLayer.MainChara;
+            charaCanvas.DrawImage(CharaSpriteSetDict.Get(mc.charaLook).Get(mc.charaState), mc.X, mc.Y);
+        }
+
         private void UpscaleMap()
         {
-            mapCanvasHigh.DrawImage(mapBitmap, 0, 0, upsWidth, upsHeight);
+            mapBitmap.UpscaleTo(mapCanvasHigh, upsWidth, upsHeight);
+        }
+
+        private void UpscaleCharas()
+        {
+            charaBitmap.UpscaleTo(charaCanvasHigh, upsWidth, upsHeight);
         }
 
         private Bitmap GenerateEmptyBitmap(int width, int height) => new Bitmap(width, height);
