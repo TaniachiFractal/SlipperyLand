@@ -88,6 +88,10 @@ namespace ViewModel
         #region charaLayer
 
         private Direction mainCharaDir;
+
+        /// <summary>
+        /// The current direction of the main character
+        /// </summary>
         private Direction MainCharaDir
         {
             get => mainCharaDir;

@@ -42,6 +42,10 @@ namespace ViewModel
 
         private void SetCommandActions()
         {
+            MoveUpCommand = new NoParamCommand(() => { ChangeDir(Direction.Up); });
+            MoveDownCommand = new NoParamCommand(() => { ChangeDir(Direction.Down); });
+            MoveLeftCommand = new NoParamCommand(() => { ChangeDir(Direction.Left); });
+            MoveRightCommand = new NoParamCommand(() => { ChangeDir(Direction.Right); });
 
             ChangeRandomCellCommand = new NoParamCommand(ChangeRandomCell);
             CloseCommand = new NoParamCommand(Close);

@@ -55,8 +55,9 @@ namespace ViewModel
 
         #region methods for commands
 
-        #region misc
+        private void ChangeDir(Direction dir) => MainCharaDir = dir;
 
+        #region misc
 
         private void ChangeRandomCell()
         {
