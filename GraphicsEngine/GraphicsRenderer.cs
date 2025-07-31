@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using GameTypes.Extensions;
 using GameTypes.Layers;
@@ -33,10 +34,10 @@ namespace GraphicsEngine
 
         #region chara
         private readonly CharaLayer charaLayer;
-        private readonly Bitmap charaBitmap;
-        private readonly Graphics charaCanvas;
-        private readonly Bitmap charaBitmapHigh;
-        private readonly Graphics charaCanvasHigh;
+        private Bitmap charaBitmap;
+        private Graphics charaCanvas;
+        private Bitmap charaBitmapHigh;
+        private Graphics charaCanvasHigh;
         #endregion
 
         /// <summary>
@@ -55,12 +56,7 @@ namespace GraphicsEngine
             upsHeight = height * Ups;
             upsWidth = width * Ups;
 
-            charaBitmap = GenerateEmptyBitmap(width, height);
-            charaCanvas = Graphics.FromImage(charaBitmap);
-
-            charaBitmapHigh = GenerateEmptyBitmap(upsWidth, upsHeight);
-            charaCanvasHigh = Graphics.FromImage(charaBitmapHigh);
-            charaCanvasHigh.SetNearInterMode();
+            ReInitCharas();
 
             mapBitmap = GenerateEmptyBitmap(width, height);
             mapCanvas = Graphics.FromImage(mapBitmap);
@@ -90,6 +86,20 @@ namespace GraphicsEngine
             return charaBitmapHigh;
         }
 
+        private void ReInitCharas()
+        {
+            charaBitmap?.Dispose();
+            charaBitmapHigh?.Dispose();
+            charaCanvas?.Dispose();
+            charaCanvasHigh?.Dispose();
+
+            charaBitmap = GenerateEmptyBitmap(width, height);
+            charaCanvas = Graphics.FromImage(charaBitmap);
+            charaBitmapHigh = GenerateEmptyBitmap(upsWidth, upsHeight);
+            charaCanvasHigh = Graphics.FromImage(charaBitmapHigh);
+            charaCanvasHigh.SetNearInterMode();
+        }
+
         private void RenderMap()
         {
             for (var row = 0; row < mapLayer.Rows; row++)
@@ -105,7 +115,7 @@ namespace GraphicsEngine
         private void RenderCharas()
         {
             var mc = charaLayer.MainChara;
-            charaCanvas.Clear(Color.Transparent);
+            ReInitCharas();
             charaCanvas.DrawImage(CharaSpriteSetDict.Get(mc.charaLook).Get(mc.charaState), mc.X, mc.Y);
         }
 

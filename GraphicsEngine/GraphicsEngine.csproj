@@ -50,10 +50,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System" />
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CanvasExtensions.cs" />
+    <Compile Include="GraphicsExtensions.cs" />
     <Compile Include="GraphicsRenderer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

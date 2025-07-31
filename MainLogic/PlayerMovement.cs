@@ -11,9 +11,9 @@ namespace MainLogic
         /// <summary>
         /// Execute the movement
         /// </summary>
-        public static void MoveHero(this CharaCell hero)
+        public static void MoveHero(this CharaCell hero, Direction dir)
         {
-            //hero.RotateHero(dir);
+            hero.RotateHero(dir);
         }
 
         /// <summary>

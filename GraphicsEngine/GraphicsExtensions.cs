@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace GraphicsEngine
@@ -6,7 +7,7 @@ namespace GraphicsEngine
     /// <summary>
     /// Extensions for <see cref="Graphics"/> canvases
     /// </summary>
-    static internal class CanvasExtensions
+    static internal class GraphicsExtensions
     {
         /// <summary>
         /// Upscale a <see cref="Bitmap"/> onto another <see cref="Graphics"/> canvas
@@ -19,5 +20,6 @@ namespace GraphicsEngine
         /// </summary>
         public static void SetNearInterMode(this Graphics canvas)
             => canvas.InterpolationMode = InterpolationMode.NearestNeighbor;
+
     }
 }

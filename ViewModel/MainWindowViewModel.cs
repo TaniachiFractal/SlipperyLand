@@ -14,6 +14,7 @@ namespace ViewModel
     /// </summary>
     public partial class MainWindowViewModel
     {
+        private const int FrameRate = 30;
         private readonly Timer timer;
 
         /// <summary>
@@ -53,6 +54,7 @@ namespace ViewModel
 
         private void TimerProc(object State)
         {
+            MainChara.MoveHero(MainCharaDir);
             PropertyHasChanged();
         }
 

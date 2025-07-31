@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Threading;
 using Common;
 using Common.Interfaces;
 using GameTypes;
@@ -15,8 +14,6 @@ namespace ViewModel
     /// </summary>
     public partial class MainWindowViewModel : NotifyPropertyChanged
     {
-        private const int FrameRate = 60;
-
         private readonly IDialogProvider dialogProvider;
         private readonly IApplication application;
 
