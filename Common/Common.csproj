@@ -44,13 +44,14 @@
     <Compile Include="ListExtensions.cs" />
     <Compile Include="Interfaces\IApplication.cs" />
     <Compile Include="Interfaces\IDialogProvider.cs" />
-    <Compile Include="NotifyPropertyChanged.cs" />
+    <Compile Include="Types\NotifyPropertyChanged.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RandomSh.cs" />
+    <Compile Include="Types\KeyboardState.cs" />
     <Compile Include="Types\NoParamCommand.cs" />
   </ItemGroup>
   <ItemGroup>

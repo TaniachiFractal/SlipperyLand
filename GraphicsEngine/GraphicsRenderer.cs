@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.CompilerServices;
+﻿using System.Drawing;
 using GameTypes.Extensions;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;

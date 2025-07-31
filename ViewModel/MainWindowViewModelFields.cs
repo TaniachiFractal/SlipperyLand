@@ -1,23 +1,41 @@
 ﻿using System.Drawing;
 using Common;
 using Common.Interfaces;
+using Common.Types;
 using GameTypes;
 using GameTypes.Cells;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
 using GraphicsEngine;
+using MainLogic;
 
 namespace ViewModel
 {
     /// <summary>
     /// The fields for <see cref="MainWindowViewModel"/>
     /// </summary>
-    public partial class MainWindowViewModel : NotifyPropertyChanged
+    public partial class MainWindowViewModel
     {
         private readonly IDialogProvider dialogProvider;
         private readonly IApplication application;
 
         private readonly GraphicsRenderer renderer;
+
+        #region keyboard state
+
+        private KeyboardState keyboardState;
+        /// <inheritdoc cref="Common.Types.KeyboardState"/>
+        public KeyboardState KeyboardState
+        {
+            get => keyboardState;
+            set
+            {
+                keyboardState = value;
+                PropertyHasChanged();
+            }
+        }
+
+        #endregion
 
         #region cols rows
 

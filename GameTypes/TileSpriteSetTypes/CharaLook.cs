@@ -20,5 +20,9 @@
         /// </summary>
         IceGolem,
 
+        /// <summary>
+        /// Literally the sona of this game's developer
+        /// </summary>
+        TaniachiFractal,
     }
 }

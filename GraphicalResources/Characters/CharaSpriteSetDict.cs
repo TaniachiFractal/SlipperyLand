@@ -27,6 +27,12 @@ namespace GraphicalResources.Characters
                     toLeft = CharaSprites.IGtoLeftStand,
                     toRight = CharaSprites.IGtoRightStand,
                 }
+            },
+            {
+                CharaLook.TaniachiFractal, new CharaSpriteSet()
+                {
+                    front = CharaSprites.TFfrontStand,
+                }
             }
         };
 

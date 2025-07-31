@@ -12,7 +12,7 @@ namespace ViewModel
     /// <summary>
     /// The main model of the app
     /// </summary>
-    public partial class MainWindowViewModel
+    public partial class MainWindowViewModel : NotifyPropertyChanged
     {
         private const int FrameRate = 30;
         private readonly Timer timer;
@@ -39,22 +39,35 @@ namespace ViewModel
             renderer = new GraphicsRenderer(MapLayer, MapTileSetType, CharaLayer);
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
+            keyboardState = new KeyboardState();
         }
+
+        #region changeDir
+
+        private void ChangeDir(Direction dir) => MainCharaDir = dir;
+
+        /// <summary>
+        /// Change the main character direction
+        /// </summary>
+        public void ChangeDirUp() => ChangeDir(Direction.Up);
+        /// <inheritdoc cref="ChangeDirUp"/>
+        public void ChangeDirDown() => ChangeDir(Direction.Down);
+        /// <inheritdoc cref="ChangeDirUp"/>
+        public void ChangeDirLeft() => ChangeDir(Direction.Left);
+        /// <inheritdoc cref="ChangeDirUp"/>
+        public void ChangeDirRight() => ChangeDir(Direction.Right);
+
+        #endregion
 
         private void SetCommandActions()
         {
-            MoveUpCommand = new NoParamCommand(() => { ChangeDir(Direction.Up); });
-            MoveDownCommand = new NoParamCommand(() => { ChangeDir(Direction.Down); });
-            MoveLeftCommand = new NoParamCommand(() => { ChangeDir(Direction.Left); });
-            MoveRightCommand = new NoParamCommand(() => { ChangeDir(Direction.Right); });
-
             ChangeRandomCellCommand = new NoParamCommand(ChangeRandomCell);
             CloseCommand = new NoParamCommand(Close);
         }
 
         private void TimerProc(object State)
         {
-            MainChara.MoveHero(MainCharaDir);
+            MainChara.MoveHero(MainCharaDir, KeyboardState);
             PropertyHasChanged();
         }
 

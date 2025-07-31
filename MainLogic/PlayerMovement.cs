@@ -1,4 +1,5 @@
-﻿using GameTypes;
+﻿using Common.Types;
+using GameTypes;
 using GameTypes.Cells;
 
 namespace MainLogic
@@ -11,9 +12,18 @@ namespace MainLogic
         /// <summary>
         /// Execute the movement
         /// </summary>
-        public static void MoveHero(this CharaCell hero, Direction dir)
+        public static void MoveHero(this CharaCell hero, Direction dir, KeyboardState ks)
         {
             hero.RotateHero(dir);
+
+            if (ks.LeftKeyDown)
+                hero.X++;
+            if (ks.RightKeyDown)
+                hero.X--;
+            if (ks.UpKeyDown)
+                hero.Y--;
+            if (ks.DownKeyDown)
+                hero.Y++;
         }
 
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Common
+namespace Common.Types
 {
     /// <inheritdoc cref="INotifyPropertyChanged"/>
     public class NotifyPropertyChanged : INotifyPropertyChanged

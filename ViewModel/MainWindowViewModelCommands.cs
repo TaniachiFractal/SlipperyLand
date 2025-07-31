@@ -1,6 +1,5 @@
 ﻿using Common;
 using Common.Types;
-using GameTypes;
 using GameTypes.Cells;
 using GameTypes.Extensions;
 
@@ -12,30 +11,6 @@ namespace ViewModel
     public partial class MainWindowViewModel
     {
         #region commands
-
-        #region movement
-
-        /// <summary>
-        /// Move hero up
-        /// </summary>
-        public NoParamCommand MoveUpCommand { get; private set; }
-
-        /// <summary>
-        /// Move hero down
-        /// </summary>
-        public NoParamCommand MoveDownCommand { get; private set; }
-
-        /// <summary>
-        /// Move hero left
-        /// </summary>
-        public NoParamCommand MoveLeftCommand { get; private set; }
-
-        /// <summary>
-        /// Move hero right
-        /// </summary>
-        public NoParamCommand MoveRightCommand { get; private set; }
-
-        #endregion
 
         #region misc
 
@@ -54,8 +29,6 @@ namespace ViewModel
         #endregion
 
         #region methods for commands
-
-        private void ChangeDir(Direction dir) => MainCharaDir = dir;
 
         #region misc
 
