@@ -4,7 +4,10 @@ using System.Runtime.InteropServices;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using ViewModel;
 
 namespace SlipperyLand
@@ -29,6 +32,7 @@ namespace SlipperyLand
             keyboardTimer.AutoReset = true;
             keyboardTimer.Elapsed += KeyboardTimer_Elapsed;
             keyboardTimer.Start();
+            Icon = BitmapSource.Create(2, 2, 1, 1, PixelFormats.Gray2, null, new byte[16], 8);
         }
 
         #region keyboard
@@ -77,9 +81,16 @@ namespace SlipperyLand
             Close();
         }
 
+        private void TopGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            TopGrid.Width = Map.Source.Width + 10;
+        }
+
+        #region fade
+
         private void FadeAnimation(double from, double to, EventHandler completed = null)
         {
-            var fade = new DoubleAnimation(from, to, new Duration(TimeSpan.FromMilliseconds(700)));
+            var fade = new DoubleAnimation(from, to, new Duration(TimeSpan.FromMilliseconds(300)));
             if (completed != null)
             { fade.Completed += completed; }
             BeginAnimation(Window.OpacityProperty, fade);
@@ -100,13 +111,10 @@ namespace SlipperyLand
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Icon = Map.Source;
             FadeAnimation(0, 1);
         }
 
-        private void TopGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            TopGrid.Width = Map.Source.Width + 10;
-        }
-
+        #endregion
     }
 }

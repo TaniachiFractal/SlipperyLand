@@ -72,7 +72,7 @@
         <Grid Margin="3">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="30" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -80,7 +80,7 @@
                   Grid.Row="0"
                   MouseDown="TopGrid_MouseDown"
                   Loaded="TopGrid_Loaded">
-                <Rectangle Fill="#55000000"/>
+                <Rectangle Fill="#55000000" />
                 <Label Content="{x:Static res:Resources.AppName}"
                        Foreground="White"
                        VerticalAlignment="Center" />
@@ -92,8 +92,10 @@
             <Grid Grid.Row="1"
                   Margin="10"
                   VerticalAlignment="Top">
-                <Image x:Name="Map" Source="{Binding MapLayerImage, Converter={StaticResource BitmapConverter}}" />
-                <Image x:Name="Chara" Source="{Binding CharaLayerImage, Converter={StaticResource BitmapConverter}}" />
+                <Image x:Name="Map"
+                       Source="{Binding MapLayerImage, Converter={StaticResource BitmapConverter}}" />
+                <Image x:Name="Chara"
+                       Source="{Binding CharaLayerImage, Converter={StaticResource BitmapConverter}}" />
             </Grid>
 
         </Grid>
