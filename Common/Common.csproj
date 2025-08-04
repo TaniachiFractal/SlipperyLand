@@ -44,6 +44,7 @@
     <Compile Include="ListExtensions.cs" />
     <Compile Include="Interfaces\IApplication.cs" />
     <Compile Include="Interfaces\IDialogProvider.cs" />
+    <Compile Include="NumericsExtensions.cs" />
     <Compile Include="Types\NotifyPropertyChanged.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -21,9 +21,5 @@
         /// Down key down
         /// </summary>
         public bool DownKeyDown;
-
-        public override string ToString() => $"L{BoolToChar(LeftKeyDown)}R{BoolToChar(RightKeyDown)}U{BoolToChar(UpKeyDown)}D{BoolToChar(DownKeyDown)}";
-
-        private char BoolToChar(bool b) => b ? '@' : ' ';
     }
 }

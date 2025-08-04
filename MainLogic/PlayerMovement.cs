@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
+using System.Numerics;
 using Common.Types;
-using GameTypes;
 using GameTypes.Cells;
 
 namespace MainLogic
@@ -10,12 +10,13 @@ namespace MainLogic
     /// </summary>
     public static class PlayerMovement
     {
+        private static Stopwatch stopwatch = new();
+
         /// <summary>
         /// Update the hero
         /// </summary>
         public static void UpdateHero(this CharaCell hero, KeyboardState ks)
         {
-           // Debug.WriteLine(ks.ToString());
             hero.RotateHero(ks);
             hero.MoveHero(ks);
         }
@@ -32,16 +33,29 @@ namespace MainLogic
                 hero.charaState = CharaCellStateType.LookFront;
         }
 
+        private static Vector2 GetVelocity(KeyboardState ks)
+        {
+            stopwatch.Stop();
+            var velocity = Vector2.Zero;
+            var speed = 1;
+
+            if (ks.LeftKeyDown)
+                velocity.X -= speed;
+            if (ks.RightKeyDown)
+                velocity.X += speed;
+            if (ks.UpKeyDown)
+                velocity.Y -= speed;
+            if (ks.DownKeyDown)
+                velocity.Y += speed;
+
+            return velocity;
+        }
+
         private static void MoveHero(this CharaCell hero, KeyboardState ks)
         {
-            if (ks.LeftKeyDown)
-                hero.X--;
-            if (ks.RightKeyDown)
-                hero.X++;
-            if (ks.UpKeyDown)
-                hero.Y--;
-            if (ks.DownKeyDown)
-                hero.Y++;
+            var velocity = GetVelocity(ks);
+            hero.X += velocity.X;
+            hero.Y += velocity.Y;
         }
     }
 }

@@ -22,6 +22,12 @@ namespace GameTypes.Extensions
             => map.SetCell(row, col, new MapCell() { mapCellType = cellType });
 
         /// <summary>
+        /// Set a cell with a specific look for its type
+        /// </summary>
+        public static void SetCell(this MapLayer map, int row, int col, MapCellType cellType, int lookId)
+            => map.SetCell(row, col, new MapCell() { mapCellType = cellType, mapCellLookId = lookId });
+
+        /// <summary>
         /// Read a cell on the map
         /// </summary>
         public static MapCell ReadCell(this MapLayer map, int row, int col)

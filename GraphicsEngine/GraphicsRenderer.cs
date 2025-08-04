@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using GameTypes.Cells;
 using GameTypes.Extensions;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
@@ -112,9 +114,12 @@ namespace GraphicsEngine
 
         private void RenderCharas()
         {
-            var mc = charaLayer.MainChara;
+            void Draw(CharaCell chara) => charaCanvas.DrawImage(CharaSpriteSetDict.Get(chara.charaLook).Get(chara.charaState), chara.X, chara.Y);
+
             ReInitCharas();
-            charaCanvas.DrawImage(CharaSpriteSetDict.Get(mc.charaLook).Get(mc.charaState), mc.X, mc.Y);
+            Draw(charaLayer.MainChara);
+            foreach (var chara in charaLayer.OtherCharas)
+            { Draw(chara); }
         }
 
         private void UpscaleMap()
