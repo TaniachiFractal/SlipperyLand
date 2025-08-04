@@ -1,4 +1,5 @@
-﻿using Common.Types;
+﻿using System.Diagnostics;
+using Common.Types;
 using GameTypes;
 using GameTypes.Cells;
 
@@ -10,33 +11,37 @@ namespace MainLogic
     public static class PlayerMovement
     {
         /// <summary>
-        /// Execute the movement
+        /// Update the hero
         /// </summary>
-        public static void MoveHero(this CharaCell hero, Direction dir, KeyboardState ks)
+        public static void UpdateHero(this CharaCell hero, KeyboardState ks)
         {
-            hero.RotateHero(dir);
+           // Debug.WriteLine(ks.ToString());
+            hero.RotateHero(ks);
+            hero.MoveHero(ks);
+        }
 
+        private static void RotateHero(this CharaCell hero, KeyboardState ks)
+        {
             if (ks.LeftKeyDown)
-                hero.X++;
+                hero.charaState = CharaCellStateType.LookToLeft;
             if (ks.RightKeyDown)
+                hero.charaState = CharaCellStateType.LookToRight;
+            if (ks.UpKeyDown)
+                hero.charaState = CharaCellStateType.LookBack;
+            if (ks.DownKeyDown)
+                hero.charaState = CharaCellStateType.LookFront;
+        }
+
+        private static void MoveHero(this CharaCell hero, KeyboardState ks)
+        {
+            if (ks.LeftKeyDown)
                 hero.X--;
+            if (ks.RightKeyDown)
+                hero.X++;
             if (ks.UpKeyDown)
                 hero.Y--;
             if (ks.DownKeyDown)
                 hero.Y++;
         }
-
-        /// <summary>
-        /// Change hero's visual direction
-        /// </summary>
-        public static void RotateHero(this CharaCell hero, Direction dir)
-            => hero.charaState = dir switch
-            {
-                Direction.Up => CharaCellStateType.LookBack,
-                Direction.Down => CharaCellStateType.LookFront,
-                Direction.Right => CharaCellStateType.LookToRight,
-                Direction.Left => CharaCellStateType.LookToLeft,
-                _ => CharaCellStateType.LookFront,
-            };
     }
 }

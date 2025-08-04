@@ -23,17 +23,62 @@ namespace ViewModel
 
         #region keyboard state
 
-        private KeyboardState keyboardState;
-        /// <inheritdoc cref="Common.Types.KeyboardState"/>
-        public KeyboardState KeyboardState
+
+        private bool leftKeyDown;
+        private bool rightKeyDown;
+        private bool upKeyDown;
+        private bool downKeyDown;
+
+        /// <summary>
+        /// Left key down
+        /// </summary>
+        public bool LeftKeyDown
         {
-            get => keyboardState;
+            get => leftKeyDown;
             set
             {
-                keyboardState = value;
+                leftKeyDown = value;
                 PropertyHasChanged();
             }
         }
+        /// <summary>
+        /// Right key down
+        /// </summary>
+        public bool RightKeyDown
+        {
+            get => rightKeyDown;
+            set
+            {
+                rightKeyDown = value;
+                PropertyHasChanged();
+            }
+        }
+        /// <summary>
+        /// Up key down
+        /// </summary>
+        public bool UpKeyDown
+        {
+            get => upKeyDown;
+            set
+            {
+                upKeyDown = value;
+                PropertyHasChanged();
+            }
+        }
+        /// <summary>
+        /// Down key down
+        /// </summary>
+        public bool DownKeyDown
+        {
+            get => downKeyDown;
+            set
+            {
+                downKeyDown = value;
+                PropertyHasChanged();
+            }
+        }
+
+        private KeyboardState KeyboardState => new KeyboardState() { LeftKeyDown = LeftKeyDown, DownKeyDown = DownKeyDown, RightKeyDown = RightKeyDown, UpKeyDown = UpKeyDown };
 
         #endregion
 
@@ -101,21 +146,6 @@ namespace ViewModel
         #endregion
 
         #region charaLayer
-
-        private Direction mainCharaDir;
-
-        /// <summary>
-        /// The current direction of the main character
-        /// </summary>
-        private Direction MainCharaDir
-        {
-            get => mainCharaDir;
-            set
-            {
-                mainCharaDir = value;
-                PropertyHasChanged();
-            }
-        }
 
         private CharaCell MainChara => CharaLayer.MainChara;
 

@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Timers;
+using System.Windows;
 using System.Windows.Input;
 using ViewModel;
 
@@ -21,79 +24,49 @@ namespace SlipperyLand
             this.viewModel = viewModel;
             DataContext = viewModel;
 
+            keyboardTimer.AutoReset = true;
+            keyboardTimer.Elapsed += KeyboardTimer_Elapsed;
+            keyboardTimer.Start();
         }
 
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        #region keyboard
+
+        private readonly Timer keyboardTimer = new(10);
+
+        private readonly HashSet<Key> pressedKeys = new();
+
+        #region key sets
+        private readonly static HashSet<Key> upKeys = new() { Key.Up, Key.W };
+        private readonly static HashSet<Key> downKeys = new() { Key.Down, Key.S };
+        private readonly static HashSet<Key> leftKeys = new() { Key.Left, Key.A };
+        private readonly static HashSet<Key> rightKeys = new() { Key.Right, Key.D };
+        #endregion
+
+        private void KeyboardTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            viewModel.UpKeyDown = pressedKeys.Overlaps(upKeys);
+            viewModel.DownKeyDown = pressedKeys.Overlaps(downKeys);
+            viewModel.LeftKeyDown = pressedKeys.Overlaps(leftKeys);
+            viewModel.RightKeyDown = pressedKeys.Overlaps(rightKeys);
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            pressedKeys.Add(e.Key);
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            pressedKeys.Remove(e.Key);
+        }
+
+        #endregion
+
+        private void TopGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
             {
                 DragMove();
-            }
-        }
-
-        private void MainGrid_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.W:
-                case Key.Up:
-                    {
-                        viewModel.ChangeDirUp();
-                        viewModel.KeyboardState.UpKeyDown = true;
-                        break;
-                    }
-                case Key.S:
-                case Key.Down:
-                    {
-                        viewModel.ChangeDirDown();
-                        viewModel.KeyboardState.DownKeyDown = true;
-                        break;
-                    }
-                case Key.A:
-                case Key.Left:
-                    {
-                        viewModel.ChangeDirLeft();
-                        viewModel.KeyboardState.LeftKeyDown = true;
-                        break;
-                    }
-                case Key.D:
-                case Key.Right:
-                    {
-                        viewModel.ChangeDirRight();
-                        viewModel.KeyboardState.RightKeyDown = true;
-                        break;
-                    }
-            }
-        }
-
-        private void MainGrid_KeyUp(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.W:
-                case Key.Up:
-                    {
-                        viewModel.KeyboardState.UpKeyDown = false;
-                        break;
-                    }
-                case Key.S:
-                case Key.Down:
-                    {
-                        viewModel.KeyboardState.DownKeyDown = false;
-                        break;
-                    }
-                case Key.A:
-                case Key.Left:
-                    {
-                        viewModel.KeyboardState.LeftKeyDown = false;
-                        break;
-                    }
-                case Key.D:
-                case Key.Right:
-                    {
-                        viewModel.KeyboardState.RightKeyDown = false;
-                        break;
-                    }
             }
         }
 

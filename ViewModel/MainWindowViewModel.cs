@@ -39,25 +39,7 @@ namespace ViewModel
             renderer = new GraphicsRenderer(MapLayer, MapTileSetType, CharaLayer);
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
-            keyboardState = new KeyboardState();
         }
-
-        #region changeDir
-
-        private void ChangeDir(Direction dir) => MainCharaDir = dir;
-
-        /// <summary>
-        /// Change the main character direction
-        /// </summary>
-        public void ChangeDirUp() => ChangeDir(Direction.Up);
-        /// <inheritdoc cref="ChangeDirUp"/>
-        public void ChangeDirDown() => ChangeDir(Direction.Down);
-        /// <inheritdoc cref="ChangeDirUp"/>
-        public void ChangeDirLeft() => ChangeDir(Direction.Left);
-        /// <inheritdoc cref="ChangeDirUp"/>
-        public void ChangeDirRight() => ChangeDir(Direction.Right);
-
-        #endregion
 
         private void SetCommandActions()
         {
@@ -67,7 +49,7 @@ namespace ViewModel
 
         private void TimerProc(object State)
         {
-            MainChara.MoveHero(MainCharaDir, KeyboardState);
+            MainChara.UpdateHero(KeyboardState);
             PropertyHasChanged();
         }
 

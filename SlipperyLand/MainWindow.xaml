@@ -16,7 +16,8 @@
         Background="Black"
         Width="512"
         Height="512"
-        >
+        KeyDown="Window_KeyDown"
+        KeyUp="Window_KeyUp">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -64,8 +65,7 @@
                     Command="{Binding ChangeRandomCellCommand}" />
     </Window.InputBindings>
 
-    <Grid KeyDown="MainGrid_KeyDown"
-          KeyUp="MainGrid_KeyUp">
+    <Grid>
         <Grid Margin="3">
 
             <Grid.RowDefinitions>
@@ -74,7 +74,7 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0"
-                  MouseDown="Grid_MouseDown">
+                  MouseDown="TopGrid_MouseDown">
                 <Label Content="{x:Static res:Resources.AppName}"
                        Foreground="White" />
                 <Label Name="ExitButton"
