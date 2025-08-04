@@ -77,24 +77,36 @@ namespace SlipperyLand
             Close();
         }
 
+        private void FadeAnimation(double from, double to, EventHandler completed = null)
+        {
+            var fade = new DoubleAnimation(from, to, new Duration(TimeSpan.FromMilliseconds(700)));
+            if (completed != null)
+            { fade.Completed += completed; }
+            BeginAnimation(Window.OpacityProperty, fade);
+        }
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
             TopGrid.MouseDown -= TopGrid_MouseDown;
             ExitButton.MouseDown -= ExitButton_MouseDown;
-            var fadeOut = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(700)));
-            fadeOut.Completed += (s, _) =>
+            void completed(object s, EventArgs _)
             {
                 Closing -= Window_Closing;
                 Close();
-            };
+            }
+            FadeAnimation(1, 0, completed);
+        }
 
-            BeginAnimation(Window.OpacityProperty, fadeOut);
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            FadeAnimation(0, 1);
         }
 
         private void TopGrid_Loaded(object sender, RoutedEventArgs e)
         {
             TopGrid.Width = Map.Source.Width + 10;
         }
+
     }
 }

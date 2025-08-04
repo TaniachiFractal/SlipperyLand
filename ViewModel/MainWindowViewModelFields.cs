@@ -1,13 +1,10 @@
 ﻿using System.Drawing;
-using Common;
 using Common.Interfaces;
 using Common.Types;
-using GameTypes;
 using GameTypes.Cells;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
 using GraphicsEngine;
-using MainLogic;
 
 namespace ViewModel
 {
@@ -22,7 +19,6 @@ namespace ViewModel
         private readonly GraphicsRenderer renderer;
 
         #region keyboard state
-
 
         private bool leftKeyDown;
         private bool rightKeyDown;

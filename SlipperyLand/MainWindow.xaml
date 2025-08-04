@@ -19,7 +19,8 @@
         Height="1000"
         KeyDown="Window_KeyDown"
         KeyUp="Window_KeyUp"
-        Closing="Window_Closing" >
+        Closing="Window_Closing"
+        Loaded="Window_Loaded">
 
     <Window.Resources>
         <ResourceDictionary>

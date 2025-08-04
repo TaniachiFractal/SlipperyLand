@@ -1,7 +1,6 @@
 ﻿using System.Threading;
 using Common.Interfaces;
 using Common.Types;
-using GameTypes;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
 using GraphicsEngine;
@@ -44,7 +43,6 @@ namespace ViewModel
         private void SetCommandActions()
         {
             ChangeRandomCellCommand = new NoParamCommand(ChangeRandomCell);
-            CloseCommand = new NoParamCommand(Close);
         }
 
         private void TimerProc(object State)
