@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using ViewModel;
 
 namespace SlipperyLand
@@ -72,7 +74,27 @@ namespace SlipperyLand
 
         private void ExitButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            viewModel.CloseCommand.Execute();
+            Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            TopGrid.MouseDown -= TopGrid_MouseDown;
+            ExitButton.MouseDown -= ExitButton_MouseDown;
+            var fadeOut = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(700)));
+            fadeOut.Completed += (s, _) =>
+            {
+                Closing -= Window_Closing;
+                Close();
+            };
+
+            BeginAnimation(Window.OpacityProperty, fadeOut);
+        }
+
+        private void TopGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            TopGrid.Width = Map.Source.Width + 10;
         }
     }
 }

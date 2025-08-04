@@ -11,13 +11,15 @@
         mc:Ignorable="d"
         Title="{x:Static res:Resources.AppName}"
         ResizeMode="NoResize"
+        AllowsTransparency="True"
         FontFamily="Cascadia Mono"
         WindowStyle="None"
-        Background="Black"
-        Width="512"
-        Height="512"
+        Background="Transparent"
+        Width="1000"
+        Height="1000"
         KeyDown="Window_KeyDown"
-        KeyUp="Window_KeyUp">
+        KeyUp="Window_KeyUp"
+        Closing="Window_Closing" >
 
     <Window.Resources>
         <ResourceDictionary>
@@ -69,25 +71,29 @@
         <Grid Margin="3">
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
                 <RowDefinition />
-                <RowDefinition Height="16*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0"
-                  MouseDown="TopGrid_MouseDown">
+            <Grid x:Name="TopGrid"
+                  Grid.Row="0"
+                  MouseDown="TopGrid_MouseDown"
+                  Loaded="TopGrid_Loaded">
+                <Rectangle Fill="#55000000"/>
                 <Label Content="{x:Static res:Resources.AppName}"
-                       Foreground="White" />
+                       Foreground="White"
+                       VerticalAlignment="Center" />
                 <Label Name="ExitButton"
                        Style="{StaticResource ExitButton}"
                        MouseDown="ExitButton_MouseDown" />
             </Grid>
 
-            <Grid Grid.Row="1">
-                <Image Source="{Binding MapLayerImage, Converter={StaticResource BitmapConverter}}" />
-                <Image Source="{Binding CharaLayerImage, Converter={StaticResource BitmapConverter}}" />
+            <Grid Grid.Row="1"
+                  Margin="10"
+                  VerticalAlignment="Top">
+                <Image x:Name="Map" Source="{Binding MapLayerImage, Converter={StaticResource BitmapConverter}}" />
+                <Image x:Name="Chara" Source="{Binding CharaLayerImage, Converter={StaticResource BitmapConverter}}" />
             </Grid>
-
-
 
         </Grid>
     </Grid>
