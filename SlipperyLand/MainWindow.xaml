@@ -20,7 +20,9 @@
         KeyDown="Window_KeyDown"
         KeyUp="Window_KeyUp"
         Closing="Window_Closing"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        Icon="{Binding Source, ElementName=GameImage}"
+        >
 
     <Window.Resources>
         <ResourceDictionary>
@@ -92,10 +94,8 @@
             <Grid Grid.Row="1"
                   Margin="10"
                   VerticalAlignment="Top">
-                <Image x:Name="Map"
-                       Source="{Binding MapLayerImage, Converter={StaticResource BitmapConverter}}" />
-                <Image x:Name="Chara"
-                       Source="{Binding CharaLayerImage, Converter={StaticResource BitmapConverter}}" />
+                <Image x:Name="GameImage"
+                       Source="{Binding GameImage, Converter={StaticResource BitmapConverter}}" />
             </Grid>
 
         </Grid>

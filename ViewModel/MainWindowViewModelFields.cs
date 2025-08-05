@@ -102,6 +102,11 @@ namespace ViewModel
 
         #endregion
 
+        /// <summary>
+        /// The image of the game field
+        /// </summary>
+        public Bitmap GameImage => renderer.GetGameImage();
+
         #region mapLayer
 
         private MapTileSetType mapTileSetType;
@@ -134,11 +139,6 @@ namespace ViewModel
             }
         }
 
-        /// <summary>
-        /// The image for map layer
-        /// </summary>
-        public Bitmap MapLayerImage => renderer.GetMapImage();
-
         #endregion
 
         #region charaLayer
@@ -159,11 +159,6 @@ namespace ViewModel
                 PropertyHasChanged();
             }
         }
-
-        /// <summary>
-        /// The image for the charaLook layer
-        /// </summary>
-        public Bitmap CharaLayerImage => renderer.GetCharasImage();
 
         #endregion
     }

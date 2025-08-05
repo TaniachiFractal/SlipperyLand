@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using GameTypes.Cells;
 using GameTypes.Extensions;
 using GameTypes.Layers;
@@ -23,21 +22,24 @@ namespace GraphicsEngine
         private readonly int upsHeight = 0;
         private readonly int upsWidth = 0;
 
+        #region main data
+
         #region map
         private readonly MapLayer mapLayer;
         private readonly MapTileSet mapTileSet;
         private readonly Bitmap mapBitmap;
         private readonly Graphics mapCanvas;
-        private readonly Bitmap mapBitmapHigh;
-        private readonly Graphics mapCanvasHigh;
         #endregion
 
         #region chara
         private readonly CharaLayer charaLayer;
         private Bitmap charaBitmap;
         private Graphics charaCanvas;
-        private Bitmap charaBitmapHigh;
-        private Graphics charaCanvasHigh;
+        #endregion
+
+        private readonly Bitmap fullBitmapHigh;
+        private readonly Graphics fullCanvasHigh;
+
         #endregion
 
         /// <summary>
@@ -61,55 +63,29 @@ namespace GraphicsEngine
             mapBitmap = GenerateEmptyBitmap(width, height);
             mapCanvas = Graphics.FromImage(mapBitmap);
 
-            mapBitmapHigh = GenerateEmptyBitmap(upsWidth, upsHeight);
-            mapCanvasHigh = Graphics.FromImage(mapBitmapHigh);
-            mapCanvasHigh.SetNearInterMode();
+            fullBitmapHigh = GenerateEmptyBitmap(upsWidth, upsHeight);
+            fullCanvasHigh = Graphics.FromImage(fullBitmapHigh);
+            fullCanvasHigh.SetNearInterMode();
         }
 
         /// <summary>
-        /// Get the map image
+        /// Get the image of the game field with map and characters
         /// </summary>
-        public Bitmap GetMapImage()
+        public Bitmap GetGameImage()
         {
             RenderMap();
-            UpscaleMap();
-            return mapBitmapHigh;
-        }
-
-        /// <summary>
-        /// Get the character layer image
-        /// </summary>
-        public Bitmap GetCharasImage()
-        {
             RenderCharas();
-            UpscaleCharas();
-            return charaBitmapHigh;
+            mapBitmap.UpscaleTo(fullCanvasHigh, upsWidth, upsHeight);
+            charaBitmap.UpscaleTo(fullCanvasHigh, upsWidth, upsHeight);
+            return fullBitmapHigh;
         }
 
         private void ReInitCharas()
         {
             charaBitmap?.Dispose();
-            charaBitmapHigh?.Dispose();
             charaCanvas?.Dispose();
-            charaCanvasHigh?.Dispose();
-
             charaBitmap = GenerateEmptyBitmap(width, height);
             charaCanvas = Graphics.FromImage(charaBitmap);
-            charaBitmapHigh = GenerateEmptyBitmap(upsWidth, upsHeight);
-            charaCanvasHigh = Graphics.FromImage(charaBitmapHigh);
-            charaCanvasHigh.SetNearInterMode();
-        }
-
-        private void RenderMap()
-        {
-            for (var row = 0; row < mapLayer.Rows; row++)
-            {
-                for (var col = 0; col < mapLayer.Cols; col++)
-                {
-                    var bmp = mapTileSet.Get(mapLayer.ReadCell(row, col));
-                    mapCanvas.DrawImage(bmp, col * tileSize, row * tileSize);
-                }
-            }
         }
 
         private void RenderCharas()
@@ -122,14 +98,16 @@ namespace GraphicsEngine
             { Draw(chara); }
         }
 
-        private void UpscaleMap()
+        private void RenderMap()
         {
-            mapBitmap.UpscaleTo(mapCanvasHigh, upsWidth, upsHeight);
-        }
-
-        private void UpscaleCharas()
-        {
-            charaBitmap.UpscaleTo(charaCanvasHigh, upsWidth, upsHeight);
+            for (var row = 0; row < mapLayer.Rows; row++)
+            {
+                for (var col = 0; col < mapLayer.Cols; col++)
+                {
+                    var bmp = mapTileSet.Get(mapLayer.ReadCell(row, col));
+                    mapCanvas.DrawImage(bmp, col * tileSize, row * tileSize);
+                }
+            }
         }
 
         private Bitmap GenerateEmptyBitmap(int width, int height) => new Bitmap(width, height);
