@@ -1,4 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Diagnostics;
+using System.Drawing;
+using Common;
 using GameTypes.Cells;
 using GameTypes.Extensions;
 using GameTypes.Layers;
@@ -91,7 +94,6 @@ namespace GraphicsEngine
         private void RenderCharas()
         {
             void Draw(CharaCell chara) => charaCanvas.DrawImage(CharaSpriteSetDict.Get(chara.charaLook).Get(chara.charaState), chara.X, chara.Y);
-
             ReInitCharas();
             Draw(charaLayer.MainChara);
             foreach (var chara in charaLayer.OtherCharas)

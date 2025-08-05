@@ -10,12 +10,12 @@ namespace GameTypes.Cells
         /// <summary>
         /// Horizontal position [col]
         /// </summary>
-        public float X = 0;
+        public int X = 0;
 
         /// <summary>
         /// Vertical position [row]
         /// </summary>
-        public float Y = 0;
+        public int Y = 0;
 
         /// <summary>
         /// The chara type

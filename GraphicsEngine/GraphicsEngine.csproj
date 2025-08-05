@@ -40,6 +40,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{1c0e8a2c-0c3d-403a-94a9-514c6931b822}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameTypes\GameTypes.csproj">
       <Project>{2FBD9431-F865-4EAC-86A9-235A468A4215}</Project>
       <Name>GameTypes</Name>

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
 using ViewModel;
 
 namespace SlipperyLand
@@ -30,7 +28,6 @@ namespace SlipperyLand
             keyboardTimer.AutoReset = true;
             keyboardTimer.Elapsed += KeyboardTimer_Elapsed;
             keyboardTimer.Start();
-            //Icon = BitmapSource.Create(2, 2, 1, 1, PixelFormats.Gray2, null, new byte[16], 8);
         }
 
         #region keyboard
@@ -52,6 +49,11 @@ namespace SlipperyLand
             viewModel.DownKeyDown = pressedKeys.Overlaps(downKeys);
             viewModel.LeftKeyDown = pressedKeys.Overlaps(leftKeys);
             viewModel.RightKeyDown = pressedKeys.Overlaps(rightKeys);
+        }
+
+        private void Window_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            pressedKeys.Clear();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -81,7 +83,7 @@ namespace SlipperyLand
 
         private void TopGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            TopGrid.Width = GameImage.Source.Width + 10;
+            TopGrid.Width = GameImage.Source.Width + 5;
         }
 
         #region fade
@@ -113,5 +115,6 @@ namespace SlipperyLand
         }
 
         #endregion
+
     }
 }
