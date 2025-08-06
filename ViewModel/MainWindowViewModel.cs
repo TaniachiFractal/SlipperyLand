@@ -3,6 +3,7 @@ using Common.Interfaces;
 using Common.Types;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
+using GraphicalResources.Map;
 using GraphicsEngine;
 using MainLogic;
 
@@ -15,6 +16,8 @@ namespace ViewModel
     {
         private const int FrameRate = 30;
         private readonly Timer timer;
+
+        private readonly MapTileSet mapTileSet;
 
         /// <summary>
         /// ctor
@@ -30,14 +33,22 @@ namespace ViewModel
             rows = 14;
 
             MapLayer = new MapLayer(rows, cols);
-            MapTileSetType = MapTileSetType.Ice;
-            FillMap();
+            mapTileSetType = MapTileSetType.Ice;
+            mapTileSet = MapTileSetDict.Get(mapTileSetType);
 
             CharaLayer = new CharaLayer(CharaLook.RedCat);
 
-            renderer = new GraphicsRenderer(MapLayer, MapTileSetType, CharaLayer);
+            SetupGame();
+
+            renderer = new GraphicsRenderer(MapLayer, mapTileSet, CharaLayer);
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
+        }
+
+        private void SetupGame()
+        {
+            FillMap();
+            MainChara.SetCharaRowColPos(1, 1, mapTileSet.TileSize);
         }
 
         private void SetCommandActions()
@@ -47,7 +58,7 @@ namespace ViewModel
 
         private void TimerProc(object State)
         {
-            MainChara.UpdateHero(KeyboardState);
+            MainChara.UpdateHero(MapLayer, mapTileSet.TileSize, KeyboardState);
             PropertyHasChanged();
         }
 

@@ -3,6 +3,8 @@ using System.Numerics;
 using Common;
 using Common.Types;
 using GameTypes.Cells;
+using GameTypes.Extensions;
+using GameTypes.Layers;
 
 namespace MainLogic
 {
@@ -15,10 +17,14 @@ namespace MainLogic
         /// <summary>
         /// Update the hero
         /// </summary>
-        public static void UpdateHero(this CharaCell hero, KeyboardState ks)
+        public static void UpdateHero(this CharaCell hero, MapLayer map, int tileSize, KeyboardState ks)
         {
+            if (ks.DownKeyDown)
+            {
+                var a = 0;
+            }
             hero.RotateHero(ks);
-            hero.MoveHero(ks);
+            hero.UpdateLocationOfHero(map, tileSize, ks);
         }
 
         private static void RotateHero(this CharaCell hero, KeyboardState ks)
@@ -71,8 +77,27 @@ namespace MainLogic
             hero.Y += moveY.Round();
             hero.XAcum -= moveX;
             hero.YAcum -= moveY;
+        }
 
-            Debug.WriteLine($"{moveX} {moveY} {moveX.Round()} {moveY.Round()}");
+        private readonly static CharaCell futureHero = new();
+
+        private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, int tileSize, KeyboardState ks)
+        {
+            var velocity = GetVelocity(ks);
+
+            hero.CopyTo(futureHero);
+
+            futureHero.MoveHero(ks);
+
+            var heroCol = futureHero.X / tileSize;
+            var heroRow = futureHero.Y / tileSize;
+
+            var heroCellType = map.ReadCell(heroRow, heroCol).mapCellType;
+
+            if (heroCellType != MapCellType.Wall)
+            {
+                futureHero.CopyTo(hero);
+            }
         }
     }
 }

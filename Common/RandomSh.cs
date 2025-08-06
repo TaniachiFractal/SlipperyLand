@@ -10,6 +10,6 @@ namespace Common
         /// <summary>
         /// Shared instance of a <see cref="Random"/>
         /// </summary>
-        public readonly static Random Shared = new Random();
+        public readonly static Random Shared = new();
     }
 }

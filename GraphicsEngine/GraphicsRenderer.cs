@@ -1,11 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using Common;
+﻿using System.Drawing;
 using GameTypes.Cells;
 using GameTypes.Extensions;
 using GameTypes.Layers;
-using GameTypes.TileSpriteSetTypes;
 using GraphicalResources.Characters;
 using GraphicalResources.Map;
 
@@ -19,6 +15,7 @@ namespace GraphicsEngine
         private const int Ups = 2;
 
         private readonly int tileSize = 0;
+        private readonly int halfTileSize = 0;
 
         private readonly int height = 0;
         private readonly int width = 0;
@@ -48,13 +45,13 @@ namespace GraphicsEngine
         /// <summary>
         /// ctor
         /// </summary>
-        public GraphicsRenderer(MapLayer mapLayer, MapTileSetType mapTileSetType, CharaLayer charaLayer)
+        public GraphicsRenderer(MapLayer mapLayer, MapTileSet mapTileSet, CharaLayer charaLayer)
         {
             this.mapLayer = mapLayer;
-            mapTileSet = MapTileSetDict.Get(mapTileSetType);
             this.charaLayer = charaLayer;
-
-            tileSize = mapTileSet.GetDefault().Width;
+            this.mapTileSet = mapTileSet;
+            tileSize = mapTileSet.TileSize;
+            halfTileSize = tileSize / 2;
 
             height = mapLayer.Cols * tileSize;
             width = mapLayer.Rows * tileSize;
@@ -93,7 +90,7 @@ namespace GraphicsEngine
 
         private void RenderCharas()
         {
-            void Draw(CharaCell chara) => charaCanvas.DrawImage(CharaSpriteSetDict.Get(chara.charaLook).Get(chara.charaState), chara.X, chara.Y);
+            void Draw(CharaCell chara) => charaCanvas.DrawImage(CharaSpriteSetDict.Get(chara.charaLook).Get(chara.charaState), chara.X - halfTileSize, chara.Y - halfTileSize);
             ReInitCharas();
             Draw(charaLayer.MainChara);
             foreach (var chara in charaLayer.OtherCharas)

@@ -51,7 +51,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapFiller.cs" />
+    <Compile Include="GameSetup.cs" />
     <Compile Include="PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>

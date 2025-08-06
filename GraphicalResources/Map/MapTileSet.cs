@@ -11,6 +11,11 @@ namespace GraphicalResources.Map
     public class MapTileSet
     {
         /// <summary>
+        /// The size of 1 tile
+        /// </summary>
+        public int TileSize = 0;
+
+        /// <summary>
         /// The set of slippery tiles
         /// </summary>
         public List<Bitmap> slippery = new();

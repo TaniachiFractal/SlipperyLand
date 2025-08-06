@@ -12,6 +12,7 @@ namespace GraphicalResources.Map
         {
             {MapTileSetType.Ice, new MapTileSet()
                 {
+                    TileSize = 16,
                     slippery = {MapTiles.Ice},
                     rough = {MapTiles.IceGround},
                     wall = {MapTiles.IceWall, MapTiles.IceWallFront},

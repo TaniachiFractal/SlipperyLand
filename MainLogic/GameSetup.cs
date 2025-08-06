@@ -5,10 +5,19 @@ using GameTypes.Layers;
 namespace MainLogic
 {
     /// <summary>
-    /// Fills <see cref="MapLayer"/>s with stuff
+    /// Setups for the game field
     /// </summary>
-    public static class MapFiller
+    public static class GameSetup
     {
+        /// <summary>
+        /// Set the position of a <see cref="CharaCell"/> based on map row and col
+        /// </summary>
+        public static void SetCharaRowColPos(this CharaCell chara, int row, int col, int tileSize)
+        {
+            chara.X = row * tileSize + tileSize / 2;
+            chara.Y = col * tileSize + tileSize / 6;
+        }
+
         /// <summary>
         /// Fill the map with slippery tiles
         /// </summary>
