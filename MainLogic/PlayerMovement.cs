@@ -33,14 +33,14 @@ namespace MainLogic
                 hero.charaState = CharaCellStateType.LookFront;
         }
 
-        private const float DesiredSpeed = 0.06f;
+        private const float SpeedPerMs = 0.065f;
         private readonly static Stopwatch stopwatch = new();
 
         private static Vector2 GetVelocity(KeyboardState ks)
         {
             stopwatch.Stop();
             var velocity = Vector2.Zero;
-            var speed = DesiredSpeed * stopwatch.ElapsedMilliseconds;
+            var speed = SpeedPerMs * stopwatch.ElapsedMilliseconds;
 
             if (ks.LeftKeyDown)
                 velocity.X--;
@@ -63,8 +63,16 @@ namespace MainLogic
         private static void MoveHero(this CharaCell hero, KeyboardState ks)
         {
             var velocity = GetVelocity(ks);
-            hero.X += velocity.X.Round();
-            hero.Y += velocity.Y.Round();
+            hero.XAcum += velocity.X;
+            hero.YAcum += velocity.Y;
+            var moveX = hero.XAcum;
+            var moveY = hero.YAcum;
+            hero.X += moveX.Round();
+            hero.Y += moveY.Round();
+            hero.XAcum -= moveX;
+            hero.YAcum -= moveY;
+
+            Debug.WriteLine($"{moveX} {moveY} {moveX.Round()} {moveY.Round()}");
         }
     }
 }

@@ -18,6 +18,16 @@ namespace GameTypes.Cells
         public int Y = 0;
 
         /// <summary>
+        /// Accumulator for the fractional part of the <see cref="X"/> coordinate
+        /// </summary>
+        public float XAcum = 0;
+
+        /// <summary>
+        /// Accumulator for the fractional part of the <see cref="Y"/> coordinate
+        /// </summary>
+        public float YAcum = 0;
+
+        /// <summary>
         /// The chara type
         /// </summary>
         public CharaCellType charaType;
@@ -31,5 +41,6 @@ namespace GameTypes.Cells
         /// The character look
         /// </summary>
         public CharaLook charaLook;
+
     }
 }

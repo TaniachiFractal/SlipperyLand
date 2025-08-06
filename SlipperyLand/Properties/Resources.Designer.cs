@@ -61,7 +61,7 @@ namespace SlipperyLand.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SlipperyLand.
+        ///   Looks up a localized string similar to Slippery Land.
         /// </summary>
         public static string AppName {
             get {
