@@ -15,7 +15,6 @@ namespace GraphicsEngine
         private const int Ups = 2;
 
         private readonly int tileSize = 0;
-        private readonly int halfTileSize = 0;
 
         private readonly int height = 0;
         private readonly int width = 0;
@@ -51,7 +50,6 @@ namespace GraphicsEngine
             this.charaLayer = charaLayer;
             this.mapTileSet = mapTileSet;
             tileSize = mapTileSet.TileSize;
-            halfTileSize = tileSize / 2;
 
             height = mapLayer.Cols * tileSize;
             width = mapLayer.Rows * tileSize;
@@ -90,7 +88,7 @@ namespace GraphicsEngine
 
         private void RenderCharas()
         {
-            void Draw(CharaCell chara) => charaCanvas.DrawImage(CharaSpriteSetDict.Get(chara.charaLook).Get(chara.charaState), chara.X - halfTileSize, chara.Y - halfTileSize);
+            void Draw(CharaCell chara) => charaCanvas.DrawImage(CharaSpriteSetDict.Get(chara.charaLook).Get(chara.charaState), chara.X, chara.Y);
             ReInitCharas();
             Draw(charaLayer.MainChara);
             foreach (var chara in charaLayer.OtherCharas)

@@ -19,10 +19,6 @@ namespace MainLogic
         /// </summary>
         public static void UpdateHero(this CharaCell hero, MapLayer map, int tileSize, KeyboardState ks)
         {
-            if (ks.DownKeyDown)
-            {
-                var a = 0;
-            }
             hero.RotateHero(ks);
             hero.UpdateLocationOfHero(map, tileSize, ks);
         }
@@ -83,10 +79,7 @@ namespace MainLogic
 
         private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, int tileSize, KeyboardState ks)
         {
-            var velocity = GetVelocity(ks);
-
-            hero.CopyTo(futureHero);
-
+            hero.CopyLocationTo(futureHero);
             futureHero.MoveHero(ks);
 
             var heroCol = futureHero.X / tileSize;
@@ -96,7 +89,7 @@ namespace MainLogic
 
             if (heroCellType != MapCellType.Wall)
             {
-                futureHero.CopyTo(hero);
+                futureHero.CopyLocationTo(hero);
             }
         }
     }

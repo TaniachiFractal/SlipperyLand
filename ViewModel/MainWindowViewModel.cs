@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Diagnostics;
+using System.Threading;
 using Common.Interfaces;
 using Common.Types;
 using GameTypes.Layers;
@@ -58,8 +59,26 @@ namespace ViewModel
 
         private void TimerProc(object State)
         {
+            StopTimerDebug();
             MainChara.UpdateHero(MapLayer, mapTileSet.TileSize, KeyboardState);
             PropertyHasChanged();
+            StartTimerDebug();
+        }
+
+        private void StopTimerDebug()
+        {
+            if (Debugger.IsAttached)
+            {
+                timer.Change(Timeout.Infinite, Timeout.Infinite);
+            }
+        }
+
+        private void StartTimerDebug()
+        {
+            if (Debugger.IsAttached)
+            {
+                timer.Change(0, FrameRate);
+            }
         }
 
         private void FillMap()

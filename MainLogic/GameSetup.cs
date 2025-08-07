@@ -14,8 +14,8 @@ namespace MainLogic
         /// </summary>
         public static void SetCharaRowColPos(this CharaCell chara, int row, int col, int tileSize)
         {
-            chara.X = row * tileSize + tileSize / 2;
-            chara.Y = col * tileSize + tileSize / 6;
+            chara.X = row * tileSize;
+            chara.Y = col * tileSize - tileSize / 3;
         }
 
         /// <summary>
