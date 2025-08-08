@@ -1,4 +1,4 @@
-﻿namespace Common.Interfaces
+﻿namespace Contracts
 {
     /// <summary>
     /// Provides messages and file dialogs
@@ -8,6 +8,7 @@
         /// <summary>
         /// Ask user something
         /// </summary>
+        /// <returns>Whether or not user has agreed</returns>
         bool AskWarning(string message);
 
         /// <summary>
@@ -19,6 +20,11 @@
         /// Show an error message with a custom title
         /// </summary>
         void ShowErrorMessage(string message, string title);
+
+        /// <summary>
+        /// Show some information
+        /// </summary>
+        void ShowInfoMessage(string message, string title);
 
     }
 }

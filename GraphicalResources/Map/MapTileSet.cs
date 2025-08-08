@@ -2,6 +2,7 @@
 using System.Drawing;
 using GameTypes.Cells;
 using Common;
+using Common.Extensions;
 
 namespace GraphicalResources.Map
 {

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Numerics;
-using Common;
+using Common.Extensions;
 using Common.Types;
 using GameTypes.Cells;
 using GameTypes.Extensions;

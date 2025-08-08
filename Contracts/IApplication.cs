@@ -1,4 +1,4 @@
-﻿namespace Common.Interfaces
+﻿namespace Contracts
 {
     /// <summary>
     /// The app methods that don't rely on the current system

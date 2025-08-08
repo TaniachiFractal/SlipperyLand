@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
-using Common.Interfaces;
 using Common.Types;
+using Contracts;
 using GameTypes.Cells;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;

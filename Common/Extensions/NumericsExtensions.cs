@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common
+namespace Common.Extensions
 {
     /// <summary>
     /// Various extensions for numeric types

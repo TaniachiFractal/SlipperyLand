@@ -1,4 +1,5 @@
-﻿using GameTypes.TileSpriteSetTypes;
+﻿using Common.Types;
+using GameTypes.TileSpriteSetTypes;
 
 namespace GameTypes.Cells
 {
@@ -26,6 +27,11 @@ namespace GameTypes.Cells
         /// Accumulator for the fractional part of the <see cref="Y"/> coordinate
         /// </summary>
         public float YAcum = 0;
+
+        /// <summary>
+        /// The hitbox of the character
+        /// </summary>
+        public SimpleRect Hitbox;
 
         /// <summary>
         /// The chara type

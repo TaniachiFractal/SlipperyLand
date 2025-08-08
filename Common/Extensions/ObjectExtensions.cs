@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Common
+namespace Common.Extensions
 {
     /// <summary>
     /// Extensions for all objects

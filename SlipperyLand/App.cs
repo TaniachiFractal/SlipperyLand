@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using Common.Interfaces;
+using Contracts;
 
 namespace SlipperyLand
 {

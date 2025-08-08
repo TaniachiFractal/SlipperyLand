@@ -1,5 +1,5 @@
-﻿using Common.Interfaces;
-using System.Windows;
+﻿using System.Windows;
+using Contracts;
 
 namespace SlipperyLand.Additions
 {
@@ -15,10 +15,16 @@ namespace SlipperyLand.Additions
         void IDialogProvider.ShowErrorMessage(string message, string title)
             => ShowError(message, title);
 
+        void IDialogProvider.ShowInfoMessage(string message, string title)
+            => ShowInfo(message, title);
+
         private void ShowError(string message, string title)
              => MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Error);
 
         private MessageBoxResult ShowWarning(string message, string title)
              => MessageBox.Show(message, title, MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+
+        private void ShowInfo(string message, string title)
+            => MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Information);
     }
 }

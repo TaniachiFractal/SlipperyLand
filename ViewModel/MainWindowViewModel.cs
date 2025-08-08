@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Threading;
-using Common.Interfaces;
 using Common.Types;
+using Contracts;
 using GameTypes.Layers;
 using GameTypes.TileSpriteSetTypes;
 using GraphicalResources.Map;

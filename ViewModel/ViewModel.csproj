@@ -49,6 +49,10 @@
       <Project>{1c0e8a2c-0c3d-403a-94a9-514c6931b822}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{93A95CB5-8992-435C-B771-58D18576FA5D}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameTypes\GameTypes.csproj">
       <Project>{2FBD9431-F865-4EAC-86A9-235A468A4215}</Project>
       <Name>GameTypes</Name>

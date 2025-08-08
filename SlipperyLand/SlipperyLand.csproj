@@ -102,6 +102,10 @@
       <Project>{1c0e8a2c-0c3d-403a-94a9-514c6931b822}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{93A95CB5-8992-435C-B771-58D18576FA5D}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{362db6c7-a5d7-4d15-bd8d-dd32f4bad8bd}</Project>
       <Name>ViewModel</Name>
