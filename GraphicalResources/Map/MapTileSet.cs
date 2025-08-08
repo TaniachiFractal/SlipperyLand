@@ -1,21 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using GameTypes.Cells;
-using Common;
 using Common.Extensions;
+using GameTypes.Cells;
 
 namespace GraphicalResources.Map
 {
     /// <summary>
     /// A set of map tile images
     /// </summary>
-    public class MapTileSet
+    public class MapTileSet : GraphicsSet
     {
-        /// <summary>
-        /// The size of 1 tile
-        /// </summary>
-        public int TileSize = 0;
-
         /// <summary>
         /// The set of slippery tiles
         /// </summary>
@@ -56,9 +50,7 @@ namespace GraphicalResources.Map
                 _ => MapTiles.Default,
             } : MapTiles.Default;
 
-        /// <summary>
-        /// Get the default tile
-        /// </summary>
-        public Bitmap GetDefault() => slippery.ItemOrFirst(0);
+        /// <inheritdoc/>
+        public override Bitmap GetDefault() => slippery.ItemOrFirst(0);
     }
 }

@@ -6,7 +6,7 @@ namespace GraphicalResources.Characters
     /// <summary>
     /// A set of charaLook sprites
     /// </summary>
-    public class CharaSpriteSet
+    public class CharaSpriteSet : GraphicsSet
     {
         /// <inheritdoc cref="CharaCellStateType.LookFront"/>
         public Bitmap front = CharaSprites.Default;
@@ -16,6 +16,8 @@ namespace GraphicalResources.Characters
         public Bitmap toLeft = CharaSprites.Default;
         /// <inheritdoc cref="CharaCellStateType.LookToRight"/>
         public Bitmap toRight = CharaSprites.Default;
+
+
 
         /// <summary>
         /// Get the desired image
@@ -35,5 +37,8 @@ namespace GraphicalResources.Characters
             }
             return CharaSprites.Empty;
         }
+
+        /// <inheritdoc/>
+        public override Bitmap GetDefault() => front;
     }
 }

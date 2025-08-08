@@ -19,12 +19,12 @@ namespace SlipperyLand.Additions
             => ShowInfo(message, title);
 
         private void ShowError(string message, string title)
-             => MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Error);
+            => MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Error);
 
         private MessageBoxResult ShowWarning(string message, string title)
-             => MessageBox.Show(message, title, MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            => MessageBox.Show(message, title, MessageBoxButton.OKCancel, MessageBoxImage.Warning);
 
         private void ShowInfo(string message, string title)
-            => MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Information);
+           => MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Information);
     }
 }

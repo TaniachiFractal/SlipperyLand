@@ -49,6 +49,7 @@
     </Compile>
     <Compile Include="Characters\CharaSpriteSet.cs" />
     <Compile Include="Characters\CharaSpriteSetDict.cs" />
+    <Compile Include="GraphicsSet.cs" />
     <Compile Include="Map\MapTiles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
