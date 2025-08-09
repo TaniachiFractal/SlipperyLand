@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F9ACF11-EB9C-4396-A64F-E1191F3129CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SlipperyLand.GraphicalResources</RootNamespace>
+    <AssemblyName>SlipperyLand.GraphicalResources</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\SlipperyLand.GraphicalResources.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Res\Chara\Default.png" />
+    <Content Include="Res\Chara\IceGolem\IGbackStand.png" />
+    <Content Include="Res\Chara\IceGolem\IGfrontStand.png" />
+    <Content Include="Res\Chara\IceGolem\IGtoLeftStand.png" />
+    <Content Include="Res\Chara\IceGolem\IGtoRightStand.png" />
+    <Content Include="Res\Chara\RedCat\RCbackStand.png" />
+    <Content Include="Res\Chara\RedCat\RCfrontStand.png" />
+    <Content Include="Res\Chara\RedCat\RCtoLeftStand.png" />
+    <Content Include="Res\Chara\RedCat\RCtoRightStand.png" />
+    <Content Include="Res\Chara\TaniachiFractal\TFfrontStand.png" />
+    <Content Include="Res\Empty.png" />
+    <Content Include="Res\Map\Default.png" />
+    <Content Include="Res\Map\Ice\Ice.png" />
+    <Content Include="Res\Map\Ice\IceEnd.png" />
+    <Content Include="Res\Map\Ice\IceGround.png" />
+    <Content Include="Res\Map\Ice\IceStart.png" />
+    <Content Include="Res\Map\Ice\IceWall.png" />
+    <Content Include="Res\Map\Ice\IceWallFront.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Characters\CharaSprites.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CharaSprites.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Characters\CharaSpriteSet.cs" />
+    <Compile Include="Characters\CharaSpriteSetDict.cs" />
+    <Compile Include="GraphicsSet.cs" />
+    <Compile Include="Map\MapTiles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapTiles.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Map\MapTileSet.cs" />
+    <Compile Include="Map\MapTileSetDict.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SlipperyLand.Common\SlipperyLand.Common.csproj">
+      <Project>{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}</Project>
+      <Name>SlipperyLand.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SlipperyLand.GameTypes\SlipperyLand.GameTypes.csproj">
+      <Project>{FDC61943-B2CF-4796-B1E1-1264277228B3}</Project>
+      <Name>SlipperyLand.GameTypes</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Characters\CharaSprites.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CharaSprites.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Map\MapTiles.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MapTiles.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

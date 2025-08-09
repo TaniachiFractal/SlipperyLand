@@ -4,7 +4,7 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
-using ViewModel;
+using SlipperyLand.ViewModel;
 
 namespace SlipperyLand
 {
@@ -34,13 +34,13 @@ namespace SlipperyLand
 
         private readonly Timer keyboardTimer = new(10);
 
-        private readonly HashSet<Key> pressedKeys = new();
+        private readonly HashSet<Key> pressedKeys = [];
 
         #region key sets
-        private readonly static HashSet<Key> upKeys = new() { Key.Up, Key.W };
-        private readonly static HashSet<Key> downKeys = new() { Key.Down, Key.S };
-        private readonly static HashSet<Key> leftKeys = new() { Key.Left, Key.A };
-        private readonly static HashSet<Key> rightKeys = new() { Key.Right, Key.D };
+        private readonly static HashSet<Key> upKeys = [Key.Up, Key.W];
+        private readonly static HashSet<Key> downKeys = [Key.Down, Key.S];
+        private readonly static HashSet<Key> leftKeys = [Key.Left, Key.A];
+        private readonly static HashSet<Key> rightKeys = [Key.Right, Key.D];
         #endregion
 
         private void KeyboardTimer_Elapsed(object sender, ElapsedEventArgs e)

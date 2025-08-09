@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using Contracts;
+using SlipperyLand.Contracts;
 
 namespace SlipperyLand
 {

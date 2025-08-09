@@ -2,7 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6AA27A8C-CFBE-45B6-908E-06D8F7DD655F}</ProjectGuid>
@@ -60,7 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Additions\DialogProvider.cs" />
+    <Compile Include="Providers\DialogProvider.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Converters\BitmapConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -98,17 +98,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{1c0e8a2c-0c3d-403a-94a9-514c6931b822}</Project>
-      <Name>Common</Name>
+    <ProjectReference Include="..\SlipperyLand.Common\SlipperyLand.Common.csproj">
+      <Project>{420e50b7-0a95-40e7-ae86-fa6d1039f0fe}</Project>
+      <Name>SlipperyLand.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Contracts\Contracts.csproj">
-      <Project>{93A95CB5-8992-435C-B771-58D18576FA5D}</Project>
-      <Name>Contracts</Name>
+    <ProjectReference Include="..\SlipperyLand.Contracts\SlipperyLand.Contracts.csproj">
+      <Project>{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}</Project>
+      <Name>SlipperyLand.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
-      <Project>{362db6c7-a5d7-4d15-bd8d-dd32f4bad8bd}</Project>
-      <Name>ViewModel</Name>
+    <ProjectReference Include="..\SlipperyLand.ViewModel\SlipperyLand.ViewModel.csproj">
+      <Project>{3BF05D07-0D74-4354-8D8E-705E4C6B2244}</Project>
+      <Name>SlipperyLand.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

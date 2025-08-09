@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:conv="clr-namespace:SlipperyLand.Converters"
         xmlns:local="clr-namespace:SlipperyLand"
-        xmlns:viewmodel="clr-namespace:ViewModel;assembly=ViewModel"
+        xmlns:viewmodel="clr-namespace:SlipperyLand.ViewModel;assembly=SlipperyLand.ViewModel"
         xmlns:res="clr-namespace:SlipperyLand.Properties"
         d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"

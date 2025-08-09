@@ -1,6 +1,6 @@
-﻿using SlipperyLand.Additions;
-using System;
-using ViewModel;
+﻿using System;
+using SlipperyLand.Providers;
+using SlipperyLand.ViewModel;
 
 namespace SlipperyLand
 {
