@@ -9,6 +9,7 @@ namespace SlipperyLand.GameTypes.Extensions
     public static class CharaExtensions
     {
         private const float DefaultHitboxTop = 0.6f;
+        private const int DefaultHitboxSidesOffset = 2;
 
         /// <summary>
         /// Set the size of the sprite
@@ -23,8 +24,8 @@ namespace SlipperyLand.GameTypes.Extensions
             => cell.Hitbox = new()
             {
                 Bottom = cell.SpriteSize,
-                Left = 0,
-                Right = cell.SpriteSize,
+                Left = DefaultHitboxSidesOffset,
+                Right = cell.SpriteSize - DefaultHitboxSidesOffset,
                 Top = (cell.SpriteSize * DefaultHitboxTop).Round()
             };
 
