@@ -1,4 +1,6 @@
 ﻿using SlipperyLand.GameTypes.Cells;
+using SlipperyLand.GameTypes.Cells.Chara;
+using SlipperyLand.GameTypes.Cells.Map;
 using SlipperyLand.GameTypes.Extensions;
 using SlipperyLand.GameTypes.Layers;
 
@@ -10,18 +12,26 @@ namespace SlipperyLand.MainLogic
     public static class GameSetup
     {
         /// <summary>
-        /// Set the position of a <see cref="CharaCell"/> based on map row and col
+        /// Setup the character layer
         /// </summary>
-        public static void SetCharaRowColPos(this CharaCell chara, int row, int col, int tileSize)
+        public static void Setup(this CharaLayer charaLayer, int spriteSize, int tileSize)
         {
-            chara.X = row * tileSize;
-            chara.Y = (col * tileSize) - (tileSize / 3);
+            var mc = charaLayer.MainChara;
+            mc.SetSpriteSize(spriteSize);
+            mc.SetupHitbox();
+            mc.SetCharaRowColPos(1, 1, tileSize);
         }
 
         /// <summary>
-        /// Fill the map with slippery tiles
+        /// Setup the map layer
         /// </summary>
-        public static void FillWithSlippery(this MapLayer mapLayer)
+        public static void Setup(this MapLayer mapLayer)
+        {
+            mapLayer.FillWithSlippery();
+            mapLayer.SetWallBorder();
+        }
+
+        private static void FillWithSlippery(this MapLayer mapLayer)
         {
             for (var row = 0; row < mapLayer.Rows; row++)
             {
@@ -32,10 +42,7 @@ namespace SlipperyLand.MainLogic
             }
         }
 
-        /// <summary>
-        /// Set the wall border around the map
-        /// </summary>
-        public static void SetWallBorder(this MapLayer mapLayer)
+        private static void SetWallBorder(this MapLayer mapLayer)
         {
             for (var row = 0; row < mapLayer.Rows - 1; row++)
             {

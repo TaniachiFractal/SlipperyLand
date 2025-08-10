@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
@@ -90,10 +91,13 @@ namespace SlipperyLand
 
         private void FadeAnimation(double from, double to, EventHandler completed = null)
         {
-            var fade = new DoubleAnimation(from, to, new Duration(TimeSpan.FromMilliseconds(300)));
+            static DoubleAnimation NewAnim(double from, double to)
+                => new(from, to, new Duration(TimeSpan.FromMilliseconds(300)));
+
+            var opacityFade = NewAnim(from, to);
             if (completed != null)
-            { fade.Completed += completed; }
-            BeginAnimation(Window.OpacityProperty, fade);
+            { opacityFade.Completed += completed; }
+            BeginAnimation(OpacityProperty, opacityFade);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

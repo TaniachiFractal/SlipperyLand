@@ -1,6 +1,6 @@
 ﻿using SlipperyLand.Common;
 using SlipperyLand.Contracts;
-using SlipperyLand.GameTypes.Cells;
+using SlipperyLand.GameTypes.Cells.Map;
 using SlipperyLand.GameTypes.Extensions;
 
 namespace SlipperyLand.ViewModel

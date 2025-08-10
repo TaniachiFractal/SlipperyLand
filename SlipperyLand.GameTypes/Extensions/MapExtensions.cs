@@ -1,4 +1,4 @@
-﻿using SlipperyLand.GameTypes.Cells;
+﻿using SlipperyLand.GameTypes.Cells.Map;
 using SlipperyLand.GameTypes.Layers;
 
 namespace SlipperyLand.GameTypes.Extensions

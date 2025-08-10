@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using SlipperyLand.GameTypes.Cells;
+using SlipperyLand.GameTypes.Cells.Chara;
 using SlipperyLand.GameTypes.TileSpriteSetTypes;
 
 namespace SlipperyLand.GameTypes.Layers
@@ -12,7 +12,7 @@ namespace SlipperyLand.GameTypes.Layers
         /// <summary>
         /// The main chara
         /// </summary>
-        public CharaCell MainChara = new CharaCell()
+        public CharaCell MainChara = new()
         {
             charaState = CharaCellStateType.LookFront,
             charaType = CharaCellType.Hero,
@@ -21,7 +21,7 @@ namespace SlipperyLand.GameTypes.Layers
         /// <summary>
         /// The other characters
         /// </summary>
-        public readonly List<CharaCell> OtherCharas = new List<CharaCell>();
+        public readonly List<CharaCell> OtherCharas = [];
 
         /// <summary>
         /// ctor

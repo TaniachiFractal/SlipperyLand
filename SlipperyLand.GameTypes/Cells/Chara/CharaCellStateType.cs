@@ -1,4 +1,4 @@
-﻿namespace SlipperyLand.GameTypes.Cells
+﻿namespace SlipperyLand.GameTypes.Cells.Chara
 {
     /// <summary>
     /// The possible additional states of charaLook cells

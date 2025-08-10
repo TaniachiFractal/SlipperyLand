@@ -1,9 +1,8 @@
 ﻿using SlipperyLand.Common.Types;
 using SlipperyLand.GameTypes.TileSpriteSetTypes;
 
-namespace SlipperyLand.GameTypes.Cells
+namespace SlipperyLand.GameTypes.Cells.Chara
 {
-#nullable enable
     /// <summary>
     /// A character cell
     /// </summary>
@@ -30,9 +29,14 @@ namespace SlipperyLand.GameTypes.Cells
         public float YAcum = 0;
 
         /// <summary>
+        /// The size of the sprite
+        /// </summary>
+        public int SpriteSize = 0;
+
+        /// <summary>
         /// The hitbox of the character
         /// </summary>
-        public SimpleRect? Hitbox;
+        public SimpleRect Hitbox;
 
         /// <summary>
         /// The chara type

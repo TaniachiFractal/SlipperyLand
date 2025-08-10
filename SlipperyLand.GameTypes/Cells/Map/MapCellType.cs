@@ -1,4 +1,4 @@
-﻿namespace SlipperyLand.GameTypes.Cells
+﻿namespace SlipperyLand.GameTypes.Cells.Map
 {
     /// <summary>
     /// The possible cell states of the map layer

@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using SlipperyLand.GameTypes.Cells;
+using SlipperyLand.GameTypes.Cells.Chara;
 
 namespace SlipperyLand.GraphicalResources.Characters
 {

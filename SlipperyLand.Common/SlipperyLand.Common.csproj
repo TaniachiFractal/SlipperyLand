@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\NumericsExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="RandomSh.cs" />
     <Compile Include="Res\Res.Designer.cs" />
     <Compile Include="Types\KeyboardState.cs" />

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using SlipperyLand.Common.Extensions;
-using SlipperyLand.GameTypes.Cells;
+using SlipperyLand.GameTypes.Cells.Map;
 
 namespace SlipperyLand.GraphicalResources.Map
 {

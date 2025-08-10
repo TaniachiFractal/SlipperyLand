@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameSetup.cs" />
+    <Compile Include="HitboxHelpers.cs" />
     <Compile Include="PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>

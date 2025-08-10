@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using SlipperyLand.Common.Types;
 using SlipperyLand.Contracts;
-using SlipperyLand.GameTypes.Cells;
+using SlipperyLand.GameTypes.Cells.Chara;
 using SlipperyLand.GameTypes.Layers;
 using SlipperyLand.GameTypes.TileSpriteSetTypes;
 using SlipperyLand.GraphicsEngine;

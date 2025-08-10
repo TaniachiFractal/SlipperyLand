@@ -1,4 +1,4 @@
-﻿namespace SlipperyLand.GameTypes.Cells
+﻿namespace SlipperyLand.GameTypes.Cells.Map
 {
     /// <summary>
     /// A map cell

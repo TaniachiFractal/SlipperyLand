@@ -2,9 +2,10 @@
 using System.Threading;
 using SlipperyLand.Common.Types;
 using SlipperyLand.Contracts;
-using SlipperyLand.GameTypes.Layers;
 using SlipperyLand.GameTypes.Extensions;
+using SlipperyLand.GameTypes.Layers;
 using SlipperyLand.GameTypes.TileSpriteSetTypes;
+using SlipperyLand.GraphicalResources.Characters;
 using SlipperyLand.GraphicalResources.Map;
 using SlipperyLand.GraphicsEngine;
 using SlipperyLand.MainLogic;
@@ -19,8 +20,6 @@ namespace SlipperyLand.ViewModel
     {
         private const int FrameRate = 30;
         private readonly Timer timer;
-
-        private readonly MapTileSet mapTileSet;
 
         /// <summary>
         /// ctor
@@ -37,22 +36,20 @@ namespace SlipperyLand.ViewModel
 
             mapLayer = new MapLayer(rows, cols);
             mapTileSetType = MapTileSetType.Ice;
-            mapTileSet = MapTileSetDict.Get(mapTileSetType);
+            var tileSize = MapTileSetDict.Get(mapTileSetType).TileSize;
 
             charaLayer = new CharaLayer(CharaLook.RedCat);
+            var spriteSize = CharaSpriteSetDict.Get(charaLayer.MainChara.charaLook).TileSize;
 
-            SetupGame();
+            MapLayer.Setup();
+            CharaLayer.Setup(spriteSize, tileSize);
+            PlayerMovement.TileSize = tileSize;
 
-            renderer = new GraphicsRenderer(MapLayer, mapTileSet, CharaLayer);
+            renderer = new GraphicsRenderer(MapLayer, mapTileSetType, CharaLayer);
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
         }
 
-        private void SetupGame()
-        {
-            FillMap();
-            MainChara.SetCharaRowColPos(1, 1, mapTileSet.TileSize);
-        }
 
         private void SetCommandActions()
         {
@@ -62,7 +59,7 @@ namespace SlipperyLand.ViewModel
         private void TimerProc(object? State)
         {
             StopTimerDebug();
-            MainChara.UpdateHero(MapLayer, mapTileSet.TileSize, KeyboardState);
+            MainChara.UpdateHero(MapLayer, KeyboardState);
             PropertyHasChanged();
             StartTimerDebug();
         }
@@ -81,12 +78,6 @@ namespace SlipperyLand.ViewModel
             {
                 timer.Change(0, FrameRate);
             }
-        }
-
-        private void FillMap()
-        {
-            mapLayer.FillWithSlippery();
-            mapLayer.SetWallBorder();
         }
 
     }

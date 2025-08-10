@@ -2,8 +2,7 @@
 using System.Numerics;
 using SlipperyLand.Common.Extensions;
 using SlipperyLand.Common.Types;
-using SlipperyLand.GameTypes.Cells;
-using SlipperyLand.GameTypes.Extensions;
+using SlipperyLand.GameTypes.Cells.Chara;
 using SlipperyLand.GameTypes.Layers;
 
 namespace SlipperyLand.MainLogic
@@ -13,14 +12,18 @@ namespace SlipperyLand.MainLogic
     /// </summary>
     public static class PlayerMovement
     {
+        /// <summary>
+        /// The map tile size
+        /// </summary>
+        public static int TileSize = 0;
 
         /// <summary>
         /// Update the hero
         /// </summary>
-        public static void UpdateHero(this CharaCell hero, MapLayer map, int tileSize, KeyboardState ks)
+        public static void UpdateHero(this CharaCell hero, MapLayer map, KeyboardState ks)
         {
             hero.RotateHero(ks);
-            hero.UpdateLocationOfHero(map, tileSize, ks);
+            hero.UpdateLocationOfHero(map, ks);
         }
 
         private static void RotateHero(this CharaCell hero, KeyboardState ks)
@@ -77,19 +80,14 @@ namespace SlipperyLand.MainLogic
 
         private readonly static CharaCell futureHero = new();
 
-        private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, int tileSize, KeyboardState ks)
+        private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, KeyboardState ks)
         {
-            hero.CopyLocationTo(futureHero);
+            hero.CopyTo(futureHero);
             futureHero.MoveHero(ks);
-
-            var heroCol = futureHero.X / tileSize;
-            var heroRow = futureHero.Y / tileSize;
-
-            var heroCellType = map.ReadCell(heroRow, heroCol).mapCellType;
-
-            if (heroCellType != MapCellType.Wall)
+            var intersections = futureHero.GetIntersections(map, TileSize);
+            if (!intersections.HasWall)
             {
-                futureHero.CopyLocationTo(hero);
+                futureHero.CopyTo(hero);
             }
         }
     }

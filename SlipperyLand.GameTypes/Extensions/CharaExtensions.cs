@@ -1,4 +1,5 @@
-﻿using SlipperyLand.GameTypes.Cells;
+﻿using SlipperyLand.Common.Extensions;
+using SlipperyLand.GameTypes.Cells.Chara;
 
 namespace SlipperyLand.GameTypes.Extensions
 {
@@ -7,18 +8,33 @@ namespace SlipperyLand.GameTypes.Extensions
     /// </summary>
     public static class CharaExtensions
     {
+        private const float DefaultHitboxTop = 0.6f;
+
         /// <summary>
-        /// Copy only the <see cref="CharaCell"/> location data from <paramref name="source"/> to <paramref name="target"/>
+        /// Set the size of the sprite
         /// </summary>
-        public static void CopyLocationTo(this CharaCell source, CharaCell target)
-        {
-            if (target != null)
+        public static void SetSpriteSize(this CharaCell cell, int size)
+            => cell.SpriteSize = size;
+
+        /// <summary>
+        /// Setup the default hitbox
+        /// </summary>
+        public static void SetupHitbox(this CharaCell cell)
+            => cell.Hitbox = new()
             {
-                target.X = source.X;
-                target.Y = source.Y;
-                target.XAcum = source.XAcum;
-                target.YAcum = source.YAcum;
-            }
+                Bottom = cell.SpriteSize,
+                Left = 0,
+                Right = cell.SpriteSize,
+                Top = (cell.SpriteSize * DefaultHitboxTop).Round()
+            };
+
+        /// <summary>
+        /// Set the position of a <see cref="CharaCell"/> based on map row and col
+        /// </summary>
+        public static void SetCharaRowColPos(this CharaCell chara, int row, int col, int tileSize)
+        {
+            chara.X = row * tileSize;
+            chara.Y = (col * tileSize) - (tileSize / 3);
         }
     }
 }

@@ -41,11 +41,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cells\CharaCell.cs" />
-    <Compile Include="Cells\CharaCellStateType.cs" />
-    <Compile Include="Cells\CharaCellType.cs" />
-    <Compile Include="Cells\MapCell.cs" />
-    <Compile Include="Cells\MapCellType.cs" />
+    <Compile Include="Cells\Chara\CharaCell.cs" />
+    <Compile Include="Cells\Chara\CharaCellStateType.cs" />
+    <Compile Include="Cells\Chara\CharaCellType.cs" />
+    <Compile Include="Cells\Map\MapCell.cs" />
+    <Compile Include="Cells\Map\MapCellType.cs" />
+    <Compile Include="Cells\Map\SetOfMapInters.cs" />
     <Compile Include="Extensions\CharaExtensions.cs" />
     <Compile Include="Extensions\MapExtensions.cs" />
     <Compile Include="Layers\CharaLayer.cs" />
