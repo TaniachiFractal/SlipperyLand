@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Threading;
+using SlipperyLand.Common;
 using SlipperyLand.Common.Types;
 using SlipperyLand.Contracts;
 using SlipperyLand.GameTypes.Extensions;
@@ -57,27 +58,8 @@ namespace SlipperyLand.ViewModel
 
         private void TimerProc(object? State)
         {
-            StopTimerDebug();
             MainChara.UpdateHero(MapLayer, KeyboardState);
             PropertyHasChanged();
-            StartTimerDebug();
         }
-
-        private void StopTimerDebug()
-        {
-            if (Debugger.IsAttached)
-            {
-                timer.Change(Timeout.Infinite, Timeout.Infinite);
-            }
-        }
-
-        private void StartTimerDebug()
-        {
-            if (Debugger.IsAttached)
-            {
-                timer.Change(0, FrameRate);
-            }
-        }
-
     }
 }

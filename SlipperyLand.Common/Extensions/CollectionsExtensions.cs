@@ -31,6 +31,6 @@ namespace SlipperyLand.Common.Extensions
             => row.InRange(input.GetLength(1)) && col.InRange(input.GetLength(0)) ? input[row, col] : def;
 
         private static bool InRange(this int index, int max)
-            => index >= 0 && index <= max;
+            => index >= 0 && index < max;
     }
 }

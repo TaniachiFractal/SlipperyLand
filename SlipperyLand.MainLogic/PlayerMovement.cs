@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Numerics;
+using SlipperyLand.Common;
 using SlipperyLand.Common.Extensions;
 using SlipperyLand.Common.Types;
 using SlipperyLand.GameTypes.Cells.Chara;
@@ -106,7 +107,7 @@ namespace SlipperyLand.MainLogic
             var velocity = GetVelocity(ks);
             futureHeroX.MoveHero(velocity, onX: true);
             futureHeroY.MoveHero(velocity, onX: false);
-
+            BP.Break();
             if (!futureHeroX.IntersectsWall(map))
             {
                 futureHeroX.CopyXLocatDataTo(hero);
@@ -117,6 +118,7 @@ namespace SlipperyLand.MainLogic
                 futureHeroY.CopyYLocatDataTo(hero);
                 futureHeroY.CopyYLocatDataTo(futureHeroX);
             }
+            BP.Release();
         }
 
         private static bool IntersectsWall(this CharaCell hero, MapLayer map)
