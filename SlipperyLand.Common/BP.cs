@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace SlipperyLand.Common
 {
@@ -24,7 +23,6 @@ namespace SlipperyLand.Common
         public static void Break()
         {
             BreakpointSet?.Invoke(null, EventArgs.Empty);
-            Debugger.Break();
         }
 
         /// <summary>

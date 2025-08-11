@@ -19,7 +19,7 @@ namespace SlipperyLand.ViewModel
     /// </summary>
     public partial class MainWindowViewModel : NotifyPropertyChanged
     {
-        private const int FrameRate = 30;
+        private const int FrameRate = 25;
         private readonly Timer timer;
 
         /// <summary>
@@ -49,6 +49,25 @@ namespace SlipperyLand.ViewModel
             renderer = new GraphicsRenderer(MapLayer, mapTileSetType, CharaLayer);
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
+
+            BP.Released += BP_Released;
+            BP.BreakpointSet += BP_BreakpointSet;
+        }
+
+        private void BP_BreakpointSet(object sender, System.EventArgs e)
+        {
+            if (Debugger.IsAttached)
+            {
+                timer.Change(Timeout.Infinite, Timeout.Infinite);
+            }
+        }
+
+        private void BP_Released(object sender, System.EventArgs e)
+        {
+            if (Debugger.IsAttached)
+            {
+                timer.Change(0, FrameRate);
+            }
         }
 
         private void SetCommandActions()
