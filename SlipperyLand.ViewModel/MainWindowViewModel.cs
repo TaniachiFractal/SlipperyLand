@@ -50,7 +50,6 @@ namespace SlipperyLand.ViewModel
             timer = new Timer(TimerProc, null, 0, FrameRate);
         }
 
-
         private void SetCommandActions()
         {
             ChangeRandomCellCommand = new NoParamCommand(ChangeRandomCell);

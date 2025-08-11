@@ -70,6 +70,15 @@ namespace SlipperyLand.Common.Res {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INFORMATION.
+        /// </summary>
+        public static string Information {
+            get {
+                return ResourceManager.GetString("Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WARNING.
         /// </summary>
         public static string Warning {

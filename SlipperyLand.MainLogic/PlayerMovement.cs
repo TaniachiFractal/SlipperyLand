@@ -1,8 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Numerics;
 using SlipperyLand.Common.Extensions;
 using SlipperyLand.Common.Types;
 using SlipperyLand.GameTypes.Cells.Chara;
+using SlipperyLand.GameTypes.Extensions;
 using SlipperyLand.GameTypes.Layers;
 
 namespace SlipperyLand.MainLogic
@@ -17,11 +19,25 @@ namespace SlipperyLand.MainLogic
         /// </summary>
         public static int TileSize = 0;
 
+        private static CharaCell futureHeroY;
+        private static CharaCell futureHeroX;
+
         /// <summary>
         /// Update the hero
         /// </summary>
         public static void UpdateHero(this CharaCell hero, MapLayer map, KeyboardState ks)
         {
+            void IfFutureNullCopyFromHero(ref CharaCell futureHero)
+            {
+                if (futureHero == null)
+                {
+                    futureHero = new();
+                    hero.CopyTo(futureHero);
+                }
+            }
+            IfFutureNullCopyFromHero(ref futureHeroX);
+            IfFutureNullCopyFromHero(ref futureHeroY);
+
             hero.RotateHero(ks);
             hero.UpdateLocationOfHero(map, ks);
         }
@@ -65,30 +81,45 @@ namespace SlipperyLand.MainLogic
             return velocity;
         }
 
-        private static void MoveHero(this CharaCell hero, KeyboardState ks)
+        private static void MoveHero(this CharaCell hero, Vector2 velocity, bool onX)
         {
-            var velocity = GetVelocity(ks);
-            hero.XAcum += velocity.X;
-            hero.YAcum += velocity.Y;
-            var moveX = hero.XAcum;
-            var moveY = hero.YAcum;
-            hero.X += moveX.Round();
-            hero.Y += moveY.Round();
-            hero.XAcum -= moveX;
-            hero.YAcum -= moveY;
+            if (onX)
+            {
+                hero.XAcum += velocity.X;
+                var moveX = hero.XAcum;
+                hero.X += moveX.Round();
+                hero.XAcum -= moveX;
+            }
+            else
+            {
+                hero.YAcum += velocity.Y;
+                var moveY = hero.YAcum;
+                hero.Y += moveY.Round();
+                hero.YAcum -= moveY;
+            }
         }
-
-        private readonly static CharaCell futureHero = new();
 
         private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, KeyboardState ks)
         {
-            hero.CopyTo(futureHero);
-            futureHero.MoveHero(ks);
-            var intersections = futureHero.GetIntersections(map, TileSize);
-            if (!intersections.HasWall)
+            hero.CopyXLocatDataTo(futureHeroX);
+            hero.CopyYLocatDataTo(futureHeroY);
+            var velocity = GetVelocity(ks);
+            futureHeroX.MoveHero(velocity, onX: true);
+            futureHeroY.MoveHero(velocity, onX: false);
+
+            if (!futureHeroX.IntersectsWall(map))
             {
-                futureHero.CopyTo(hero);
+                futureHeroX.CopyXLocatDataTo(hero);
+                futureHeroX.CopyXLocatDataTo(futureHeroY);
+            }
+            if (!futureHeroY.IntersectsWall(map))
+            {
+                futureHeroY.CopyYLocatDataTo(hero);
+                futureHeroY.CopyYLocatDataTo(futureHeroX);
             }
         }
+
+        private static bool IntersectsWall(this CharaCell hero, MapLayer map)
+            => hero.GetIntersections(map, TileSize).HasWall;
     }
 }

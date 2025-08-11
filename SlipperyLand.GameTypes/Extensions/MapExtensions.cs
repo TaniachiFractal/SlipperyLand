@@ -1,4 +1,5 @@
-﻿using SlipperyLand.GameTypes.Cells.Map;
+﻿using SlipperyLand.Common.Extensions;
+using SlipperyLand.GameTypes.Cells.Map;
 using SlipperyLand.GameTypes.Layers;
 
 namespace SlipperyLand.GameTypes.Extensions
@@ -8,11 +9,18 @@ namespace SlipperyLand.GameTypes.Extensions
     /// </summary>
     public static class MapExtensions
     {
+        private readonly static MapCell defCell = new();
+
         /// <summary>
         /// Set a cell on a map
         /// </summary>
         public static void SetCell(this MapLayer map, int row, int col, MapCell cell)
-            => map.Grid[row, col] = cell;
+        {
+            if (map.Grid.ItemOrDef(row, col, defCell) != defCell)
+            {
+                map.Grid[row, col] = cell;
+            }
+        }
 
         /// <summary>
         /// Set a cell with default looks for its type
@@ -30,6 +38,7 @@ namespace SlipperyLand.GameTypes.Extensions
         /// Read a cell on the map
         /// </summary>
         public static MapCell ReadCell(this MapLayer map, int row, int col)
-            => map.Grid[row, col];
+            => map.Grid.ItemOrDef(row, col, defCell);
+
     }
 }

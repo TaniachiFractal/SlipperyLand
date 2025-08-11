@@ -37,5 +37,23 @@ namespace SlipperyLand.GameTypes.Extensions
             chara.X = row * tileSize;
             chara.Y = (col * tileSize) - (tileSize / 3);
         }
+
+        /// <summary>
+        /// Copy only the X AXIS location data from <paramref name="source"/> <see cref="CharaCell"/> to the <paramref name="target"/> one
+        /// </summary>
+        public static void CopyXLocatDataTo(this CharaCell source, CharaCell target)
+        {
+            target.X = source.X;
+            target.XAcum = source.XAcum;
+        }
+
+        /// <summary>
+        /// Copy only the Y AXIS location data from <paramref name="source"/> <see cref="CharaCell"/> to the <paramref name="target"/> one
+        /// </summary>
+        public static void CopyYLocatDataTo(this CharaCell source, CharaCell target)
+        {
+            target.Y = source.Y;
+            target.YAcum = source.YAcum;
+        }
     }
 }

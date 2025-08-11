@@ -1,6 +1,4 @@
-﻿using SlipperyLand.GameTypes.Cells;
-using SlipperyLand.GameTypes.Cells.Chara;
-using SlipperyLand.GameTypes.Cells.Map;
+﻿using SlipperyLand.GameTypes.Cells.Map;
 using SlipperyLand.GameTypes.Extensions;
 using SlipperyLand.GameTypes.Layers;
 

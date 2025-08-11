@@ -121,6 +121,10 @@
     <value>ERROR</value>
     <comment>Error message title</comment>
   </data>
+  <data name="Information" xml:space="preserve">
+    <value>INFORMATION</value>
+    <comment>Info message title</comment>
+  </data>
   <data name="Warning" xml:space="preserve">
     <value>WARNING</value>
     <comment>Warning message title</comment>

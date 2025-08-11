@@ -41,21 +41,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Extensions\CollectionsExtensions.cs" />
     <Compile Include="Extensions\NumericsExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="RandomSh.cs" />
-    <Compile Include="Res\Res.Designer.cs" />
+    <Compile Include="Res\Res.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Res.resx</DependentUpon>
+    </Compile>
     <Compile Include="Types\KeyboardState.cs" />
     <Compile Include="Types\NotifyPropertyChanged.cs" />
     <Compile Include="Types\SimpleRect.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Res\Res.resx" />
-    <EmbeddedResource Include="Res\Res.ru.resx" />
+    <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <EmbeddedResource Include="Res\Res.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Res.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Res\Res.ru.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

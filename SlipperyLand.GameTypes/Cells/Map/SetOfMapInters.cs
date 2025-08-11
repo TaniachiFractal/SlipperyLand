@@ -40,5 +40,6 @@
         /// If the set has a <see cref="MapCellType.Wall"/>
         /// </summary>
         public bool HasWall => TL == MapCellType.Wall || TR == MapCellType.Wall || BL == MapCellType.Wall || BR == MapCellType.Wall;
+
     }
 }
