@@ -39,7 +39,20 @@
         /// <summary>
         /// If the set has a <see cref="MapCellType.Wall"/>
         /// </summary>
-        public bool HasWall => TL == MapCellType.Wall || TR == MapCellType.Wall || BL == MapCellType.Wall || BR == MapCellType.Wall;
+        public bool HasWall => HasType(MapCellType.Wall);
+
+        /// <summary>
+        /// If the set has a <see cref="MapCellType.Slippery"/>
+        /// </summary>
+        public bool HasSlip => HasType(MapCellType.Slippery);
+
+        /// <summary>
+        /// If the set has a <see cref="MapCellType.Rough"/>
+        /// </summary>
+        public bool HasRough => HasType(MapCellType.Rough);
+
+        private bool HasType(MapCellType type)
+            => TL == type || TR == type || BL == type || BR == type;
 
     }
 }

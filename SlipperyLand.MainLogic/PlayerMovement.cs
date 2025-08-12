@@ -24,8 +24,6 @@ namespace SlipperyLand.MainLogic
         /// </summary>
         public static int TileSize = 0;
 
-        private static CharaCell futureHeroY;
-        private static CharaCell futureHeroX;
 
         /// <summary>
         /// Update the hero
@@ -64,7 +62,7 @@ namespace SlipperyLand.MainLogic
 
         private static Vector2 GetVelocity(KeyboardState ks)
         {
-            stopwatch.Stop();
+            stopwatch.Stop(); // TODO : Refactor this; this makes character fly away
             var velocity = Vector2.Zero;
             var speed = SpeedPerMs * stopwatch.ElapsedMilliseconds;
 
@@ -104,28 +102,62 @@ namespace SlipperyLand.MainLogic
             }
         }
 
+        private static CharaCell futureHeroY;
+        private static CharaCell futureHeroX;
+        private static Vector2 oldVelocity = new();
+
         private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, KeyboardState ks)
         {
+            var heroInter = hero.GetIntersections(map, TileSize);
+            Vector2 velocity;
+            if (heroInter.HasSlip && !(oldVelocity.X == 0 && oldVelocity.Y == 0))
+            {
+                velocity = oldVelocity;
+            }
+            else
+            {
+                velocity = GetVelocity(ks);
+                Debug.WriteLine($"{velocity.X} {velocity.Y}");
+            }
+
             hero.CopyXLocatDataTo(futureHeroX);
             hero.CopyYLocatDataTo(futureHeroY);
-            var velocity = GetVelocity(ks);
+
             futureHeroX.MoveHero(velocity, onX: true);
             futureHeroY.MoveHero(velocity, onX: false);
             var futureXInter = futureHeroX.GetIntersections(map, TileSize);
             var futureYInter = futureHeroY.GetIntersections(map, TileSize);
 
 
-
-            if (!futureXInter.HasWall)
+            if (futureXInter.HasWall)
+            {
+                oldVelocity.Reset();
+                velocity.Reset();
+            }
+            else
             {
                 futureHeroX.CopyXLocatDataTo(hero);
                 futureHeroX.CopyXLocatDataTo(futureHeroY);
             }
-            if (!futureYInter.HasWall)
+
+            if (futureYInter.HasWall)
+            {
+                oldVelocity.Reset();
+                velocity.Reset();
+            }
+            else
             {
                 futureHeroY.CopyYLocatDataTo(hero);
                 futureHeroY.CopyYLocatDataTo(futureHeroX);
             }
+
+            oldVelocity = velocity;
+        }
+
+        private static void Reset(this ref Vector2 vector)
+        {
+            vector.X = 0;
+            vector.Y = 0;
         }
     }
 }
