@@ -39,21 +39,20 @@ namespace SlipperyLand.GameTypes.Extensions
         }
 
         /// <summary>
-        /// Copy only the X AXIS location data from <paramref name="source"/> <see cref="CharaCell"/> to the <paramref name="target"/> one
+        /// Copy the location data from <paramref name="source"/> <see cref="CharaCell"/> to the <paramref name="target"/> one
         /// </summary>
-        public static void CopyXLocatDataTo(this CharaCell source, CharaCell target)
+        public static void CopyLocatDataTo(this CharaCell source, CharaCell target, bool xData)
         {
-            target.X = source.X;
-            target.XAcum = source.XAcum;
-        }
-
-        /// <summary>
-        /// Copy only the Y AXIS location data from <paramref name="source"/> <see cref="CharaCell"/> to the <paramref name="target"/> one
-        /// </summary>
-        public static void CopyYLocatDataTo(this CharaCell source, CharaCell target)
-        {
-            target.Y = source.Y;
-            target.YAcum = source.YAcum;
+            if (xData)
+            {
+                target.X = source.X;
+                target.XAcum = source.XAcum;
+            }
+            else
+            {
+                target.Y = source.Y;
+                target.YAcum = source.YAcum;
+            }
         }
     }
 }

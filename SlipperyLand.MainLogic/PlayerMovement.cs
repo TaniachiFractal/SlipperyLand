@@ -4,6 +4,7 @@ using System.Numerics;
 using SlipperyLand.Common.Extensions;
 using SlipperyLand.Common.Types;
 using SlipperyLand.GameTypes.Cells.Chara;
+using SlipperyLand.GameTypes.Cells.Map;
 using SlipperyLand.GameTypes.Extensions;
 using SlipperyLand.GameTypes.Layers;
 
@@ -14,6 +15,8 @@ namespace SlipperyLand.MainLogic
     /// </summary>
     public static class PlayerMovement
     {
+        #region public fields
+
         /// <summary>
         /// Invoked upon reaching a win cell
         /// </summary>
@@ -24,9 +27,11 @@ namespace SlipperyLand.MainLogic
         /// </summary>
         public static int TileSize = 0;
 
+        #endregion
 
         /// <summary>
         /// Update the hero
+        /// </summary>
         /// </summary>
         public static void UpdateHero(this CharaCell hero, MapLayer map, KeyboardState ks)
         {
@@ -57,8 +62,7 @@ namespace SlipperyLand.MainLogic
                 hero.charaState = CharaCellStateType.LookFront;
         }
 
-        private const float SpeedPerMs = 0.065f;
-        private readonly static Stopwatch stopwatch = new();
+        #region direction and velocity
 
         private static Vector2 GetDirection(KeyboardState ks)
         {
@@ -80,6 +84,9 @@ namespace SlipperyLand.MainLogic
             return velocity;
         }
 
+        private const float SpeedPerMs = 0.065f;
+        private readonly static Stopwatch stopwatch = new();
+
         private static Vector2 GetVelocity(this Vector2 direction)
         {
             stopwatch.Stop();
@@ -87,6 +94,8 @@ namespace SlipperyLand.MainLogic
             stopwatch.Restart();
             return direction * speed;
         }
+
+        #endregion
 
         private static void MoveHero(this CharaCell hero, Vector2 velocity, bool onX)
         {
@@ -113,19 +122,11 @@ namespace SlipperyLand.MainLogic
         private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, KeyboardState ks)
         {
             var heroInter = hero.GetIntersections(map, TileSize);
-            Vector2 direction;
-            if (heroInter.HasSlip && !(oldDirection.X == 0 && oldDirection.Y == 0))
-            {
-                direction = oldDirection;
-            }
-            else
-            {
-                direction = GetDirection(ks);
-            }
+            var direction = DetermineDirection(heroInter, ks);
             var velocity = direction.GetVelocity();
 
-            hero.CopyXLocatDataTo(futureHeroX);
-            hero.CopyYLocatDataTo(futureHeroY);
+            hero.CopyLocatDataTo(futureHeroX, xData: true);
+            hero.CopyLocatDataTo(futureHeroY, xData: false);
 
             futureHeroX.MoveHero(velocity, onX: true);
             futureHeroY.MoveHero(velocity, onX: false);
@@ -140,8 +141,8 @@ namespace SlipperyLand.MainLogic
             }
             else
             {
-                futureHeroX.CopyXLocatDataTo(hero);
-                futureHeroX.CopyXLocatDataTo(futureHeroY);
+                futureHeroX.CopyLocatDataTo(hero, xData: true);
+                futureHeroX.CopyLocatDataTo(futureHeroY, xData: true);
             }
 
             if (futureYInter.HasWall)
@@ -151,11 +152,34 @@ namespace SlipperyLand.MainLogic
             }
             else
             {
-                futureHeroY.CopyYLocatDataTo(hero);
-                futureHeroY.CopyYLocatDataTo(futureHeroX);
+                futureHeroY.CopyLocatDataTo(hero, xData: false);
+                futureHeroY.CopyLocatDataTo(futureHeroX, xData: false);
             }
 
             oldDirection = direction;
+        }
+
+        private static Vector2 DetermineDirection(SetOfMapInters heroInter, KeyboardState ks)
+        {
+            if (heroInter.HasSlip && !(oldDirection.X == 0 && oldDirection.Y == 0))
+            {
+                return oldDirection;
+            }
+            return GetDirection(ks);
+        }
+
+        void HandleIntersection(ref SetOfMapInters intersection, ref CharaCell hero, ref CharaCell futureHeroSource, ref CharaCell futureHeroTarget)
+        {
+            if (intersection.HasWall)
+            {
+                oldDirection.Reset();
+                direction.Reset();
+            }
+            else
+            {
+                futureLocX.CopyLocDataTo(hero);
+                futureLocX.CopyLocDataTo(futureLocY);
+            }
         }
 
         private static void Reset(this ref Vector2 vector)
