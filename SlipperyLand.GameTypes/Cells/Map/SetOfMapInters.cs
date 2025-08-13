@@ -47,9 +47,9 @@
         public bool HasSlip => HasType(MapCellType.Slippery);
 
         /// <summary>
-        /// If the set has a <see cref="MapCellType.Rough"/>
+        /// If the set has a <see cref="MapCellType.End"/>
         /// </summary>
-        public bool HasRough => HasType(MapCellType.Rough);
+        public bool HasEnd => HasType(MapCellType.End);
 
         private bool HasType(MapCellType type)
             => TL == type || TR == type || BL == type || BR == type;

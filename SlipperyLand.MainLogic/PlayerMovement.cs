@@ -20,7 +20,7 @@ namespace SlipperyLand.MainLogic
         /// <summary>
         /// Invoked upon reaching a win cell
         /// </summary>
-        public static EventHandler<EventArgs> OnWinCell;
+        public static event EventHandler<EventArgs> OnWinCell;
 
         /// <summary>
         /// The map tile size
@@ -29,9 +29,12 @@ namespace SlipperyLand.MainLogic
 
         #endregion
 
+        private static CharaCell futureHeroY;
+        private static CharaCell futureHeroX;
+        private static Vector2 oldDirection = new();
+
         /// <summary>
         /// Update the hero
-        /// </summary>
         /// </summary>
         public static void UpdateHero(this CharaCell hero, MapLayer map, KeyboardState ks)
         {
@@ -60,6 +63,42 @@ namespace SlipperyLand.MainLogic
                 hero.charaState = CharaCellStateType.LookBack;
             if (ks.DownKeyDown)
                 hero.charaState = CharaCellStateType.LookFront;
+        }
+
+        private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, KeyboardState ks)
+        {
+            var heroInter = hero.GetIntersections(map, TileSize);
+            var direction = DetermineDirection(heroInter, ks);
+            var velocity = direction.GetVelocity();
+
+            hero.CopyLocatDataTo(futureHeroX, xData: true);
+            hero.CopyLocatDataTo(futureHeroY, xData: false);
+
+            futureHeroX.MoveHero(velocity, onX: true);
+            futureHeroY.MoveHero(velocity, onX: false);
+            var futureXInter = futureHeroX.GetIntersections(map, TileSize);
+            var futureYInter = futureHeroY.GetIntersections(map, TileSize);
+
+            void HandleInter(bool HasWall, CharaCell source, ref CharaCell target, bool xData)
+            {
+                if (HasWall)
+                {
+                    oldDirection.Reset();
+                    direction.Reset();
+                }
+                else
+                {
+                    source.CopyLocatDataTo(hero, xData);
+                    source.CopyLocatDataTo(target, xData);
+                }
+            }
+            HandleInter(futureXInter.HasWall, futureHeroX, ref futureHeroY, xData: true);
+            HandleInter(futureYInter.HasWall, futureHeroY, ref futureHeroX, xData: false);
+
+            heroInter = hero.GetIntersections(map, TileSize);
+            CheckWin(heroInter);
+
+            oldDirection = direction;
         }
 
         #region direction and velocity
@@ -115,70 +154,22 @@ namespace SlipperyLand.MainLogic
             }
         }
 
-        private static CharaCell futureHeroY;
-        private static CharaCell futureHeroX;
-        private static Vector2 oldDirection = new();
-
-        private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, KeyboardState ks)
-        {
-            var heroInter = hero.GetIntersections(map, TileSize);
-            var direction = DetermineDirection(heroInter, ks);
-            var velocity = direction.GetVelocity();
-
-            hero.CopyLocatDataTo(futureHeroX, xData: true);
-            hero.CopyLocatDataTo(futureHeroY, xData: false);
-
-            futureHeroX.MoveHero(velocity, onX: true);
-            futureHeroY.MoveHero(velocity, onX: false);
-            var futureXInter = futureHeroX.GetIntersections(map, TileSize);
-            var futureYInter = futureHeroY.GetIntersections(map, TileSize);
-
-
-            if (futureXInter.HasWall)
-            {
-                oldDirection.Reset();
-                direction.Reset();
-            }
-            else
-            {
-                futureHeroX.CopyLocatDataTo(hero, xData: true);
-                futureHeroX.CopyLocatDataTo(futureHeroY, xData: true);
-            }
-
-            if (futureYInter.HasWall)
-            {
-                oldDirection.Reset();
-                direction.Reset();
-            }
-            else
-            {
-                futureHeroY.CopyLocatDataTo(hero, xData: false);
-                futureHeroY.CopyLocatDataTo(futureHeroX, xData: false);
-            }
-
-            oldDirection = direction;
-        }
-
         private static Vector2 DetermineDirection(SetOfMapInters heroInter, KeyboardState ks)
         {
-            if (heroInter.HasSlip && !(oldDirection.X == 0 && oldDirection.Y == 0))
+            if (heroInter.HasSlip && !oldDirection.IsZero())
             {
                 return oldDirection;
             }
             return GetDirection(ks);
         }
 
-        void HandleIntersection(ref SetOfMapInters intersection, ref CharaCell hero, ref CharaCell futureHeroSource, ref CharaCell futureHeroTarget)
+        private static bool playing = true;
+        private static void CheckWin(SetOfMapInters inters)
         {
-            if (intersection.HasWall)
+            if (inters.HasEnd && oldDirection.IsZero() && playing)
             {
-                oldDirection.Reset();
-                direction.Reset();
-            }
-            else
-            {
-                futureLocX.CopyLocDataTo(hero);
-                futureLocX.CopyLocDataTo(futureLocY);
+                playing = false;
+                OnWinCell?.Invoke(null, EventArgs.Empty);
             }
         }
 
@@ -187,5 +178,8 @@ namespace SlipperyLand.MainLogic
             vector.X = 0;
             vector.Y = 0;
         }
+
+        private static bool IsZero(this Vector2 vector)
+            => vector.X == 0 && vector.Y == 0;
     }
 }

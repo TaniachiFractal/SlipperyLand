@@ -45,6 +45,7 @@ namespace SlipperyLand.ViewModel
             MapLayer.Setup();
             CharaLayer.Setup(spriteSize, tileSize);
             PlayerMovement.TileSize = tileSize;
+            PlayerMovement.OnWinCell += PlayerMovement_OnWinCell;
 
             renderer = new GraphicsRenderer(MapLayer, mapTileSetType, CharaLayer);
 
@@ -52,6 +53,11 @@ namespace SlipperyLand.ViewModel
 
             BP.Released += BP_Released;
             BP.BreakpointSet += BP_BreakpointSet;
+        }
+
+        private void PlayerMovement_OnWinCell(object sender, System.EventArgs e)
+        {
+            dialogProvider.ShowInfoMessage("you won!");
         }
 
         private void BP_BreakpointSet(object sender, System.EventArgs e)

@@ -23,13 +23,13 @@ namespace SlipperyLand.Common
         /// </summary>
         public static void Break()
         {
-            BreakpointSet?.Invoke(null, EventArgs.Empty);
+            BreakpointSet?.Invoke(null, null);
             Debugger.Break();
         }
 
         /// <summary>
         /// Release the breakpoint state
         /// </summary>
-        public static void Release() => Released?.Invoke(null, EventArgs.Empty);
+        public static void Release() => Released?.Invoke(null, null);
     }
 }
