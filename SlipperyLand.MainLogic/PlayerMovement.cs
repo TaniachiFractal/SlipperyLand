@@ -92,8 +92,8 @@ namespace SlipperyLand.MainLogic
                     source.CopyLocatDataTo(target, xData);
                 }
             }
-            HandleInter(futureXInter.HasWall, futureHeroX, ref futureHeroY, xData: true);
-            HandleInter(futureYInter.HasWall, futureHeroY, ref futureHeroX, xData: false);
+            HandleInter(futureXInter.HasWall(), futureHeroX, ref futureHeroY, xData: true);
+            HandleInter(futureYInter.HasWall(), futureHeroY, ref futureHeroX, xData: false);
 
             heroInter = hero.GetIntersections(map, TileSize);
             CheckWin(heroInter);
@@ -156,7 +156,7 @@ namespace SlipperyLand.MainLogic
 
         private static Vector2 DetermineDirection(SetOfMapInters heroInter, KeyboardState ks)
         {
-            if (heroInter.HasSlip && !oldDirection.IsZero())
+            if (heroInter.HasSlip() && !oldDirection.IsZero())
             {
                 return oldDirection;
             }
@@ -166,7 +166,7 @@ namespace SlipperyLand.MainLogic
         private static bool playing = true;
         private static void CheckWin(SetOfMapInters inters)
         {
-            if (inters.HasEnd && oldDirection.IsZero() && playing)
+            if (inters.HasEnd() && oldDirection.IsZero() && playing)
             {
                 playing = false;
                 OnWinCell?.Invoke(null, EventArgs.Empty);

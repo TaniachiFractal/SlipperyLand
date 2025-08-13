@@ -35,24 +35,5 @@
             this.BL = BL;
             this.BR = BR;
         }
-
-        /// <summary>
-        /// If the set has a <see cref="MapCellType.Wall"/>
-        /// </summary>
-        public bool HasWall => HasType(MapCellType.Wall);
-
-        /// <summary>
-        /// If the set has a <see cref="MapCellType.Slippery"/>
-        /// </summary>
-        public bool HasSlip => HasType(MapCellType.Slippery);
-
-        /// <summary>
-        /// If the set has a <see cref="MapCellType.End"/>
-        /// </summary>
-        public bool HasEnd => HasType(MapCellType.End);
-
-        private bool HasType(MapCellType type)
-            => TL == type || TR == type || BL == type || BR == type;
-
     }
 }

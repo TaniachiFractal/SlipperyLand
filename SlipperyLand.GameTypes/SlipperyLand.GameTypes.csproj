@@ -49,6 +49,7 @@
     <Compile Include="Cells\Map\SetOfMapInters.cs" />
     <Compile Include="Extensions\CharaExtensions.cs" />
     <Compile Include="Extensions\MapExtensions.cs" />
+    <Compile Include="Extensions\SetOfMapIntersExtensions.cs" />
     <Compile Include="Layers\CharaLayer.cs" />
     <Compile Include="Layers\MapLayer.cs" />
     <Compile Include="TileSpriteSetTypes\CharaLook.cs" />

@@ -3,7 +3,6 @@ using System.Threading;
 using SlipperyLand.Common;
 using SlipperyLand.Common.Types;
 using SlipperyLand.Contracts;
-using SlipperyLand.GameTypes.Extensions;
 using SlipperyLand.GameTypes.Layers;
 using SlipperyLand.GameTypes.TileSpriteSetTypes;
 using SlipperyLand.GraphicalResources.Characters;
