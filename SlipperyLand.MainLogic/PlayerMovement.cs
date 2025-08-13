@@ -60,11 +60,9 @@ namespace SlipperyLand.MainLogic
         private const float SpeedPerMs = 0.065f;
         private readonly static Stopwatch stopwatch = new();
 
-        private static Vector2 GetVelocity(KeyboardState ks)
+        private static Vector2 GetDirection(KeyboardState ks)
         {
-            stopwatch.Stop(); // TODO : Refactor this; this makes character fly away
             var velocity = Vector2.Zero;
-            var speed = SpeedPerMs * stopwatch.ElapsedMilliseconds;
 
             if (ks.LeftKeyDown)
                 velocity.X--;
@@ -78,10 +76,16 @@ namespace SlipperyLand.MainLogic
             if (velocity.X != 0 || velocity.Y != 0)
             {
                 velocity = Vector2.Normalize(velocity);
-                velocity *= speed;
             }
-            stopwatch.Restart();
             return velocity;
+        }
+
+        private static Vector2 GetVelocity(this Vector2 direction)
+        {
+            stopwatch.Stop();
+            var speed = SpeedPerMs * stopwatch.ElapsedMilliseconds;
+            stopwatch.Restart();
+            return direction * speed;
         }
 
         private static void MoveHero(this CharaCell hero, Vector2 velocity, bool onX)
@@ -104,21 +108,21 @@ namespace SlipperyLand.MainLogic
 
         private static CharaCell futureHeroY;
         private static CharaCell futureHeroX;
-        private static Vector2 oldVelocity = new();
+        private static Vector2 oldDirection = new();
 
         private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, KeyboardState ks)
         {
             var heroInter = hero.GetIntersections(map, TileSize);
-            Vector2 velocity;
-            if (heroInter.HasSlip && !(oldVelocity.X == 0 && oldVelocity.Y == 0))
+            Vector2 direction;
+            if (heroInter.HasSlip && !(oldDirection.X == 0 && oldDirection.Y == 0))
             {
-                velocity = oldVelocity;
+                direction = oldDirection;
             }
             else
             {
-                velocity = GetVelocity(ks);
-                Debug.WriteLine($"{velocity.X} {velocity.Y}");
+                direction = GetDirection(ks);
             }
+            var velocity = direction.GetVelocity();
 
             hero.CopyXLocatDataTo(futureHeroX);
             hero.CopyYLocatDataTo(futureHeroY);
@@ -131,8 +135,8 @@ namespace SlipperyLand.MainLogic
 
             if (futureXInter.HasWall)
             {
-                oldVelocity.Reset();
-                velocity.Reset();
+                oldDirection.Reset();
+                direction.Reset();
             }
             else
             {
@@ -142,8 +146,8 @@ namespace SlipperyLand.MainLogic
 
             if (futureYInter.HasWall)
             {
-                oldVelocity.Reset();
-                velocity.Reset();
+                oldDirection.Reset();
+                direction.Reset();
             }
             else
             {
@@ -151,7 +155,7 @@ namespace SlipperyLand.MainLogic
                 futureHeroY.CopyYLocatDataTo(futureHeroX);
             }
 
-            oldVelocity = velocity;
+            oldDirection = direction;
         }
 
         private static void Reset(this ref Vector2 vector)
