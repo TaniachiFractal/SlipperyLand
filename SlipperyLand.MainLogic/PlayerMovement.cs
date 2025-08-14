@@ -166,7 +166,7 @@ namespace SlipperyLand.MainLogic
         private static bool playing = true;
         private static void CheckWin(SetOfMapInters inters)
         {
-            if (inters.HasEnd() && oldDirection.IsZero() && playing)
+            if (playing && inters.HasEnd() && oldDirection.IsZero())
             {
                 playing = false;
                 OnWinCell?.Invoke(null, EventArgs.Empty);
