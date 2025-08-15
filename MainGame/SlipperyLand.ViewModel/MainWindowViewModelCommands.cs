@@ -32,7 +32,7 @@ namespace SlipperyLand.ViewModel
         {
             var col = RandomSh.Shared.Next(Cols);
             var row = RandomSh.Shared.Next(Rows);
-            MapLayer.SetCell(row, col, (MapCellType)RandomSh.Shared.Next(1, 6));
+            level.MapLayer.SetCell(row, col, (MapCellType)RandomSh.Shared.Next(1, 6));
         }
 
         #endregion

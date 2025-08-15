@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using SlipperyLand.GameTypes.Cells;
 using SlipperyLand.GameTypes.Cells.Chara;
 using SlipperyLand.GameTypes.Extensions;
 using SlipperyLand.GameTypes.Layers;
@@ -98,16 +97,21 @@ namespace SlipperyLand.GraphicsEngine
             { Draw(chara); }
         }
 
+        private MapLayer prevMapLayer;
         private void RenderMap()
         {
-            for (var row = 0; row < mapLayer.Rows; row++)
+            if (prevMapLayer != mapLayer)
             {
-                for (var col = 0; col < mapLayer.Cols; col++)
+                for (var row = 0; row < mapLayer.Rows; row++)
                 {
-                    var bmp = mapTileSet.Get(mapLayer.ReadCell(row, col));
-                    mapCanvas.DrawImage(bmp, col * tileSize, row * tileSize);
+                    for (var col = 0; col < mapLayer.Cols; col++)
+                    {
+                        var bmp = mapTileSet.Get(mapLayer.ReadCell(row, col));
+                        mapCanvas.DrawImage(bmp, col * tileSize, row * tileSize);
+                    }
                 }
             }
+            prevMapLayer = mapLayer;
         }
 
         private static Bitmap GenerateEmptyBitmap(int width, int height) => new(width, height);

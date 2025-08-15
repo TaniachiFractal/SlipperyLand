@@ -7,8 +7,8 @@ using SlipperyLand.GameTypes.Layers;
 using SlipperyLand.GameTypes.TileSpriteSetTypes;
 using SlipperyLand.GraphicalResources.Characters;
 using SlipperyLand.GraphicalResources.Map;
-using SlipperyLand.GraphicsEngine;
 using SlipperyLand.MainLogic;
+using SlipperyLand.LevelJsonMapper;
 
 namespace SlipperyLand.ViewModel
 {
@@ -34,24 +34,28 @@ namespace SlipperyLand.ViewModel
             cols = 14;
             rows = 14;
 
-            mapLayer = new MapLayer(rows, cols);
-            mapTileSetType = MapTileSetType.Ice;
-            var tileSize = MapTileSetDict.Get(mapTileSetType).TileSize;
+            level = new()
+            {
+                MapLayer = new MapLayer(rows, cols),
+                MapTileSetType = MapTileSetType.Ice,
+                CharaLayer = new CharaLayer(CharaLook.RedCat)
+            };
+            var tileSize = MapTileSetDict.Get(level.MapTileSetType).TileSize;
+            var spriteSize = CharaSpriteSetDict.Get(level.CharaLayer.MainChara.charaLook).TileSize;
 
-            charaLayer = new CharaLayer(CharaLook.RedCat);
-            var spriteSize = CharaSpriteSetDict.Get(charaLayer.MainChara.charaLook).TileSize;
-
-            MapLayer.Setup();
-            CharaLayer.Setup(spriteSize, tileSize);
+            level.MapLayer.Setup();
+            level.CharaLayer.Setup(spriteSize, tileSize);
             PlayerMovement.TileSize = tileSize;
             PlayerMovement.OnWinCell += PlayerMovement_OnWinCell;
 
-            renderer = new GraphicsRenderer(MapLayer, mapTileSetType, CharaLayer);
+            renderer = new(level.MapLayer, level.MapTileSetType, level.CharaLayer);
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
 
             BP.Released += BP_Released;
             BP.BreakpointSet += BP_BreakpointSet;
+
+            level.ToJson();
         }
 
         private void PlayerMovement_OnWinCell(object sender, System.EventArgs e)
@@ -82,7 +86,7 @@ namespace SlipperyLand.ViewModel
 
         private void TimerProc(object? State)
         {
-            MainChara.UpdateHero(MapLayer, KeyboardState);
+            MainChara.UpdateHero(level.MapLayer, KeyboardState);
             PropertyHasChanged();
         }
     }

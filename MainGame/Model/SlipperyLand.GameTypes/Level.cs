@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SlipperyLand.GameTypes.Cells.Chara;
-using SlipperyLand.GameTypes.Layers;
+﻿using SlipperyLand.GameTypes.Layers;
 using SlipperyLand.GameTypes.TileSpriteSetTypes;
 
 namespace SlipperyLand.GameTypes

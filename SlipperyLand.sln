@@ -26,9 +26,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.GraphicalResou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.GraphicsEngine", "MainGame\Model\SlipperyLand.GraphicsEngine\SlipperyLand.GraphicsEngine.csproj", "{2F896FD5-D483-443D-9CC2-62E28BD0B8D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.LevelJsonMapper", "MainGame\Model\SlipperyLand.LevelJsonMapper\SlipperyLand.LevelJsonMapper.csproj", "{977FE175-1B31-4D20-946F-E68A3BDB5F48}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.MainLogic", "MainGame\Model\SlipperyLand.MainLogic\SlipperyLand.MainLogic.csproj", "{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.LevelJsonMapper", "MainGame\Model\SlipperyLand.LevelJsonMapper\SlipperyLand.LevelJsonMapper.csproj", "{977FE175-1B31-4D20-946F-E68A3BDB5F48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,14 +64,14 @@ Global
 		{2F896FD5-D483-443D-9CC2-62E28BD0B8D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F896FD5-D483-443D-9CC2-62E28BD0B8D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F896FD5-D483-443D-9CC2-62E28BD0B8D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{977FE175-1B31-4D20-946F-E68A3BDB5F48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{977FE175-1B31-4D20-946F-E68A3BDB5F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{977FE175-1B31-4D20-946F-E68A3BDB5F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{977FE175-1B31-4D20-946F-E68A3BDB5F48}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{977FE175-1B31-4D20-946F-E68A3BDB5F48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{977FE175-1B31-4D20-946F-E68A3BDB5F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{977FE175-1B31-4D20-946F-E68A3BDB5F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{977FE175-1B31-4D20-946F-E68A3BDB5F48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,8 +85,8 @@ Global
 		{FDC61943-B2CF-4796-B1E1-1264277228B3} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
 		{4F9ACF11-EB9C-4396-A64F-E1191F3129CC} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
 		{2F896FD5-D483-443D-9CC2-62E28BD0B8D7} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
-		{977FE175-1B31-4D20-946F-E68A3BDB5F48} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
 		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
+		{977FE175-1B31-4D20-946F-E68A3BDB5F48} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {029D3E1C-1F09-4364-B8A0-29C51E516B24}

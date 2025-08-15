@@ -72,6 +72,10 @@
       <Project>{2f896fd5-d483-443d-9cc2-62e28bd0b8d7}</Project>
       <Name>SlipperyLand.GraphicsEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model\SlipperyLand.LevelJsonMapper\SlipperyLand.LevelJsonMapper.csproj">
+      <Project>{977fe175-1b31-4d20-946f-e68a3bdb5f48}</Project>
+      <Name>SlipperyLand.LevelJsonMapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\SlipperyLand.MainLogic\SlipperyLand.MainLogic.csproj">
       <Project>{b660bb9a-8aaa-4208-9c1f-9746e10b0c04}</Project>
       <Name>SlipperyLand.MainLogic</Name>

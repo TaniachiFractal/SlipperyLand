@@ -3,8 +3,6 @@ using SlipperyLand.Common.Types;
 using SlipperyLand.Contracts;
 using SlipperyLand.GameTypes;
 using SlipperyLand.GameTypes.Cells.Chara;
-using SlipperyLand.GameTypes.Layers;
-using SlipperyLand.GameTypes.TileSpriteSetTypes;
 using SlipperyLand.GraphicsEngine;
 
 namespace SlipperyLand.ViewModel
@@ -14,10 +12,10 @@ namespace SlipperyLand.ViewModel
     /// </summary>
     public partial class MainWindowViewModel
     {
-        private readonly IDialogProvider dialogProvider;
-        private readonly IApplication application;
-
-        private readonly GraphicsRenderer renderer;
+        /// <summary>
+        /// The image of the game field
+        /// </summary>
+        public Bitmap GameImage => renderer.GetGameImage();
 
         #region keyboard state
 
@@ -79,6 +77,11 @@ namespace SlipperyLand.ViewModel
 
         #endregion
 
+        private readonly IDialogProvider dialogProvider;
+        private readonly IApplication application;
+
+        private readonly GraphicsRenderer renderer;
+
         #region cols rows
 
         private int cols, rows;
@@ -103,12 +106,9 @@ namespace SlipperyLand.ViewModel
 
         #endregion
 
-        /// <summary>
-        /// The image of the game field
-        /// </summary>
-        public Bitmap GameImage => renderer.GetGameImage();
+        private readonly Level level;
 
-        private Level Level;
+        private CharaCell MainChara => level.CharaLayer.MainChara;
 
     }
 }
