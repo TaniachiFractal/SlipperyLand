@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using SlipperyLand.Contracts;
+using SlipperyLand.Common.Res;
 
 namespace SlipperyLand.Providers
 {
@@ -7,19 +8,19 @@ namespace SlipperyLand.Providers
     public class DialogProvider : IDialogProvider
     {
         bool IDialogProvider.AskWarning(string message)
-            => (this as IDialogProvider).AskWarning(message, Common.Res.Res.Warning);
+            => (this as IDialogProvider).AskWarning(message, Res.Warning);
 
         bool IDialogProvider.AskWarning(string message, string title)
             => ShowWarning(message, title) == MessageBoxResult.OK;
 
         void IDialogProvider.ShowErrorMessage(string message)
-            => ShowError(message, Common.Res.Res.Error);
+            => ShowError(message, Res.Error);
 
         void IDialogProvider.ShowErrorMessage(string message, string title)
             => ShowError(message, title);
 
         void IDialogProvider.ShowInfoMessage(string message)
-            => ShowInfo(message, Common.Res.Res.Information);
+            => ShowInfo(message, Res.Information);
 
         void IDialogProvider.ShowInfoMessage(string message, string title)
             => ShowInfo(message, title);

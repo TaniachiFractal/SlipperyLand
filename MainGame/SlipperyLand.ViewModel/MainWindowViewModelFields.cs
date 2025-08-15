@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using SlipperyLand.Common.Types;
 using SlipperyLand.Contracts;
+using SlipperyLand.GameTypes;
 using SlipperyLand.GameTypes.Cells.Chara;
 using SlipperyLand.GameTypes.Layers;
 using SlipperyLand.GameTypes.TileSpriteSetTypes;
@@ -107,59 +108,7 @@ namespace SlipperyLand.ViewModel
         /// </summary>
         public Bitmap GameImage => renderer.GetGameImage();
 
-        #region mapLayer
+        private Level Level;
 
-        private MapTileSetType mapTileSetType;
-
-        /// <summary>
-        /// The tile set type
-        /// </summary>
-        private MapTileSetType MapTileSetType
-        {
-            get => mapTileSetType;
-            set
-            {
-                mapTileSetType = value;
-                PropertyHasChanged();
-            }
-        }
-
-        private MapLayer mapLayer;
-
-        /// <summary>
-        /// The map layer
-        /// </summary>
-        private MapLayer MapLayer
-        {
-            get => mapLayer;
-            set
-            {
-                mapLayer = value;
-                PropertyHasChanged();
-            }
-        }
-
-        #endregion
-
-        #region charaLayer
-
-        private CharaCell MainChara => CharaLayer.MainChara;
-
-        private CharaLayer charaLayer;
-
-        /// <summary>
-        /// The charaLook layer
-        /// </summary>
-        private CharaLayer CharaLayer
-        {
-            get => charaLayer;
-            set
-            {
-                charaLayer = value;
-                PropertyHasChanged();
-            }
-        }
-
-        #endregion
     }
 }

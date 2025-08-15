@@ -5,10 +5,10 @@
     <LangVersion>12.0</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3BF05D07-0D74-4354-8D8E-705E4C6B2244}</ProjectGuid>
+    <ProjectGuid>{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SlipperyLand.ViewModel</RootNamespace>
-    <AssemblyName>SlipperyLand.ViewModel</AssemblyName>
+    <RootNamespace>SlipperyLand.MainLogic</RootNamespace>
+    <AssemblyName>SlipperyLand.MainLogic</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -23,7 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\SlipperyLand.ViewModel.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\SlipperyLand.MainLogic.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,39 +41,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindowViewModel.cs" />
-    <Compile Include="MainWindowViewModelCommands.cs" />
-    <Compile Include="MainWindowViewModelFields.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SlipperyLand.Common\SlipperyLand.Common.csproj">
-      <Project>{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}</Project>
-      <Name>SlipperyLand.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SlipperyLand.Contracts\SlipperyLand.Contracts.csproj">
-      <Project>{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}</Project>
-      <Name>SlipperyLand.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SlipperyLand.GameTypes\SlipperyLand.GameTypes.csproj">
-      <Project>{FDC61943-B2CF-4796-B1E1-1264277228B3}</Project>
-      <Name>SlipperyLand.GameTypes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SlipperyLand.GraphicalResources\SlipperyLand.GraphicalResources.csproj">
-      <Project>{4F9ACF11-EB9C-4396-A64F-E1191F3129CC}</Project>
-      <Name>SlipperyLand.GraphicalResources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SlipperyLand.GraphicsEngine\SlipperyLand.GraphicsEngine.csproj">
-      <Project>{2F896FD5-D483-443D-9CC2-62E28BD0B8D7}</Project>
-      <Name>SlipperyLand.GraphicsEngine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SlipperyLand.MainLogic\SlipperyLand.MainLogic.csproj">
-      <Project>{b660bb9a-8aaa-4208-9c1f-9746e10b0c04}</Project>
-      <Name>SlipperyLand.MainLogic</Name>
-    </ProjectReference>
+    <Compile Include="GameSetup.cs" />
+    <Compile Include="HitboxHelpers.cs" />
+    <Compile Include="PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SlipperyLand.Common\SlipperyLand.Common.csproj">
+      <Project>{420e50b7-0a95-40e7-ae86-fa6d1039f0fe}</Project>
+      <Name>SlipperyLand.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SlipperyLand.GameTypes\SlipperyLand.GameTypes.csproj">
+      <Project>{fdc61943-b2cf-4796-b1e1-1264277228b3}</Project>
+      <Name>SlipperyLand.GameTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

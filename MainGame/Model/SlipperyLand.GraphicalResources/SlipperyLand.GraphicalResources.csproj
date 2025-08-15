@@ -97,16 +97,6 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SlipperyLand.Common\SlipperyLand.Common.csproj">
-      <Project>{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}</Project>
-      <Name>SlipperyLand.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SlipperyLand.GameTypes\SlipperyLand.GameTypes.csproj">
-      <Project>{FDC61943-B2CF-4796-B1E1-1264277228B3}</Project>
-      <Name>SlipperyLand.GameTypes</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Characters\CharaSprites.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CharaSprites.Designer.cs</LastGenOutput>
@@ -127,6 +117,16 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SlipperyLand.Common\SlipperyLand.Common.csproj">
+      <Project>{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}</Project>
+      <Name>SlipperyLand.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SlipperyLand.GameTypes\SlipperyLand.GameTypes.csproj">
+      <Project>{FDC61943-B2CF-4796-B1E1-1264277228B3}</Project>
+      <Name>SlipperyLand.GameTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

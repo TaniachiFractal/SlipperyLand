@@ -42,9 +42,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Drawing.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Drawing.Common.9.0.7\lib\net462\System.Drawing.Common.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml.Linq" />
@@ -98,12 +95,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SlipperyLand.Common\SlipperyLand.Common.csproj">
+    <ProjectReference Include="..\Model\SlipperyLand.Common\SlipperyLand.Common.csproj">
       <Project>{420e50b7-0a95-40e7-ae86-fa6d1039f0fe}</Project>
       <Name>SlipperyLand.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SlipperyLand.Contracts\SlipperyLand.Contracts.csproj">
-      <Project>{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}</Project>
+    <ProjectReference Include="..\Model\SlipperyLand.Contracts\SlipperyLand.Contracts.csproj">
+      <Project>{b452ac80-2fdb-48de-9234-3c5c99d34ee0}</Project>
       <Name>SlipperyLand.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\SlipperyLand.ViewModel\SlipperyLand.ViewModel.csproj">

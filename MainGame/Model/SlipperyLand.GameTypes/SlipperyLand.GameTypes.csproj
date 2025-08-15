@@ -33,6 +33,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -52,6 +54,7 @@
     <Compile Include="Extensions\SetOfMapIntersExtensions.cs" />
     <Compile Include="Layers\CharaLayer.cs" />
     <Compile Include="Layers\MapLayer.cs" />
+    <Compile Include="Level.cs" />
     <Compile Include="TileSpriteSetTypes\CharaLook.cs" />
     <Compile Include="TileSpriteSetTypes\MapTileSetType.cs" />
   </ItemGroup>
