@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using SlipperyLand.Common;
 using SlipperyLand.Common.Types;
@@ -7,12 +8,11 @@ using SlipperyLand.GameTypes.Layers;
 using SlipperyLand.GameTypes.TileSpriteSetTypes;
 using SlipperyLand.GraphicalResources.Characters;
 using SlipperyLand.GraphicalResources.Map;
+using SlipperyLand.LevelMapper.Serialization;
 using SlipperyLand.MainLogic;
-using SlipperyLand.LevelJsonMapper;
 
 namespace SlipperyLand.ViewModel
 {
-#nullable enable
     /// <summary>
     /// The main model of the app
     /// </summary>
@@ -50,12 +50,13 @@ namespace SlipperyLand.ViewModel
 
             renderer = new(level.MapLayer, level.MapTileSetType, level.CharaLayer);
 
+            File.WriteAllText("D:\\test.txt", level.MapLayer.Serialize());
+
             timer = new Timer(TimerProc, null, 0, FrameRate);
 
             BP.Released += BP_Released;
             BP.BreakpointSet += BP_BreakpointSet;
 
-            level.ToJson();
         }
 
         private void PlayerMovement_OnWinCell(object sender, System.EventArgs e)
@@ -84,7 +85,7 @@ namespace SlipperyLand.ViewModel
             ChangeRandomCellCommand = new NoParamCommand(ChangeRandomCell);
         }
 
-        private void TimerProc(object? State)
+        private void TimerProc(object State)
         {
             MainChara.UpdateHero(level.MapLayer, KeyboardState);
             PropertyHasChanged();

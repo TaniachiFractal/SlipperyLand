@@ -21,14 +21,16 @@ namespace SlipperyLand.Common.Extensions
 
         /// <typeparam name="T">The type that the <paramref name="input"/> array consists of</typeparam>
         /// <param name="input">The target array</param>
-        /// <param name="row"></param>
-        /// <param name="col"></param>
+        /// <param name="row">The target row</param>
+        /// <param name="col">The target column</param>
+        /// <param name="rowCou">Row count</param>
+        /// <param name="colCou">Column count</param>
         /// <param name="def">The default value</param>
         /// <returns>The item at the <paramref name="row"/> and <paramref name="col"/>; or <paramref name="def"/> if the index is incorrect</returns>
         public static T ItemOrDef<T>(
-            this T[,] input, int row, int col, T def)
+            this T[,] input, int row, int col, int rowCou, int colCou, T def)
             where T : class
-            => row.InRange(input.GetLength(1)) && col.InRange(input.GetLength(0)) ? input[row, col] : def;
+            => row.InRange(rowCou) && col.InRange(colCou) ? input[row, col] : def;
 
         private static bool InRange(this int index, int max)
             => index >= 0 && index < max;

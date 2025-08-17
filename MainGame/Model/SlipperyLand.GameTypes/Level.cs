@@ -19,7 +19,7 @@ namespace SlipperyLand.GameTypes
         public MapLayer MapLayer;
 
         /// <summary>
-        /// The charaLook layer
+        /// The chara layer
         /// </summary>
         public CharaLayer CharaLayer;
 

@@ -76,14 +76,14 @@ namespace SlipperyLand
             }
         }
 
-        private void ExitButton_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Close();
-        }
-
         private void TopGrid_Loaded(object sender, RoutedEventArgs e)
         {
             TopGrid.Width = GameImage.Source.Width + 5;
+        }
+
+        private void ExitButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Close();
         }
 
         #region fade
@@ -91,7 +91,7 @@ namespace SlipperyLand
         private void FadeAnimation(double from, double to, EventHandler completed = null)
         {
             static DoubleAnimation NewAnim(double from, double to)
-                => new(from, to, new Duration(TimeSpan.FromMilliseconds(300)));
+                => new(from, to, new Duration(TimeSpan.FromMilliseconds(700)));
 
             var opacityFade = NewAnim(from, to);
             if (completed != null)

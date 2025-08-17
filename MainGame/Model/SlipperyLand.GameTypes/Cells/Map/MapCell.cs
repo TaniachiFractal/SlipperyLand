@@ -1,8 +1,11 @@
-﻿namespace SlipperyLand.GameTypes.Cells.Map
+﻿using System.Diagnostics;
+
+namespace SlipperyLand.GameTypes.Cells.Map
 {
     /// <summary>
     /// A map cell
     /// </summary>
+    [DebuggerDisplay("[{mapCellType};{mapCellLookId}]")]
     public class MapCell
     {
         /// <summary>

@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Data;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace SlipperyLand.Converters
@@ -23,7 +24,7 @@ namespace SlipperyLand.Converters
             {
                 //https://stackoverflow.com/a/96470/
                 //https://learn.microsoft.com/en-us/dotnet/api/system.drawing.bitmap.gethbitmap
-                var hBitmap = bitmap.GetHbitmap(Color.Transparent);
+                var hBitmap = bitmap.GetHbitmap();
                 var bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                     hBitmap,
                     IntPtr.Zero,
@@ -32,7 +33,7 @@ namespace SlipperyLand.Converters
                 DeleteObject(hBitmap);
                 return bitmapSource;
             }
-            return null;
+            return BitmapSource.Create(8, 8, 2, 2, PixelFormats.Gray2, null, new byte[32], 4);
         }
 
         /// <summary>
@@ -40,9 +41,6 @@ namespace SlipperyLand.Converters
         /// </summary>
         /// <remarks>It is not needed since the binding is one way.</remarks>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return new Bitmap(0, 0);
-
-        }
+            => new Bitmap(0, 0);
     }
 }

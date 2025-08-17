@@ -16,15 +16,10 @@ namespace SlipperyLand.GameTypes.Layers
         /// </summary>
         public readonly int Rows;
 
-        private MapCell[,] grid;
         /// <summary>
         /// The cell grid of the layer
         /// </summary>
-        public MapCell[,] Grid
-        {
-            get => grid;
-            set => grid = value;
-        }
+        public MapCell[,] Grid;
 
         /// <summary>
         /// Empty grid constructor
@@ -36,7 +31,7 @@ namespace SlipperyLand.GameTypes.Layers
             Cols = cols;
             Rows = rows;
 
-            grid = new MapCell[rows, cols];
+            Grid = new MapCell[rows, cols];
         }
     }
 }

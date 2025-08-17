@@ -16,7 +16,7 @@ namespace SlipperyLand.GameTypes.Extensions
         /// </summary>
         public static void SetCell(this MapLayer map, int row, int col, MapCell cell)
         {
-            if (map.Grid.ItemOrDef(row, col, defCell) != defCell)
+            if (map.Grid.ItemOrDef(row, col, map.Rows, map.Cols, defCell) != defCell)
             {
                 map.Grid[row, col] = cell;
             }
@@ -38,7 +38,7 @@ namespace SlipperyLand.GameTypes.Extensions
         /// Read a cell on the map
         /// </summary>
         public static MapCell ReadCell(this MapLayer map, int row, int col)
-            => map.Grid.ItemOrDef(row, col, defCell);
+            => map.Grid.ItemOrDef(row, col, map.Rows, map.Cols, defCell);
 
     }
 }

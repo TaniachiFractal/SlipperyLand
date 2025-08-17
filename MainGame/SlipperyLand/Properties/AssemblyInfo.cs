@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -8,13 +7,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Slippery Land")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A little slippery puzzle game")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Taniachi Fractal")]
-[assembly: AssemblyProduct("")]
+[assembly: AssemblyProduct("Slippery Land")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
