@@ -4,17 +4,17 @@ using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
 namespace SlipperyLand.LevelMapper.Serialization
 {
     /// <summary>
-    /// Converts <see cref="MapLayer"/> to <see cref="SerializableMapLayerDto"/>
+    /// Converts <see cref="MapLayer"/> to <see cref="MapLayerDto"/>
     /// </summary>
     internal static class DtoConverter
     {
         /// <summary>
-        /// Convert a <see cref="MapLayer"/> to a <see cref="SerializableMapLayerDto"/>
+        /// Convert a <see cref="MapLayer"/> to a <see cref="MapLayerDto"/>
         /// </summary>
-        public static SerializableMapLayerDto ConvertToDto(this MapLayer mapLayer)
+        public static MapLayerDto ConvertToDto(this MapLayer mapLayer)
         {
-            var mapDto = new SerializableMapLayerDto(mapLayer.Rows, mapLayer.Cols);
-            mapDto.SerialGrid.Array = mapLayer.Grid;
+            var mapDto = new MapLayerDto(mapLayer.Rows, mapLayer.Cols);
+            mapDto.Grid.Array = mapLayer.Grid;
             return mapDto;
         }
     }

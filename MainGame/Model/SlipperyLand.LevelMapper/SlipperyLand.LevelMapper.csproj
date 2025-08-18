@@ -42,9 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Serialization\DtoConverter.cs" />
+    <Compile Include="Serialization\Helpers\MapGridSerializationHelper.cs" />
     <Compile Include="Serialization\MapSerializer.cs" />
-    <Compile Include="Serialization\SerializableTypes\SerializableMapGrid.cs" />
-    <Compile Include="Serialization\SerializableTypes\SerializableMapLayerDto.cs" />
+    <Compile Include="Serialization\SerializableTypes\MapGrid.cs" />
+    <Compile Include="Serialization\SerializableTypes\MapLayerDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SlipperyLand.GameTypes\SlipperyLand.GameTypes.csproj">
