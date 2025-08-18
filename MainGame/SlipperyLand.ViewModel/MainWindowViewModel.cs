@@ -31,8 +31,8 @@ namespace SlipperyLand.ViewModel
             this.dialogProvider = dialogProvider;
             this.application = application;
 
-            cols = 14;
-            rows = 14;
+            cols = 5;
+            rows = 5;
 
             level = new()
             {
@@ -45,8 +45,8 @@ namespace SlipperyLand.ViewModel
 
             level.MapLayer.Setup();
 
-            //File.WriteAllText("D:\\test.txt", level.MapLayer.Serialize());
-            level.MapLayer = MapSerializer.Deserialize(File.ReadAllText("D:\\test.txt"));
+            File.WriteAllText("D:\\test.txt", level.MapLayer.Serialize());
+            //level.MapLayer = MapSerializer.Deserialize(File.ReadAllText("D:\\test.txt"));
 
             level.CharaLayer.Setup(spriteSize, tileSize);
             PlayerMovement.TileSize = tileSize;
@@ -85,7 +85,7 @@ namespace SlipperyLand.ViewModel
 
         private void SetCommandActions()
         {
-            ChangeRandomCellCommand = new NoParamCommand(ChangeRandomCell);
+
         }
 
         private void TimerProc(object State)

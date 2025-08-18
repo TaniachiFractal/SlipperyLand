@@ -13,29 +13,9 @@ namespace SlipperyLand.ViewModel
     {
         #region commands
 
-        #region misc
-
-        /// <summary>
-        /// Change a random map cell
-        /// </summary>
-        public NoParamCommand? ChangeRandomCellCommand { get; private set; }
-
-        #endregion
-
         #endregion
 
         #region methods for commands
-
-        #region misc
-
-        private void ChangeRandomCell()
-        {
-            var col = RandomSh.Shared.Next(Cols);
-            var row = RandomSh.Shared.Next(Rows);
-            level.MapLayer.SetCell(row, col, (MapCellType)RandomSh.Shared.Next(1, 6));
-        }
-
-        #endregion
 
         #endregion
 
