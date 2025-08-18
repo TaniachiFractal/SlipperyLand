@@ -11,7 +11,7 @@ namespace SlipperyLand.LevelMapper.Serialization
     public static class MapSerializer
     {
         /// <summary>
-        /// Serialize a <see cref="MapLayer"/> to a xml string
+        /// Serialize a <see cref="MapLayer"/> to an XML string
         /// </summary>
         public static string Serialize(this MapLayer mapLayer)
         {
@@ -23,6 +23,17 @@ namespace SlipperyLand.LevelMapper.Serialization
             serializer.Serialize(writer, mapDto, namespaces);
             var output = writer.ToString();
             return output;
+        }
+
+        /// <summary>
+        /// Deserialize an XML string to a <see cref="MapLayer"/>
+        /// </summary>
+        public static MapLayer Deserialize(string input)
+        {
+            var deserializer = new XmlSerializer(typeof(MapLayerDto));
+            using var reader = new StringReader(input);
+            var mapDto = deserializer.Deserialize(reader) as MapLayerDto;
+            return mapDto.ConvertToNormal();
         }
     }
 }

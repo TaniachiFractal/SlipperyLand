@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Xml;
+using SlipperyLand.GameTypes.Cells.Map;
 using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
 
 namespace SlipperyLand.LevelMapper.Serialization.Helpers
@@ -39,22 +42,25 @@ namespace SlipperyLand.LevelMapper.Serialization.Helpers
         /// </summary>
         public static void ReadXmlData(this MapGrid mapGrid, XmlReader reader)
         {
-            var input = reader.ReadContentAsString();
+            var input = string.Empty;
+            if (reader.NodeType == XmlNodeType.Element)
+            {
+                input = reader.ReadElementContentAsString();
+            }
             if (input.Count() > 0)
             {
-                var inputIter = 0;
-                while (inputIter < input.Count())
+                input = input.Replace("\n", "");
+                var strRows = input.Split(StrEnd);
+                for (var row = 0; row < strRows.Length; row++)
                 {
-                    var readSymbol = input[0];
-                    while (readSymbol != StrEnd)
+                    var strRow = strRows[row];
+                    if (strRow.Count() > 0)
                     {
-                        while (readSymbol != BlockEnd)
+                        var mapRow = strRow.StrRowToMapRow();
+                        for (var col = 0; col < mapRow.Length; col++)
                         {
-                            readSymbol = input[inputIter++];
-                            if (readSymbol == NewLine)
-                            {
-                                continue;
-                            }
+                            mapGrid.Array ??= new MapCell[strRows.Length, mapRow.Length];
+                            mapGrid.Array[row, col] = mapRow[col];
                         }
                     }
                 }
@@ -63,6 +69,34 @@ namespace SlipperyLand.LevelMapper.Serialization.Helpers
             {
                 throw new XmlException();
             }
+        }
+
+        private static MapCell[] StrRowToMapRow(this string str)
+        {
+            var blocks = str.Split(BlockEnd);
+            var mapRow = new List<MapCell>();
+            foreach (var block in blocks)
+            {
+                if (block.Count() > 0)
+                {
+                    mapRow.Add(block.ToMapCell());
+                }
+            }
+            return [.. mapRow];
+        }
+
+        private static MapCell ToMapCell(this string block)
+        {
+            var nums = block.Split(Divider);
+            if (!int.TryParse(nums[0], out var num0))
+            {
+                throw new XmlException();
+            }
+            if (!int.TryParse(nums[1], out var num1))
+            {
+                throw new XmlException();
+            }
+            return new() { mapCellType = (MapCellType)num0, mapCellLookId = num1 };
         }
     }
 }

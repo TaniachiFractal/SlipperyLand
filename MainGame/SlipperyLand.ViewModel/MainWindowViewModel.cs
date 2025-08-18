@@ -44,13 +44,16 @@ namespace SlipperyLand.ViewModel
             var spriteSize = CharaSpriteSetDict.Get(level.CharaLayer.MainChara.charaLook).TileSize;
 
             level.MapLayer.Setup();
+
+            //File.WriteAllText("D:\\test.txt", level.MapLayer.Serialize());
+            level.MapLayer = MapSerializer.Deserialize(File.ReadAllText("D:\\test.txt"));
+
             level.CharaLayer.Setup(spriteSize, tileSize);
             PlayerMovement.TileSize = tileSize;
             PlayerMovement.OnWinCell += PlayerMovement_OnWinCell;
 
-            renderer = new(level.MapLayer, level.MapTileSetType, level.CharaLayer);
 
-            File.WriteAllText("D:\\test.txt", level.MapLayer.Serialize());
+            renderer = new(level.MapLayer, level.MapTileSetType, level.CharaLayer);
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
 
