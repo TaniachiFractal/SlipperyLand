@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using SlipperyLand.GameTypes.Cells.Map;
-using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
 using SlipperyLand.LevelMapper.Serialization.Helpers;
+using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
 
 namespace SlipperyLand.LevelMapper.Serialization.Helpers
 {
@@ -50,7 +51,7 @@ namespace SlipperyLand.LevelMapper.Serialization.Helpers
             if (input.Count() > 0)
             {
                 input = input.Replace("\n", "");
-                var strRows = input.Split(StrEnd);
+                var strRows = input.Split([StrEnd], StringSplitOptions.RemoveEmptyEntries);
                 for (var row = 0; row < strRows.Length; row++)
                 {
                     var strRow = strRows[row];

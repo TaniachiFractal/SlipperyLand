@@ -45,8 +45,8 @@ namespace SlipperyLand.ViewModel
 
             level.MapLayer.Setup();
 
-            File.WriteAllText("D:\\test.txt", level.MapLayer.Serialize());
-            //level.MapLayer = MapSerializer.Deserialize(File.ReadAllText("D:\\test.txt"));
+            //File.WriteAllText("D:\\test.txt", level.MapLayer.Serialize());
+            level.MapLayer = MapSerializer.Deserialize(File.ReadAllText("D:\\test.txt"));
 
             level.CharaLayer.Setup(spriteSize, tileSize);
             PlayerMovement.TileSize = tileSize;
