@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Channels;
 using System.Xml;
 using SlipperyLand.GameTypes.Cells.Map;
 using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
+using SlipperyLand.LevelMapper.Serialization.Helpers;
 
 namespace SlipperyLand.LevelMapper.Serialization.Helpers
 {
@@ -31,7 +31,7 @@ namespace SlipperyLand.LevelMapper.Serialization.Helpers
                     var cell = mapGrid.Array[row, col];
                     var cellType = (int)cell.mapCellType;
                     var cellLook = cell.mapCellLookId;
-                    str += $"{cellType:D2}" + Divider + $"{cellLook:D2}" + BlockEnd;
+                    str += $"{cellType.ToBase36()}" + Divider + $"{cellLook.ToBase36()}" + BlockEnd;
                 }
                 writer.WriteString(str + StrEnd + NewLine);
             }
@@ -88,11 +88,11 @@ namespace SlipperyLand.LevelMapper.Serialization.Helpers
         private static MapCell ToMapCell(this string block)
         {
             var nums = block.Split(Divider);
-            if (!int.TryParse(nums[0], out var num0))
+            if (!nums[0].TryFromBase36(out int num0))
             {
                 throw new XmlException();
             }
-            if (!int.TryParse(nums[1], out var num1))
+            if (!nums[1].TryFromBase36(out int num1))
             {
                 throw new XmlException();
             }

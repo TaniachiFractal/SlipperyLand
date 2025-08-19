@@ -31,8 +31,8 @@ namespace SlipperyLand.ViewModel
             this.dialogProvider = dialogProvider;
             this.application = application;
 
-            cols = 5;
-            rows = 5;
+            cols = 22;
+            rows = 22;
 
             level = new()
             {
