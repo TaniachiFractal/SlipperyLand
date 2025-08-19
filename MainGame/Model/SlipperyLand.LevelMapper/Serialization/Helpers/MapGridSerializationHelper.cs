@@ -50,6 +50,8 @@ namespace SlipperyLand.LevelMapper.Serialization.Helpers
             if (input.Count() > 0)
             {
                 input = input.Replace("\n", "");
+                input = input.Replace(" ", "");
+                input = input.Replace("\t", "");
                 var strRows = input.Split([StrEnd], StringSplitOptions.RemoveEmptyEntries);
                 for (var row = 0; row < strRows.Length; row++)
                 {
@@ -61,6 +63,7 @@ namespace SlipperyLand.LevelMapper.Serialization.Helpers
                         {
                             mapGrid.Array ??= new MapCell[strRows.Length, mapRow.Length];
                             mapGrid.Array[row, col] = mapRow[col];
+                            // TODO : check for out of bounds
                         }
                     }
                 }

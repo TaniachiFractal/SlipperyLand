@@ -52,8 +52,8 @@ namespace SlipperyLand.GraphicsEngine
             mapTileSet = MapTileSetDict.Get(mapTileSetType);
             tileSize = mapTileSet.TileSize;
 
-            height = mapLayer.Cols * tileSize;
-            width = mapLayer.Rows * tileSize;
+            height = mapLayer.Rows * tileSize;
+            width = mapLayer.Cols * tileSize;
             upsHeight = height * Ups;
             upsWidth = width * Ups;
 

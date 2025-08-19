@@ -21,10 +21,11 @@ namespace SlipperyLand.LevelMapper.Serialization
             var namespaces = new XmlSerializerNamespaces();
             namespaces.Add(string.Empty, string.Empty);
             var settings = new XmlWriterSettings() { Encoding = Encoding.UTF8 };
-            using var writer = new StringWriter();
+            using var strWriter = new StringWriter();
+            using var xmlWriter = XmlWriter.Create(strWriter, settings);
             var levelDto = level.ConvertToDto();
-            serializer.Serialize(writer, levelDto, namespaces);
-            var output = writer.ToString();
+            serializer.Serialize(xmlWriter, levelDto, namespaces);
+            var output = strWriter.ToString();
             return output;
         }
 

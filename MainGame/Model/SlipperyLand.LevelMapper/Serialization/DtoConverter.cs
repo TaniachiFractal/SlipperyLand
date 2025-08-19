@@ -27,7 +27,8 @@ namespace SlipperyLand.LevelMapper.Serialization
             => new()
             {
                 CharaLayer = levelDto.CharaLayer,
-                MapLayer = levelDto.MapLayer.ConvertToNormal()
+                MapLayer = levelDto.MapLayer.ConvertToNormal(),
+                MapTileSetType = levelDto.MapTileSetType,
             };
 
         private static MapLayerDto ConvertToDto(this MapLayer mapLayer)

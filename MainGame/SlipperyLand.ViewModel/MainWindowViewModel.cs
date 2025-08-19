@@ -1,15 +1,11 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System;
+﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using SlipperyLand.Common;
 using SlipperyLand.Common.Types;
 using SlipperyLand.Contracts;
-using SlipperyLand.GameTypes.Layers;
-using SlipperyLand.GameTypes.TileSpriteSetTypes;
 using SlipperyLand.GraphicalResources.Characters;
 using SlipperyLand.GraphicalResources.Map;
-using SlipperyLand.LevelMapper.Serialization;
 using SlipperyLand.MainLogic;
 
 namespace SlipperyLand.ViewModel
@@ -30,31 +26,17 @@ namespace SlipperyLand.ViewModel
             this.dialogProvider = dialogProvider;
             this.application = application;
 
+            var levels = LevelLoader.GetLevels();
 
+            level = levels[0];
 
+            var tileSize = MapTileSetDict.Get(level.MapTileSetType).TileSize;
+            var spriteSize = CharaSpriteSetDict.Get(level.CharaLayer.MainChara.CharaLook).TileSize;
 
-            //cols = 22;
-            //rows = 22;
+            PlayerMovement.TileSize = tileSize;
+            PlayerMovement.OnWinCell += PlayerMovement_OnWinCell;
 
-            //level = new()
-            //{
-            //    MapLayer = new MapLayer(rows, cols),
-            //    MapTileSetType = MapTileSetType.Ice,
-            //    CharaLayer = new CharaLayer(CharaLook.RedCat)
-            //};
-            //var tileSize = MapTileSetDict.Get(level.MapTileSetType).TileSize;
-            //var spriteSize = CharaSpriteSetDict.Get(level.CharaLayer.MainChara.CharaLook).TileSize;
-
-            //level.MapLayer.Setup();
-
-            //level.CharaLayer.Setup(spriteSize, tileSize);
-            //PlayerMovement.TileSize = tileSize;
-            //PlayerMovement.OnWinCell += PlayerMovement_OnWinCell;
-
-            ////File.WriteAllText("D:\\test.txt", level.Serialize());
-            ////level.MapLayer = MapSerializer.Deserialize(File.ReadAllText("D:\\test.txt"));
-
-            //renderer = new(level.MapLayer, level.MapTileSetType, level.CharaLayer);
+            renderer = new(level.MapLayer, level.MapTileSetType, level.CharaLayer);
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
 
