@@ -63,10 +63,6 @@
 
         </ResourceDictionary>
     </Window.Resources>
-    <Window.InputBindings>
-        <KeyBinding Key="C"
-                    Command="{Binding ChangeRandomCellCommand}" />
-    </Window.InputBindings>
 
     <Grid>
         <Grid Margin="3">

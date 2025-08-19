@@ -43,8 +43,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LevelLoader.cs" />
     <Compile Include="MainWindowViewModel.cs" />
-    <Compile Include="MainWindowViewModelCommands.cs" />
     <Compile Include="MainWindowViewModelFields.cs" />
   </ItemGroup>
   <ItemGroup>

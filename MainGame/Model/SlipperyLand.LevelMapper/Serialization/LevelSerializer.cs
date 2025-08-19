@@ -1,0 +1,42 @@
+﻿using System.IO;
+using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
+using SlipperyLand.GameTypes;
+using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
+
+namespace SlipperyLand.LevelMapper.Serialization
+{
+    /// <summary>
+    /// Serialization and Deserialization of <see cref="Level"/>
+    /// </summary>
+    public static class LevelSerializer
+    {
+        /// <summary>
+        /// Serialize a <see cref="Level"/> to an XML string
+        /// </summary>
+        public static string Serialize(this Level level)
+        {
+            var serializer = new XmlSerializer(typeof(LevelDto));
+            var namespaces = new XmlSerializerNamespaces();
+            namespaces.Add(string.Empty, string.Empty);
+            var settings = new XmlWriterSettings() { Encoding = Encoding.UTF8 };
+            using var writer = new StringWriter();
+            var levelDto = level.ConvertToDto();
+            serializer.Serialize(writer, levelDto, namespaces);
+            var output = writer.ToString();
+            return output;
+        }
+
+        /// <summary>
+        /// Deserialize an XML string to a <see cref="Level"/>
+        /// </summary>
+        public static Level Deserialize(string input)
+        {
+            var deserializer = new XmlSerializer(typeof(LevelDto));
+            using var reader = new StringReader(input);
+            var levelDto = deserializer.Deserialize(reader) as LevelDto;
+            return levelDto.ConvertToNormal();
+        }
+    }
+}

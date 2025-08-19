@@ -90,17 +90,15 @@ namespace SlipperyLand.GraphicsEngine
 
         private void RenderCharas()
         {
-            void Draw(CharaCell chara) => charaCanvas.DrawImage(CharaSpriteSetDict.Get(chara.charaLook).Get(chara.charaState), chara.X, chara.Y);
+            void Draw(CharaCell chara) => charaCanvas.DrawImage(CharaSpriteSetDict.Get(chara.CharaLook).Get(chara.CharaState), chara.X, chara.Y);
             ReInitCharas();
             Draw(charaLayer.MainChara);
-            foreach (var chara in charaLayer.OtherCharas)
-            { Draw(chara); }
         }
 
-        private MapLayer prevMapLayer;
+        private bool noImage = true;
         private void RenderMap()
         {
-            if (prevMapLayer != mapLayer)
+            if (noImage)
             {
                 for (var row = 0; row < mapLayer.Rows; row++)
                 {
@@ -111,8 +109,9 @@ namespace SlipperyLand.GraphicsEngine
                     }
                 }
             }
-            prevMapLayer = mapLayer;
+            noImage = false;
         }
+
 
         private static Bitmap GenerateEmptyBitmap(int width, int height) => new(width, height);
     }

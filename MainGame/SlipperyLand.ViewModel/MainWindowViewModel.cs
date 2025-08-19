@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using System;
 using System.Threading;
 using SlipperyLand.Common;
 using SlipperyLand.Common.Types;
@@ -26,34 +27,34 @@ namespace SlipperyLand.ViewModel
         /// </summary>
         public MainWindowViewModel(IDialogProvider dialogProvider, IApplication application)
         {
-            SetCommandActions();
-
             this.dialogProvider = dialogProvider;
             this.application = application;
 
-            cols = 22;
-            rows = 22;
-
-            level = new()
-            {
-                MapLayer = new MapLayer(rows, cols),
-                MapTileSetType = MapTileSetType.Ice,
-                CharaLayer = new CharaLayer(CharaLook.RedCat)
-            };
-            var tileSize = MapTileSetDict.Get(level.MapTileSetType).TileSize;
-            var spriteSize = CharaSpriteSetDict.Get(level.CharaLayer.MainChara.charaLook).TileSize;
-
-            level.MapLayer.Setup();
-
-            //File.WriteAllText("D:\\test.txt", level.MapLayer.Serialize());
-            level.MapLayer = MapSerializer.Deserialize(File.ReadAllText("D:\\test.txt"));
-
-            level.CharaLayer.Setup(spriteSize, tileSize);
-            PlayerMovement.TileSize = tileSize;
-            PlayerMovement.OnWinCell += PlayerMovement_OnWinCell;
 
 
-            renderer = new(level.MapLayer, level.MapTileSetType, level.CharaLayer);
+
+            //cols = 22;
+            //rows = 22;
+
+            //level = new()
+            //{
+            //    MapLayer = new MapLayer(rows, cols),
+            //    MapTileSetType = MapTileSetType.Ice,
+            //    CharaLayer = new CharaLayer(CharaLook.RedCat)
+            //};
+            //var tileSize = MapTileSetDict.Get(level.MapTileSetType).TileSize;
+            //var spriteSize = CharaSpriteSetDict.Get(level.CharaLayer.MainChara.CharaLook).TileSize;
+
+            //level.MapLayer.Setup();
+
+            //level.CharaLayer.Setup(spriteSize, tileSize);
+            //PlayerMovement.TileSize = tileSize;
+            //PlayerMovement.OnWinCell += PlayerMovement_OnWinCell;
+
+            ////File.WriteAllText("D:\\test.txt", level.Serialize());
+            ////level.MapLayer = MapSerializer.Deserialize(File.ReadAllText("D:\\test.txt"));
+
+            //renderer = new(level.MapLayer, level.MapTileSetType, level.CharaLayer);
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
 
@@ -62,12 +63,12 @@ namespace SlipperyLand.ViewModel
 
         }
 
-        private void PlayerMovement_OnWinCell(object sender, System.EventArgs e)
+        private void PlayerMovement_OnWinCell(object sender, EventArgs e)
         {
             dialogProvider.ShowInfoMessage("you won!");
         }
 
-        private void BP_BreakpointSet(object sender, System.EventArgs e)
+        private void BP_BreakpointSet(object sender, EventArgs e)
         {
             if (Debugger.IsAttached)
             {
@@ -75,17 +76,12 @@ namespace SlipperyLand.ViewModel
             }
         }
 
-        private void BP_Released(object sender, System.EventArgs e)
+        private void BP_Released(object sender, EventArgs e)
         {
             if (Debugger.IsAttached)
             {
                 timer.Change(0, FrameRate);
             }
-        }
-
-        private void SetCommandActions()
-        {
-
         }
 
         private void TimerProc(object State)

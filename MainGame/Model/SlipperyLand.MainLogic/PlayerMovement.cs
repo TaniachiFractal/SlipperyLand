@@ -56,13 +56,13 @@ namespace SlipperyLand.MainLogic
         private static void RotateHero(this CharaCell hero, KeyboardState ks)
         {
             if (ks.LeftKeyDown)
-                hero.charaState = CharaCellStateType.LookToLeft;
+                hero.CharaState = CharaCellStateType.LookToLeft;
             if (ks.RightKeyDown)
-                hero.charaState = CharaCellStateType.LookToRight;
+                hero.CharaState = CharaCellStateType.LookToRight;
             if (ks.UpKeyDown)
-                hero.charaState = CharaCellStateType.LookBack;
+                hero.CharaState = CharaCellStateType.LookBack;
             if (ks.DownKeyDown)
-                hero.charaState = CharaCellStateType.LookFront;
+                hero.CharaState = CharaCellStateType.LookFront;
         }
 
         private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, KeyboardState ks)

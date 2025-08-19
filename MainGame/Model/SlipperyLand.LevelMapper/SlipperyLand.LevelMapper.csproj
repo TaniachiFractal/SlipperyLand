@@ -39,12 +39,14 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Levels\TestLevel.slipland" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Serialization\DtoConverter.cs" />
     <Compile Include="Serialization\Helpers\Base36Converter.cs" />
     <Compile Include="Serialization\Helpers\MapGridSerializationHelper.cs" />
-    <Compile Include="Serialization\MapSerializer.cs" />
+    <Compile Include="Serialization\LevelSerializer.cs" />
+    <Compile Include="Serialization\SerializableTypes\LevelDto.cs" />
     <Compile Include="Serialization\SerializableTypes\MapGrid.cs" />
     <Compile Include="Serialization\SerializableTypes\MapLayerDto.cs" />
   </ItemGroup>
@@ -57,5 +59,10 @@
   <ItemGroup>
     <Reference Include="System.Xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

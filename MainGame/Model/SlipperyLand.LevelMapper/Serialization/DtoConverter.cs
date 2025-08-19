@@ -1,4 +1,5 @@
-﻿using SlipperyLand.GameTypes.Layers;
+﻿using SlipperyLand.GameTypes;
+using SlipperyLand.GameTypes.Layers;
 using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
 
 namespace SlipperyLand.LevelMapper.Serialization
@@ -9,19 +10,34 @@ namespace SlipperyLand.LevelMapper.Serialization
     internal static class DtoConverter
     {
         /// <summary>
-        /// Convert a <see cref="MapLayer"/> to a <see cref="MapLayerDto"/>
+        /// Convert <see cref="LevelDto"/> to <see cref="Level"/>
         /// </summary>
-        public static MapLayerDto ConvertToDto(this MapLayer mapLayer)
+        public static LevelDto ConvertToDto(this Level level)
+            => new()
+            {
+                CharaLayer = level.CharaLayer,
+                MapLayer = level.MapLayer.ConvertToDto(),
+                MapTileSetType = level.MapTileSetType,
+            };
+
+        /// <summary>
+        /// Convert <see cref="LevelDto"/> to <see cref="Level"/>
+        /// </summary>
+        public static Level ConvertToNormal(this LevelDto levelDto)
+            => new()
+            {
+                CharaLayer = levelDto.CharaLayer,
+                MapLayer = levelDto.MapLayer.ConvertToNormal()
+            };
+
+        private static MapLayerDto ConvertToDto(this MapLayer mapLayer)
         {
             var mapDto = new MapLayerDto(mapLayer.Rows, mapLayer.Cols);
             mapDto.Grid.Array = mapLayer.Grid;
             return mapDto;
         }
 
-        /// <summary>
-        /// Convert a <see cref="MapLayerDto"/> to a <see cref="MapLayer"/>
-        /// </summary>
-        public static MapLayer ConvertToNormal(this MapLayerDto mapLayerDto)
+        private static MapLayer ConvertToNormal(this MapLayerDto mapLayerDto)
         {
             var rows = mapLayerDto.Grid.Array.GetLength(0);
             var cols = mapLayerDto.Grid.Array.GetLength(1);

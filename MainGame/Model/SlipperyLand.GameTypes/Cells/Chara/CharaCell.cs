@@ -41,17 +41,17 @@ namespace SlipperyLand.GameTypes.Cells.Chara
         /// <summary>
         /// The chara type
         /// </summary>
-        public CharaCellType charaType;
+        public CharaCellType CharaType;
 
         /// <summary>
         /// The chara state
         /// </summary>
-        public CharaCellStateType charaState;
+        public CharaCellStateType CharaState;
 
         /// <summary>
         /// The character look
         /// </summary>
-        public CharaLook charaLook;
+        public CharaLook CharaLook;
 
     }
 }

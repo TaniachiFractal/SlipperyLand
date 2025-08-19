@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using SlipperyLand.GameTypes.Cells.Map;
-using SlipperyLand.LevelMapper.Serialization.Helpers;
 using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
 
 namespace SlipperyLand.LevelMapper.Serialization.Helpers
