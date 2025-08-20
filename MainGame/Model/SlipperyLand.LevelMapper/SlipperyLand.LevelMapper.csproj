@@ -39,7 +39,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Levels\Level2.slipland" />
     <None Include="Levels\Level1.slipland" />
   </ItemGroup>
   <ItemGroup>
