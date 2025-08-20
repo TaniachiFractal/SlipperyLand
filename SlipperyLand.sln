@@ -1,15 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36121.58 d17.14
+VisualStudioVersion = 17.14.36121.58
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand", "SlipperyLand\SlipperyLand.csproj", "{6AA27A8C-CFBE-45B6-908E-06D8F7DD655F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainLogic", "MainLogic\MainLogic.csproj", "{82F1318C-3DA8-46B1-92BD-91547F884BB3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MainGame", "MainGame", "{E9524D95-DDBF-4CF5-8EF2-5EDCAE50F2E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{362DB6C7-A5D7-4D15-BD8D-DD32F4BAD8BD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{1C0E8A2C-0C3D-403A-94A9-514C6931B822}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand", "MainGame\SlipperyLand\SlipperyLand.csproj", "{6AA27A8C-CFBE-45B6-908E-06D8F7DD655F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.ViewModel", "MainGame\SlipperyLand.ViewModel\SlipperyLand.ViewModel.csproj", "{3BF05D07-0D74-4354-8D8E-705E4C6B2244}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.Common", "MainGame\Model\SlipperyLand.Common\SlipperyLand.Common.csproj", "{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.Contracts", "MainGame\Model\SlipperyLand.Contracts\SlipperyLand.Contracts.csproj", "{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.GameTypes", "MainGame\Model\SlipperyLand.GameTypes\SlipperyLand.GameTypes.csproj", "{FDC61943-B2CF-4796-B1E1-1264277228B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.GraphicalResources", "MainGame\Model\SlipperyLand.GraphicalResources\SlipperyLand.GraphicalResources.csproj", "{4F9ACF11-EB9C-4396-A64F-E1191F3129CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.GraphicsEngine", "MainGame\Model\SlipperyLand.GraphicsEngine\SlipperyLand.GraphicsEngine.csproj", "{2F896FD5-D483-443D-9CC2-62E28BD0B8D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.MainLogic", "MainGame\Model\SlipperyLand.MainLogic\SlipperyLand.MainLogic.csproj", "{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.LevelMapper", "MainGame\Model\SlipperyLand.LevelMapper\SlipperyLand.LevelMapper.csproj", "{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,21 +40,53 @@ Global
 		{6AA27A8C-CFBE-45B6-908E-06D8F7DD655F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AA27A8C-CFBE-45B6-908E-06D8F7DD655F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AA27A8C-CFBE-45B6-908E-06D8F7DD655F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82F1318C-3DA8-46B1-92BD-91547F884BB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82F1318C-3DA8-46B1-92BD-91547F884BB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82F1318C-3DA8-46B1-92BD-91547F884BB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82F1318C-3DA8-46B1-92BD-91547F884BB3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{362DB6C7-A5D7-4D15-BD8D-DD32F4BAD8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{362DB6C7-A5D7-4D15-BD8D-DD32F4BAD8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{362DB6C7-A5D7-4D15-BD8D-DD32F4BAD8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{362DB6C7-A5D7-4D15-BD8D-DD32F4BAD8BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C0E8A2C-0C3D-403A-94A9-514C6931B822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C0E8A2C-0C3D-403A-94A9-514C6931B822}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C0E8A2C-0C3D-403A-94A9-514C6931B822}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C0E8A2C-0C3D-403A-94A9-514C6931B822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF05D07-0D74-4354-8D8E-705E4C6B2244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF05D07-0D74-4354-8D8E-705E4C6B2244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF05D07-0D74-4354-8D8E-705E4C6B2244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF05D07-0D74-4354-8D8E-705E4C6B2244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC61943-B2CF-4796-B1E1-1264277228B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC61943-B2CF-4796-B1E1-1264277228B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC61943-B2CF-4796-B1E1-1264277228B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC61943-B2CF-4796-B1E1-1264277228B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F9ACF11-EB9C-4396-A64F-E1191F3129CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F9ACF11-EB9C-4396-A64F-E1191F3129CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F9ACF11-EB9C-4396-A64F-E1191F3129CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F9ACF11-EB9C-4396-A64F-E1191F3129CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F896FD5-D483-443D-9CC2-62E28BD0B8D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F896FD5-D483-443D-9CC2-62E28BD0B8D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F896FD5-D483-443D-9CC2-62E28BD0B8D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F896FD5-D483-443D-9CC2-62E28BD0B8D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB} = {E9524D95-DDBF-4CF5-8EF2-5EDCAE50F2E7}
+		{6AA27A8C-CFBE-45B6-908E-06D8F7DD655F} = {E9524D95-DDBF-4CF5-8EF2-5EDCAE50F2E7}
+		{3BF05D07-0D74-4354-8D8E-705E4C6B2244} = {E9524D95-DDBF-4CF5-8EF2-5EDCAE50F2E7}
+		{420E50B7-0A95-40E7-AE86-FA6D1039F0FE} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
+		{B452AC80-2FDB-48DE-9234-3C5C99D34EE0} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
+		{FDC61943-B2CF-4796-B1E1-1264277228B3} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
+		{4F9ACF11-EB9C-4396-A64F-E1191F3129CC} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
+		{2F896FD5-D483-443D-9CC2-62E28BD0B8D7} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
+		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
+		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {029D3E1C-1F09-4364-B8A0-29C51E516B24}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3BF05D07-0D74-4354-8D8E-705E4C6B2244}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SlipperyLand.ViewModel</RootNamespace>
+    <AssemblyName>SlipperyLand.ViewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\SlipperyLand.ViewModel.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LevelLoader.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="MainWindowViewModelFields.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\SlipperyLand.Common\SlipperyLand.Common.csproj">
+      <Project>{420e50b7-0a95-40e7-ae86-fa6d1039f0fe}</Project>
+      <Name>SlipperyLand.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\SlipperyLand.Contracts\SlipperyLand.Contracts.csproj">
+      <Project>{b452ac80-2fdb-48de-9234-3c5c99d34ee0}</Project>
+      <Name>SlipperyLand.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\SlipperyLand.GameTypes\SlipperyLand.GameTypes.csproj">
+      <Project>{fdc61943-b2cf-4796-b1e1-1264277228b3}</Project>
+      <Name>SlipperyLand.GameTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\SlipperyLand.GraphicalResources\SlipperyLand.GraphicalResources.csproj">
+      <Project>{4f9acf11-eb9c-4396-a64f-e1191f3129cc}</Project>
+      <Name>SlipperyLand.GraphicalResources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\SlipperyLand.GraphicsEngine\SlipperyLand.GraphicsEngine.csproj">
+      <Project>{2f896fd5-d483-443d-9cc2-62e28bd0b8d7}</Project>
+      <Name>SlipperyLand.GraphicsEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\SlipperyLand.LevelMapper\SlipperyLand.LevelMapper.csproj">
+      <Project>{a19db0eb-7d68-4a54-9f6c-9fa6fe00e66a}</Project>
+      <Name>SlipperyLand.LevelMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\SlipperyLand.MainLogic\SlipperyLand.MainLogic.csproj">
+      <Project>{b660bb9a-8aaa-4208-9c1f-9746e10b0c04}</Project>
+      <Name>SlipperyLand.MainLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

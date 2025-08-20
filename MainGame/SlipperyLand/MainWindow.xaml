@@ -1,0 +1,98 @@
+﻿<Window x:Class="SlipperyLand.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="clr-namespace:SlipperyLand.Converters"
+        xmlns:local="clr-namespace:SlipperyLand"
+        xmlns:viewmodel="clr-namespace:SlipperyLand.ViewModel;assembly=SlipperyLand.ViewModel"
+        xmlns:res="clr-namespace:SlipperyLand.Properties"
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
+        mc:Ignorable="d"
+        Title="{x:Static res:Resources.AppName}"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        FontFamily="Cascadia Mono"
+        WindowStyle="None"
+        Background="Transparent"
+        KeyDown="Window_KeyDown"
+        KeyUp="Window_KeyUp"
+        Closing="Window_Closing"
+        Loaded="Window_Loaded"
+        Icon="{Binding Source, ElementName=GameImage}"
+        LostKeyboardFocus="Window_LostKeyboardFocus">
+
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <conv:BitmapConverter x:Key="BitmapConverter" />
+
+            <Style x:Key="ExitButton"
+                   TargetType="Label">
+                <Setter Property="Focusable"
+                        Value="True" />
+                <Setter Property="Foreground"
+                        Value="White" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="FontFamily"
+                        Value="Wingdings 2" />
+                <Setter Property="Content"
+                        Value="Î" />
+                <Setter Property="Width"
+                        Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Right" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver"
+                             Value="True">
+                        <Setter Property="Background"
+                                Value="Red" />
+                        <Setter Property="Content"
+                                Value="Ò" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="Image">
+                <Setter Property="Stretch"
+                        Value="None" />
+            </Style>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid Margin="3">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="TopGrid"
+                  Grid.Row="0"
+                  MouseDown="TopGrid_MouseDown"
+                  Loaded="TopGrid_Loaded">
+                <Rectangle Fill="#55000000" />
+                <Label Content="{x:Static res:Resources.AppName}"
+                       Foreground="White"
+                       VerticalAlignment="Center" />
+                <Label Name="ExitButton"
+                       Style="{StaticResource ExitButton}"
+                       MouseDown="ExitButton_MouseDown" />
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  Margin="0,10,0,0"
+                  VerticalAlignment="Top">
+                <Image x:Name="GameImage"
+                       Source="{Binding GameImage, Converter={StaticResource BitmapConverter}}"
+                       HorizontalAlignment="Center" />
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>
