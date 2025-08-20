@@ -19,19 +19,12 @@ namespace SlipperyLand.MainLogic
             var h = chara.Hitbox;
             var x = chara.X;
             var y = chara.Y;
-            var TL = map.GetCellOnCoord(h.Left + x, h.Top + y, tileSize);
-            var TR = map.GetCellOnCoord(h.Right + x, h.Top + y, tileSize);
-            var BL = map.GetCellOnCoord(h.Left + x, h.Bottom + y, tileSize);
-            var BR = map.GetCellOnCoord(h.Right + x, h.Bottom + y, tileSize);
+            var TL = map.GetCellTypeOnCoord(h.Left + x, h.Top + y, tileSize);
+            var TR = map.GetCellTypeOnCoord(h.Right + x, h.Top + y, tileSize);
+            var BL = map.GetCellTypeOnCoord(h.Left + x, h.Bottom + y, tileSize);
+            var BR = map.GetCellTypeOnCoord(h.Right + x, h.Bottom + y, tileSize);
             return new SetOfMapInters(TL, TR, BL, BR);
         }
 
-        private static MapCellType GetCellOnCoord(this MapLayer map, int X, int Y, int tileSize)
-        {
-            var col = X / tileSize;
-            var row = Y / tileSize;
-
-            return map.ReadCell(row, col).mapCellType;
-        }
     }
 }

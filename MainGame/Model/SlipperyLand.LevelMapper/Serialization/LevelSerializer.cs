@@ -20,7 +20,11 @@ namespace SlipperyLand.LevelMapper.Serialization
             var serializer = new XmlSerializer(typeof(LevelDto));
             var namespaces = new XmlSerializerNamespaces();
             namespaces.Add(string.Empty, string.Empty);
-            var settings = new XmlWriterSettings() { Encoding = Encoding.UTF8 };
+            var settings = new XmlWriterSettings()
+            {
+                Indent = true,
+                OmitXmlDeclaration = true,
+            };
             using var strWriter = new StringWriter();
             using var xmlWriter = XmlWriter.Create(strWriter, settings);
             var levelDto = level.ConvertToDto();

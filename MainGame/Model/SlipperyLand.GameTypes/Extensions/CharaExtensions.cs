@@ -34,8 +34,8 @@ namespace SlipperyLand.GameTypes.Extensions
         /// </summary>
         public static void SetCharaRowColPos(this CharaCell chara, int row, int col, int tileSize)
         {
-            chara.X = row * tileSize;
-            chara.Y = (col * tileSize) - (tileSize / 3);
+            chara.Y = row * tileSize - (tileSize / 3);
+            chara.X = col * tileSize;
         }
 
         /// <summary>

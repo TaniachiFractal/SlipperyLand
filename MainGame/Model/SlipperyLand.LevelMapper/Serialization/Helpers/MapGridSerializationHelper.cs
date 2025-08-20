@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using SlipperyLand.GameTypes.Cells.Map;
+using SlipperyLand.LevelMapper.Res;
 using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
 
 namespace SlipperyLand.LevelMapper.Serialization.Helpers
@@ -40,6 +41,7 @@ namespace SlipperyLand.LevelMapper.Serialization.Helpers
         /// <summary>
         /// Implementation of <see cref="MapGrid.ReadXml(XmlReader)"/>
         /// </summary>
+        /// <exception cref="InvalidOperationException">Failed to deserialize data</exception>
         public static void ReadXmlData(this MapGrid mapGrid, XmlReader reader)
         {
             var input = string.Empty;
@@ -53,51 +55,59 @@ namespace SlipperyLand.LevelMapper.Serialization.Helpers
                 input = input.Replace(" ", "");
                 input = input.Replace("\t", "");
                 var strRows = input.Split([StrEnd], StringSplitOptions.RemoveEmptyEntries);
+                var rowCou = strRows.Length;
+                var colCou = strRows[0].StrRowToMapRow(0).Length;
+                mapGrid.Array = new MapCell[rowCou, colCou];
                 for (var row = 0; row < strRows.Length; row++)
                 {
                     var strRow = strRows[row];
                     if (strRow.Count() > 0)
                     {
-                        var mapRow = strRow.StrRowToMapRow();
+                        var mapRow = strRow.StrRowToMapRow(row);
+                        if (mapRow.Length != colCou)
+                        {
+                            throw new ArgumentOutOfRangeException(reader.Name);
+                        }
                         for (var col = 0; col < mapRow.Length; col++)
                         {
-                            mapGrid.Array ??= new MapCell[strRows.Length, mapRow.Length];
                             mapGrid.Array[row, col] = mapRow[col];
-                            // TODO : check for out of bounds
                         }
                     }
                 }
             }
             else
             {
-                throw new XmlException();
+                throw new ArgumentNullException(reader.Name);
             }
         }
 
-        private static MapCell[] StrRowToMapRow(this string str)
+        private static MapCell[] StrRowToMapRow(this string str, int row)
         {
             var blocks = str.Split(BlockEnd);
             var mapRow = new List<MapCell>();
-            foreach (var block in blocks)
+            for (var col = 0; col < blocks.Length; col++)
             {
+                var block = blocks[col];
                 if (block.Count() > 0)
                 {
-                    mapRow.Add(block.ToMapCell());
+                    mapRow.Add(block.ToMapCell(row, col));
                 }
             }
             return [.. mapRow];
         }
 
-        private static MapCell ToMapCell(this string block)
+        private static MapCell ToMapCell(this string block, int row, int col)
         {
+            void throwEx() => throw new FormatException(string.Format(ErrorText.InvalidCellBlock, row, col));
+
             var nums = block.Split(Divider);
             if (!nums[0].TryFromBase36(out int num0))
             {
-                throw new XmlException();
+                throwEx();
             }
             if (!nums[1].TryFromBase36(out int num1))
             {
-                throw new XmlException();
+                throwEx();
             }
             return new() { mapCellType = (MapCellType)num0, mapCellLookId = num1 };
         }

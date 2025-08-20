@@ -1,5 +1,4 @@
 ﻿using SlipperyLand.GameTypes;
-using SlipperyLand.GameTypes.Layers;
 using SlipperyLand.GameTypes.TileSpriteSetTypes;
 
 namespace SlipperyLand.LevelMapper.Serialization.SerializableTypes
@@ -9,9 +8,6 @@ namespace SlipperyLand.LevelMapper.Serialization.SerializableTypes
     /// </summary>
     public class LevelDto
     {
-        /// <inheritdoc cref="GameTypes.Layers.CharaLayer"/>
-        public CharaLayer CharaLayer;
-
         /// <inheritdoc cref="MapLayerDto"/>
         public MapLayerDto MapLayer;
 
@@ -19,5 +15,10 @@ namespace SlipperyLand.LevelMapper.Serialization.SerializableTypes
         /// The tile set type
         /// </summary>
         public MapTileSetType MapTileSetType;
+
+        /// <summary>
+        /// The appearance of the main character
+        /// </summary>
+        public CharaLook MainCharaLook;
     }
 }

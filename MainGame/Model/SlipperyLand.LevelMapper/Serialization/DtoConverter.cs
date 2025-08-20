@@ -1,4 +1,6 @@
-﻿using SlipperyLand.GameTypes;
+﻿using System;
+using SlipperyLand.GameTypes;
+using SlipperyLand.GameTypes.Extensions;
 using SlipperyLand.GameTypes.Layers;
 using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
 
@@ -15,21 +17,28 @@ namespace SlipperyLand.LevelMapper.Serialization
         public static LevelDto ConvertToDto(this Level level)
             => new()
             {
-                CharaLayer = level.CharaLayer,
                 MapLayer = level.MapLayer.ConvertToDto(),
                 MapTileSetType = level.MapTileSetType,
+                MainCharaLook = level.CharaLayer.MainChara.CharaLook,
             };
 
         /// <summary>
         /// Convert <see cref="LevelDto"/> to <see cref="Level"/>
         /// </summary>
         public static Level ConvertToNormal(this LevelDto levelDto)
-            => new()
+        {
+            var charaLayer = new CharaLayer(levelDto.MainCharaLook);
+            var mapLayer = levelDto.MapLayer.ConvertToNormal();
+            var (row, col) = mapLayer.FindStartCell();
+            return new()
             {
-                CharaLayer = levelDto.CharaLayer,
-                MapLayer = levelDto.MapLayer.ConvertToNormal(),
+                CharaLayer = charaLayer,
+                MapLayer = mapLayer,
                 MapTileSetType = levelDto.MapTileSetType,
+                StartCol = col,
+                StartRow = row,
             };
+        }
 
         private static MapLayerDto ConvertToDto(this MapLayer mapLayer)
         {

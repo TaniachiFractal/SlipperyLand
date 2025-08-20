@@ -39,9 +39,14 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Levels\TestLevel.slipland" />
+    <None Include="Levels\Level1.slipland" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Res\ErrorText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorText.resx</DependentUpon>
+    </Compile>
     <Compile Include="Serialization\DtoConverter.cs" />
     <Compile Include="Serialization\Helpers\Base36Converter.cs" />
     <Compile Include="Serialization\Helpers\MapGridSerializationHelper.cs" />
@@ -58,8 +63,15 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Xml" />
+    <Reference Include="System" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Res\ErrorText.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Res\ErrorText.ru.resx" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

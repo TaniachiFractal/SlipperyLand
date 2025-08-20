@@ -23,5 +23,14 @@ namespace SlipperyLand.GameTypes
         /// </summary>
         public CharaLayer CharaLayer;
 
+        /// <summary>
+        /// The start cell row
+        /// </summary>
+        public int StartRow;
+
+        /// <summary>
+        /// The start cell col
+        /// </summary>
+        public int StartCol;
     }
 }

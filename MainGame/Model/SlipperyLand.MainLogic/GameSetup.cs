@@ -12,12 +12,12 @@ namespace SlipperyLand.MainLogic
         /// <summary>
         /// Setup the character layer
         /// </summary>
-        public static void Setup(this CharaLayer charaLayer, int spriteSize, int tileSize)
+        public static void Setup(this CharaLayer charaLayer, int startRow, int startCol, int spriteSize, int tileSize)
         {
             var mc = charaLayer.MainChara;
             mc.SetSpriteSize(spriteSize);
             mc.SetupHitbox();
-            mc.SetCharaRowColPos(1, 1, tileSize);
+            mc.SetCharaRowColPos(startRow, startCol, tileSize);
         }
 
         /// <summary>

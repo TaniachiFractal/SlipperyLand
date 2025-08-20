@@ -24,11 +24,5 @@ namespace SlipperyLand.GameTypes.Layers
         {
             MainChara.CharaLook = mainCharacter;
         }
-
-        /// <summary>
-        /// basic ctor
-        /// </summary>
-        public CharaLayer()
-        { }
     }
 }

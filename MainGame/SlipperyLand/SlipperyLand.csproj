@@ -113,8 +113,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>mkdir "Levels"
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>del /Q "Levels"
+rmdir "Levels"
+mkdir "Levels"
 
-xcopy /E /Y "$(SolutionDir)MainGame\Model\SlipperyLand.LevelMapper\Levels" "Levels"</PostBuildEvent>
+xcopy /E /Y "$(SolutionDir)MainGame\Model\SlipperyLand.LevelMapper\Levels" "Levels"</PreBuildEvent>
   </PropertyGroup>
 </Project>
