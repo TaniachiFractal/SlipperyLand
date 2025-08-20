@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using SlipperyLand.GameTypes;
 using SlipperyLand.GameTypes.Cells.Chara;
 using SlipperyLand.GameTypes.Extensions;
 using SlipperyLand.GameTypes.Layers;
@@ -45,11 +46,11 @@ namespace SlipperyLand.GraphicsEngine
         /// <summary>
         /// ctor
         /// </summary>
-        public GraphicsRenderer(MapLayer mapLayer, MapTileSetType mapTileSetType, CharaLayer charaLayer)
+        public GraphicsRenderer(Level level)
         {
-            this.mapLayer = mapLayer;
-            this.charaLayer = charaLayer;
-            mapTileSet = MapTileSetDict.Get(mapTileSetType);
+            mapLayer = level.MapLayer;
+            charaLayer = level.CharaLayer;
+            mapTileSet = MapTileSetDict.Get(level.MapTileSetType);
             tileSize = mapTileSet.TileSize;
 
             height = mapLayer.Rows * tileSize;

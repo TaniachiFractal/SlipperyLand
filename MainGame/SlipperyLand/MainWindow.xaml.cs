@@ -4,6 +4,7 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using SlipperyLand.Contracts;
 using SlipperyLand.ViewModel;
 
 namespace SlipperyLand
@@ -25,9 +26,16 @@ namespace SlipperyLand
             this.viewModel = viewModel;
             DataContext = viewModel;
 
+            viewModel.GameOver += ViewModel_GameOver;
+
             keyboardTimer.AutoReset = true;
             keyboardTimer.Elapsed += KeyboardTimer_Elapsed;
             keyboardTimer.Start();
+        }
+
+        private void ViewModel_GameOver(object sender, EventArgs e)
+        {
+            Dispatcher.Invoke(() => Close());
         }
 
         #region keyboard
@@ -91,7 +99,7 @@ namespace SlipperyLand
         private void FadeAnimation(double from, double to, EventHandler completed = null)
         {
             static DoubleAnimation NewAnim(double from, double to)
-                => new(from, to, new Duration(TimeSpan.FromMilliseconds(700)));
+                => new(from, to, new Duration(TimeSpan.FromMilliseconds(500)));
 
             var opacityFade = NewAnim(from, to);
             if (completed != null)

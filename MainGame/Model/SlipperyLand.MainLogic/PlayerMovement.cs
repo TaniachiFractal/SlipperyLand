@@ -32,6 +32,12 @@ namespace SlipperyLand.MainLogic
         private static CharaCell futureHeroY;
         private static CharaCell futureHeroX;
         private static Vector2 oldDirection = new();
+        private static bool playing = true;
+
+        /// <summary>
+        /// Stop invoking <see cref="OnWinCell"/> event
+        /// </summary>
+        public static void GameOver() => playing = false;
 
         /// <summary>
         /// Update the hero
@@ -163,12 +169,10 @@ namespace SlipperyLand.MainLogic
             return GetDirection(ks);
         }
 
-        private static bool playing = true;
         private static void CheckWin(SetOfMapInters inters)
         {
             if (playing && inters.HasEnd() && oldDirection.IsZero())
             {
-                playing = false;
                 OnWinCell?.Invoke(null, EventArgs.Empty);
             }
         }

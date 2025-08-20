@@ -1,8 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using SlipperyLand.Common.Types;
 using SlipperyLand.Contracts;
 using SlipperyLand.GameTypes;
-using SlipperyLand.GameTypes.Cells.Chara;
 using SlipperyLand.GraphicsEngine;
 
 namespace SlipperyLand.ViewModel
@@ -16,6 +17,11 @@ namespace SlipperyLand.ViewModel
         /// The image of the game field
         /// </summary>
         public Bitmap GameImage => renderer.GetGameImage();
+
+        /// <summary>
+        /// Invoked upon ending the game
+        /// </summary>
+        public event EventHandler<EventArgs> GameOver;
 
         #region keyboard state
 
@@ -78,37 +84,11 @@ namespace SlipperyLand.ViewModel
         #endregion
 
         private readonly IDialogProvider dialogProvider;
-        private readonly IApplication application;
 
-        private readonly GraphicsRenderer renderer;
+        private GraphicsRenderer renderer;
 
-        #region cols rows
-
-        private int cols, rows;
-
-        /// <summary>
-        /// Col count of the field
-        /// </summary>
-        public int Cols
-        {
-            get => cols;
-            set => cols = value;
-        }
-
-        /// <summary>
-        /// Row count of the field
-        /// </summary>
-        public int Rows
-        {
-            get => rows;
-            set => rows = value;
-        }
-
-        #endregion
-
-        private readonly Level level;
-
-        private CharaCell MainChara => level.CharaLayer.MainChara;
-
+        private readonly IReadOnlyList<Level> levels;
+        private int currLevelId;
+        private Level level;
     }
 }

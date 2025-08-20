@@ -79,6 +79,15 @@ namespace SlipperyLand.Common.Res {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VICTORY!.
+        /// </summary>
+        public static string Victory {
+            get {
+                return ResourceManager.GetString("Victory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WARNING.
         /// </summary>
         public static string Warning {

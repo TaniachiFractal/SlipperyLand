@@ -33,6 +33,5 @@
         /// <remarks>With a custom title</remarks>
         void ShowInfoMessage(string message, string title);
 
-
     }
 }
