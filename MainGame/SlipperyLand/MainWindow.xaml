@@ -64,6 +64,12 @@
         </ResourceDictionary>
     </Window.Resources>
 
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding ResetLevelCommand}"
+                    Key="R"
+                    Modifiers="Control" />
+    </Window.InputBindings>
+
     <Grid>
         <Grid Margin="3">
 

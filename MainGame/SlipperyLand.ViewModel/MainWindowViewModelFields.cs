@@ -104,5 +104,7 @@ namespace SlipperyLand.ViewModel
         private readonly IReadOnlyList<Level> levels;
         private int currLevelId;
         private Level level;
+
+        private int tileSize;
     }
 }

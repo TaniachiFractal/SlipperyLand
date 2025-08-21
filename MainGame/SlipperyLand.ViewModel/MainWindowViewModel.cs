@@ -57,15 +57,16 @@ namespace SlipperyLand.ViewModel
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
 
+            ResetLevelCommand = new NoParamCommand(ResetLevel);
+
             BP.Released += BP_Released;
             BP.BreakpointSet += BP_BreakpointSet;
-
         }
 
         private void LoadNewLevel()
         {
             level = levels[currLevelId];
-            var tileSize = MapTileSetDict.Get(level.MapTileSetType).TileSize;
+            tileSize = MapTileSetDict.Get(level.MapTileSetType).TileSize;
             var spriteSize = CharaSpriteSetDict.Get(level.CharaLayer.MainChara.CharaLook).TileSize;
             level.CharaLayer.Setup(level.StartRow, level.StartCol, spriteSize, tileSize);
             PlayerMovement.TileSize = tileSize;

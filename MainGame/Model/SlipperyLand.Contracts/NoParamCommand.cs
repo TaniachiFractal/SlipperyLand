@@ -13,7 +13,7 @@ namespace SlipperyLand.Contracts
         private readonly Predicate<object?>? canExecute;
 
         /// <summary>
-        /// Constructor for <see cref="NoParamCommand"/>
+        /// ctor
         /// </summary>
         public NoParamCommand(Action execute, Predicate<object?>? canExecute = null)
         {

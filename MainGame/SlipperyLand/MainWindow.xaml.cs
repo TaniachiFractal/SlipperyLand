@@ -20,10 +20,10 @@ namespace SlipperyLand
         /// </summary>
         public MainWindow(MainWindowViewModel viewModel)
         {
-            InitializeComponent();
-
             this.viewModel = viewModel;
             DataContext = viewModel;
+
+            InitializeComponent();
 
             viewModel.GameOver += ViewModel_GameOver;
             viewModel.SwithingLevels += ViewModel_SwithingLevels;
@@ -32,6 +32,10 @@ namespace SlipperyLand
             keyboardTimer.AutoReset = true;
             keyboardTimer.Elapsed += KeyboardTimer_Elapsed;
             keyboardTimer.Start();
+
+            //var com = new RoutedCommand();
+            //CommandBindings.Add(new(com, (s, _) => viewModel.ResetLevelCommand.Execute()));
+            //InputBindings.Add(new KeyBinding(com, new(Key.R, ModifierKeys.Control)));
         }
 
         private void ViewModel_SwitchedLevels(object sender, EventArgs e)
