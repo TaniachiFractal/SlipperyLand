@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 using SlipperyLand.Common.Types;
 using SlipperyLand.Contracts;
 using SlipperyLand.GameTypes;
@@ -22,6 +23,16 @@ namespace SlipperyLand.ViewModel
         /// Invoked upon ending the game
         /// </summary>
         public event EventHandler<EventArgs> GameOver;
+
+        /// <summary>
+        /// Invoked upon switching the level
+        /// </summary>
+        public event EventHandler<EventArgs> SwithingLevels;
+
+        /// <summary>
+        /// Invoked upon having switched the level
+        /// </summary>
+        public event EventHandler<EventArgs> SwitchedLevels;
 
         #region keyboard state
 
@@ -82,6 +93,9 @@ namespace SlipperyLand.ViewModel
         private KeyboardState KeyboardState => new() { LeftKeyDown = LeftKeyDown, DownKeyDown = DownKeyDown, RightKeyDown = RightKeyDown, UpKeyDown = UpKeyDown };
 
         #endregion
+
+        private const int FrameRate = 25;
+        private readonly Timer timer = null;
 
         private readonly IDialogProvider dialogProvider;
 

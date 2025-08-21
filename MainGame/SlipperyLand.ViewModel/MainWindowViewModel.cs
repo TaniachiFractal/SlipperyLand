@@ -15,9 +15,6 @@ namespace SlipperyLand.ViewModel
     /// </summary>
     public partial class MainWindowViewModel : NotifyPropertyChanged
     {
-        private const int FrameRate = 25;
-        private readonly Timer timer = null;
-
         /// <summary>
         /// ctor
         /// </summary>
@@ -87,8 +84,12 @@ namespace SlipperyLand.ViewModel
             }
             else
             {
-                level = levels[currLevelId];
+                timer.Change(-1, -1);
+                SwithingLevels?.Invoke(null, null);
                 LoadNewLevel();
+                level = levels[currLevelId];
+                timer.Change(0, FrameRate);
+                SwitchedLevels?.Invoke(null, null);
             }
         }
 

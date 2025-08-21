@@ -4,7 +4,6 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
-using SlipperyLand.Contracts;
 using SlipperyLand.ViewModel;
 
 namespace SlipperyLand
@@ -27,10 +26,22 @@ namespace SlipperyLand
             DataContext = viewModel;
 
             viewModel.GameOver += ViewModel_GameOver;
+            viewModel.SwithingLevels += ViewModel_SwithingLevels;
+            viewModel.SwitchedLevels += ViewModel_SwitchedLevels;
 
             keyboardTimer.AutoReset = true;
             keyboardTimer.Elapsed += KeyboardTimer_Elapsed;
             keyboardTimer.Start();
+        }
+
+        private void ViewModel_SwitchedLevels(object sender, EventArgs e)
+        {
+            Dispatcher.Invoke(() => FadeAnimation(0, 1));
+        }
+
+        private void ViewModel_SwithingLevels(object sender, EventArgs e)
+        {
+            Dispatcher.Invoke(() => FadeAnimation(1, 0));
         }
 
         private void ViewModel_GameOver(object sender, EventArgs e)
@@ -99,7 +110,7 @@ namespace SlipperyLand
         private void FadeAnimation(double from, double to, EventHandler completed = null)
         {
             static DoubleAnimation NewAnim(double from, double to)
-                => new(from, to, new Duration(TimeSpan.FromMilliseconds(500)));
+                => new(from, to, new Duration(TimeSpan.FromMilliseconds(300)));
 
             var opacityFade = NewAnim(from, to);
             if (completed != null)
