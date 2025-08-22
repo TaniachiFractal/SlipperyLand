@@ -32,10 +32,6 @@ namespace SlipperyLand
             keyboardTimer.AutoReset = true;
             keyboardTimer.Elapsed += KeyboardTimer_Elapsed;
             keyboardTimer.Start();
-
-            //var com = new RoutedCommand();
-            //CommandBindings.Add(new(com, (s, _) => viewModel.ResetLevelCommand.Execute()));
-            //InputBindings.Add(new KeyBinding(com, new(Key.R, ModifierKeys.Control)));
         }
 
         private void ViewModel_SwitchedLevels(object sender, EventArgs e)
@@ -107,6 +103,16 @@ namespace SlipperyLand
         private void ExitButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Close();
+        }
+
+        private void SettingsButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void HelpButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
 
         #region fade

@@ -14,6 +14,7 @@
         AllowsTransparency="True"
         FontFamily="Cascadia Mono"
         WindowStyle="None"
+        MinWidth="200"
         Background="Transparent"
         KeyDown="Window_KeyDown"
         KeyUp="Window_KeyUp"
@@ -27,7 +28,7 @@
 
             <conv:BitmapConverter x:Key="BitmapConverter" />
 
-            <Style x:Key="ExitButton"
+            <Style x:Key="TopButton"
                    TargetType="Label">
                 <Setter Property="Focusable"
                         Value="True" />
@@ -37,21 +38,42 @@
                         Value="Center" />
                 <Setter Property="VerticalContentAlignment"
                         Value="Center" />
-                <Setter Property="FontFamily"
-                        Value="Wingdings 2" />
-                <Setter Property="Content"
-                        Value="Î" />
                 <Setter Property="Width"
                         Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" />
-                <Setter Property="HorizontalAlignment"
-                        Value="Right" />
+            </Style>
+
+            <Style x:Key="ExitButton"
+                   TargetType="Label"
+                   BasedOn="{StaticResource TopButton}">
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver"
                              Value="True">
                         <Setter Property="Background"
                                 Value="Red" />
-                        <Setter Property="Content"
-                                Value="Ò" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="HelpButton"
+                   TargetType="Label"
+                   BasedOn="{StaticResource TopButton}">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver"
+                             Value="True">
+                        <Setter Property="Background"
+                                Value="DarkCyan" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="SettingsButton"
+                   TargetType="Label"
+                   BasedOn="{StaticResource TopButton}">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver"
+                             Value="True">
+                        <Setter Property="Background"
+                                Value="DarkGoldenrod" />
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -86,9 +108,32 @@
                 <Label Content="{x:Static res:Resources.AppName}"
                        Foreground="White"
                        VerticalAlignment="Center" />
-                <Label Name="ExitButton"
-                       Style="{StaticResource ExitButton}"
-                       MouseDown="ExitButton_MouseDown" />
+
+                <Grid HorizontalAlignment="Right">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="HelpButton"
+                           Grid.Column="0"
+                           Style="{StaticResource HelpButton}"
+                           Content="❓"
+                           MouseDown="HelpButton_MouseDown"
+                           ToolTip="Alt+F1" />
+                    <Label x:Name="SettingsButton"
+                           Grid.Column="1"
+                           Style="{StaticResource SettingsButton}"
+                           Content="⚙️"
+                           MouseDown="SettingsButton_MouseDown"
+                           ToolTip="Alt+F2" />
+                    <Label Grid.Column="2"
+                           Name="ExitButton"
+                           Style="{StaticResource ExitButton}"
+                           MouseDown="ExitButton_MouseDown"
+                           Content="❌"
+                           ToolTip="Alt+F4" />
+                </Grid>
             </Grid>
 
             <Grid Grid.Row="1"
