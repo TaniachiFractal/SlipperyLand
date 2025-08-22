@@ -2,12 +2,11 @@
 
 namespace SlipperyLand.Common.Types
 {
-#nullable enable
     /// <inheritdoc cref="INotifyPropertyChanged"/>
     public class NotifyPropertyChanged : INotifyPropertyChanged
     {
         /// <inheritdoc cref="PropertyChangedEventHandler"/>
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Invoke <see cref="PropertyChanged"/>

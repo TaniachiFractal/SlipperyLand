@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SlipperyLand.LevelMapper.Res {
+namespace SlipperyLand.TextResources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace SlipperyLand.LevelMapper.Res {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ErrorText {
+    public class ErrorRes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ErrorText() {
+        internal ErrorRes() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SlipperyLand.LevelMapper.Res {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SlipperyLand.LevelMapper.Res.ErrorText", typeof(ErrorText).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SlipperyLand.TextResources.ErrorRes", typeof(ErrorRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

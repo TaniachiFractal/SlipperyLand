@@ -5,10 +5,10 @@
     <LangVersion>12.0</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FDC61943-B2CF-4796-B1E1-1264277228B3}</ProjectGuid>
+    <ProjectGuid>{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SlipperyLand.GameTypes</RootNamespace>
-    <AssemblyName>SlipperyLand.GameTypes</AssemblyName>
+    <RootNamespace>SlipperyLand.Common</RootNamespace>
+    <AssemblyName>SlipperyLand.Common</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -23,7 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\SlipperyLand.GameTypes.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\SlipperyLand.Common.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,8 +33,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -43,26 +41,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cells\Chara\CharaCell.cs" />
-    <Compile Include="Cells\Chara\CharaCellStateType.cs" />
-    <Compile Include="Cells\Chara\CharaCellType.cs" />
-    <Compile Include="Cells\Map\MapCell.cs" />
-    <Compile Include="Cells\Map\MapCellType.cs" />
-    <Compile Include="Cells\Map\SetOfMapInters.cs" />
-    <Compile Include="Extensions\CharaExtensions.cs" />
-    <Compile Include="Extensions\MapExtensions.cs" />
-    <Compile Include="Extensions\SetOfMapIntersExtensions.cs" />
-    <Compile Include="Layers\CharaLayer.cs" />
-    <Compile Include="Layers\MapLayer.cs" />
-    <Compile Include="Level.cs" />
-    <Compile Include="TileSpriteSetTypes\CharaLook.cs" />
-    <Compile Include="TileSpriteSetTypes\MapTileSetType.cs" />
+    <Compile Include="BP.cs" />
+    <Compile Include="Extensions\CollectionsExtensions.cs" />
+    <Compile Include="Extensions\NumericsExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="RandomSh.cs" />
+    <Compile Include="Types\KeyboardState.cs" />
+    <Compile Include="Types\NotifyPropertyChanged.cs" />
+    <Compile Include="Types\SimpleRect.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\SlipperyLand.Common\SlipperyLand.Common.csproj">
-      <Project>{420e50b7-0a95-40e7-ae86-fa6d1039f0fe}</Project>
-      <Name>SlipperyLand.Common</Name>
-    </ProjectReference>
+    <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

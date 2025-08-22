@@ -50,7 +50,7 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SlipperyLand.Common\SlipperyLand.Common.csproj">
+    <ProjectReference Include="..\..\..\Common\SlipperyLand.Common\SlipperyLand.Common.csproj">
       <Project>{420e50b7-0a95-40e7-ae86-fa6d1039f0fe}</Project>
       <Name>SlipperyLand.Common</Name>
     </ProjectReference>

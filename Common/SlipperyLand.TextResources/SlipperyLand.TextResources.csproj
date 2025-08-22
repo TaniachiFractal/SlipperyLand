@@ -2,13 +2,12 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <LangVersion>12.0</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}</ProjectGuid>
+    <ProjectGuid>{7315B904-E47C-4851-AE15-7BBC273C62AD}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SlipperyLand.Common</RootNamespace>
-    <AssemblyName>SlipperyLand.Common</AssemblyName>
+    <RootNamespace>SlipperyLand.TextResources</RootNamespace>
+    <AssemblyName>SlipperyLand.TextResources</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -23,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\SlipperyLand.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\SlipperyLand.TextResources.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,32 +37,50 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BP.cs" />
-    <Compile Include="Extensions\CollectionsExtensions.cs" />
-    <Compile Include="Extensions\NumericsExtensions.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="RandomSh.cs" />
-    <Compile Include="Res\Res.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Res.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Types\KeyboardState.cs" />
-    <Compile Include="Types\NotifyPropertyChanged.cs" />
-    <Compile Include="Types\SimpleRect.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Res\Res.resx">
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DialogRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Res.Designer.cs</LastGenOutput>
+      <LastGenOutput>DialogRes.Designer.cs</LastGenOutput>  
     </EmbeddedResource>
-    <EmbeddedResource Include="Res\Res.ru.resx" />
+    <EmbeddedResource Include="DialogRes.ru.resx" >
+      <DependentUpon>DialogRes.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorRes.ru.resx" >
+      <DependentUpon>ErrorRes.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainRes.ru.resx" >
+      <DependentUpon>MainRes.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DialogRes.Designer.cs">
+      <DependentUpon>DialogRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ErrorRes.Designer.cs">
+      <DependentUpon>ErrorRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MainRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainRes.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

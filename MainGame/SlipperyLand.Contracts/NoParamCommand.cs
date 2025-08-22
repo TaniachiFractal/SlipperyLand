@@ -3,19 +3,18 @@ using System.Windows.Input;
 
 namespace SlipperyLand.Contracts
 {
-#nullable enable
     /// <summary>
     /// <see cref="ICommand"/> with no parameters
     /// </summary>
     public class NoParamCommand : ICommand
     {
         private readonly Action execute;
-        private readonly Predicate<object?>? canExecute;
+        private readonly Predicate<object> canExecute;
 
         /// <summary>
         /// ctor
         /// </summary>
-        public NoParamCommand(Action execute, Predicate<object?>? canExecute = null)
+        public NoParamCommand(Action execute, Predicate<object> canExecute = null)
         {
             this.execute = execute ?? throw new ArgumentNullException(nameof(execute));
             this.canExecute = canExecute;
@@ -25,13 +24,13 @@ namespace SlipperyLand.Contracts
         public void Execute()
             => execute();
 
-        bool ICommand.CanExecute(object? parameter)
+        bool ICommand.CanExecute(object parameter)
             => canExecute == null || canExecute(parameter);
 
-        void ICommand.Execute(object? parameter)
+        void ICommand.Execute(object parameter)
             => execute();
 
-        event EventHandler? ICommand.CanExecuteChanged
+        event EventHandler ICommand.CanExecuteChanged
         {
             add { }
             remove { }

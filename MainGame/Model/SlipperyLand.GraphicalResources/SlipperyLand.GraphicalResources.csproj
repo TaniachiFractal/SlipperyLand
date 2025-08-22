@@ -119,8 +119,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SlipperyLand.Common\SlipperyLand.Common.csproj">
-      <Project>{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}</Project>
+    <ProjectReference Include="..\..\..\Common\SlipperyLand.Common\SlipperyLand.Common.csproj">
+      <Project>{420e50b7-0a95-40e7-ae86-fa6d1039f0fe}</Project>
       <Name>SlipperyLand.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\SlipperyLand.GameTypes\SlipperyLand.GameTypes.csproj">

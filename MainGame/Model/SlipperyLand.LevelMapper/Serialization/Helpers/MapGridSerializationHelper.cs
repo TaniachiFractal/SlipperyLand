@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using SlipperyLand.TextResources;
 using SlipperyLand.GameTypes.Cells.Map;
-using SlipperyLand.LevelMapper.Res;
 using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
 
 namespace SlipperyLand.LevelMapper.Serialization.Helpers
@@ -98,7 +98,7 @@ namespace SlipperyLand.LevelMapper.Serialization.Helpers
 
         private static MapCell ToMapCell(this string block, int row, int col)
         {
-            void throwEx() => throw new FormatException(string.Format(ErrorText.InvalidCellBlock, row, col));
+            void throwEx() => throw new FormatException(string.Format(ErrorRes.InvalidCellBlock, row, col));
 
             var nums = block.Split(Divider);
             if (!nums[0].TryFromBase36(out int num0))

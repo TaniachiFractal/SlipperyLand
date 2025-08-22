@@ -53,13 +53,13 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\SlipperyLand.Common\SlipperyLand.Common.csproj">
+    <ProjectReference Include="..\..\Common\SlipperyLand.Common\SlipperyLand.Common.csproj">
       <Project>{420e50b7-0a95-40e7-ae86-fa6d1039f0fe}</Project>
       <Name>SlipperyLand.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model\SlipperyLand.Contracts\SlipperyLand.Contracts.csproj">
-      <Project>{b452ac80-2fdb-48de-9234-3c5c99d34ee0}</Project>
-      <Name>SlipperyLand.Contracts</Name>
+    <ProjectReference Include="..\..\Common\SlipperyLand.TextResources\SlipperyLand.TextResources.csproj">
+      <Project>{7315b904-e47c-4851-ae15-7bbc273c62ad}</Project>
+      <Name>SlipperyLand.TextResources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\SlipperyLand.GameTypes\SlipperyLand.GameTypes.csproj">
       <Project>{fdc61943-b2cf-4796-b1e1-1264277228b3}</Project>
@@ -80,6 +80,10 @@
     <ProjectReference Include="..\Model\SlipperyLand.MainLogic\SlipperyLand.MainLogic.csproj">
       <Project>{b660bb9a-8aaa-4208-9c1f-9746e10b0c04}</Project>
       <Name>SlipperyLand.MainLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SlipperyLand.Contracts\SlipperyLand.Contracts.csproj">
+      <Project>{b452ac80-2fdb-48de-9234-3c5c99d34ee0}</Project>
+      <Name>SlipperyLand.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

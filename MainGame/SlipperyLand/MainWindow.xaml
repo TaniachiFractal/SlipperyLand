@@ -6,10 +6,10 @@
         xmlns:conv="clr-namespace:SlipperyLand.Converters"
         xmlns:local="clr-namespace:SlipperyLand"
         xmlns:viewmodel="clr-namespace:SlipperyLand.ViewModel;assembly=SlipperyLand.ViewModel"
-        xmlns:res="clr-namespace:SlipperyLand.Properties"
+        xmlns:txt="clr-namespace:SlipperyLand.TextResources;assembly=SlipperyLand.TextResources"
         d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"
-        Title="{x:Static res:Resources.AppName}"
+        Title="{x:Static txt:MainRes.AppName}"
         ResizeMode="NoResize"
         AllowsTransparency="True"
         FontFamily="Cascadia Mono"
@@ -105,7 +105,7 @@
                   MouseDown="TopGrid_MouseDown"
                   Loaded="TopGrid_Loaded">
                 <Rectangle Fill="#55000000" />
-                <Label Content="{x:Static res:Resources.AppName}"
+                <Label Content="{x:Static txt:MainRes.AppName}"
                        Foreground="White"
                        VerticalAlignment="Center" />
 

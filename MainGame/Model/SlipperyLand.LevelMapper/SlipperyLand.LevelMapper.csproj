@@ -42,11 +42,6 @@
     <None Include="Levels\Level1.slipland" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Res\ErrorText.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ErrorText.resx</DependentUpon>
-    </Compile>
     <Compile Include="Serialization\DtoConverter.cs" />
     <Compile Include="Serialization\Helpers\Base36Converter.cs" />
     <Compile Include="Serialization\Helpers\MapGridSerializationHelper.cs" />
@@ -56,6 +51,10 @@
     <Compile Include="Serialization\SerializableTypes\MapLayerDto.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\SlipperyLand.TextResources\SlipperyLand.TextResources.csproj">
+      <Project>{7315b904-e47c-4851-ae15-7bbc273c62ad}</Project>
+      <Name>SlipperyLand.TextResources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SlipperyLand.GameTypes\SlipperyLand.GameTypes.csproj">
       <Project>{fdc61943-b2cf-4796-b1e1-1264277228b3}</Project>
       <Name>SlipperyLand.GameTypes</Name>
@@ -64,13 +63,6 @@
   <ItemGroup>
     <Reference Include="System.Xml" />
     <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Res\ErrorText.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ErrorText.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Res\ErrorText.ru.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

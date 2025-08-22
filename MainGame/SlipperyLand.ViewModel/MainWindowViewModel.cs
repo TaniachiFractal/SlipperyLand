@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 using SlipperyLand.Common;
+using SlipperyLand.TextResources;
 using SlipperyLand.Common.Types;
 using SlipperyLand.Contracts;
 using SlipperyLand.GraphicalResources.Characters;
@@ -80,7 +81,7 @@ namespace SlipperyLand.ViewModel
             {
                 timer.Dispose();
                 PlayerMovement.GameOver();
-                dialogProvider.ShowInfoMessage(Common.Res.Res.Victory);
+                dialogProvider.ShowInfoMessage(DialogRes.Victory);
                 GameOver?.Invoke(null, null);
             }
             else

@@ -4,7 +4,7 @@ using System.IO;
 using SlipperyLand.Contracts;
 using SlipperyLand.GameTypes;
 using SlipperyLand.LevelMapper.Serialization;
-using SlipperyLand.LevelMapper.Res;
+using SlipperyLand.TextResources;
 
 namespace SlipperyLand.ViewModel
 {
@@ -41,7 +41,7 @@ namespace SlipperyLand.ViewModel
             }
             if (errors.Length > 0)
             {
-                dialogProvider.ShowErrorMessage(ErrorText.ErrorsInLevelFiles + "\n" + errors);
+                dialogProvider.ShowErrorMessage(ErrorRes.ErrorsInLevelFiles + "\n" + errors);
                 application.Close();
             }
             return levels;
