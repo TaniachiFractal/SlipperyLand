@@ -18,7 +18,7 @@ namespace SlipperyLand.Windows
         /// <summary>
         /// ctor
         /// </summary>
-        public MainWindow(MainWindowViewModel viewModel)
+        public MainWindow(MainWindowViewModel viewModel, GameControllerHandler gameControllerHandler)
         {
             this.viewModel = viewModel;
             DataContext = viewModel;
@@ -29,10 +29,13 @@ namespace SlipperyLand.Windows
             viewModel.SwithingLevels += ViewModel_SwithingLevels;
             viewModel.SwitchedLevels += ViewModel_SwitchedLevels;
 
+            gameControllerHandler.ControllerStateChanged += GameControllerHandler_ControllerStateChanged;
+
             keyboardTimer.AutoReset = true;
             keyboardTimer.Elapsed += KeyboardTimer_Elapsed;
             keyboardTimer.Start();
         }
+
 
         private void ViewModel_SwitchedLevels(object sender, EventArgs e)
         {
@@ -83,6 +86,11 @@ namespace SlipperyLand.Windows
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
             pressedKeys.Remove(e.Key);
+        }
+
+        private void GameControllerHandler_ControllerStateChanged(object sender, ControllerInput.ControllerStateEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

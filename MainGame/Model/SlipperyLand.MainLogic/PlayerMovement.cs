@@ -20,7 +20,7 @@ namespace SlipperyLand.MainLogic
         /// <summary>
         /// Invoked upon reaching a win cell
         /// </summary>
-        public static event EventHandler<EventArgs> OnWinCell;
+        public static event EventHandler OnWinCell;
 
         /// <summary>
         /// The map tile size
