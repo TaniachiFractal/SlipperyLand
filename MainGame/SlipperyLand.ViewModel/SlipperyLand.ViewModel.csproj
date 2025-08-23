@@ -73,13 +73,13 @@
       <Project>{2f896fd5-d483-443d-9cc2-62e28bd0b8d7}</Project>
       <Name>SlipperyLand.GraphicsEngine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model\SlipperyLand.LevelMapper\SlipperyLand.LevelMapper.csproj">
-      <Project>{a19db0eb-7d68-4a54-9f6c-9fa6fe00e66a}</Project>
-      <Name>SlipperyLand.LevelMapper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Model\SlipperyLand.MainLogic\SlipperyLand.MainLogic.csproj">
       <Project>{b660bb9a-8aaa-4208-9c1f-9746e10b0c04}</Project>
       <Name>SlipperyLand.MainLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\SlipperyLand.Serialization\SlipperyLand.Serialization.csproj">
+      <Project>{a19db0eb-7d68-4a54-9f6c-9fa6fe00e66a}</Project>
+      <Name>SlipperyLand.Serialization</Name>
     </ProjectReference>
     <ProjectReference Include="..\SlipperyLand.Contracts\SlipperyLand.Contracts.csproj">
       <Project>{b452ac80-2fdb-48de-9234-3c5c99d34ee0}</Project>

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Xml;
 using SlipperyLand.TextResources;
 using SlipperyLand.GameTypes.Cells.Map;
-using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
+using SlipperyLand.Serialization.LevelMapper.SerializableTypes;
 
-namespace SlipperyLand.LevelMapper.Serialization.Helpers
+namespace SlipperyLand.Serialization.LevelMapper.Helpers
 {
     /// <summary>
     /// Serialization helper for <see cref="MapGrid"/>

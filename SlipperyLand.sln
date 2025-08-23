@@ -24,8 +24,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.GraphicsEngine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.MainLogic", "MainGame\Model\SlipperyLand.MainLogic\SlipperyLand.MainLogic.csproj", "{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.LevelMapper", "MainGame\Model\SlipperyLand.LevelMapper\SlipperyLand.LevelMapper.csproj", "{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.Contracts", "MainGame\SlipperyLand.Contracts\SlipperyLand.Contracts.csproj", "{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4711F8B7-2D63-41C9-8082-6C70E000A2D0}"
@@ -33,6 +31,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.Common", "Common\SlipperyLand.Common\SlipperyLand.Common.csproj", "{420E50B7-0A95-40E7-AE86-FA6D1039F0FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.TextResources", "Common\SlipperyLand.TextResources\SlipperyLand.TextResources.csproj", "{7315B904-E47C-4851-AE15-7BBC273C62AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipperyLand.Serialization", "MainGame\Model\SlipperyLand.Serialization\SlipperyLand.Serialization.csproj", "{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,10 +64,6 @@ Global
 		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B452AC80-2FDB-48DE-9234-3C5C99D34EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -80,6 +76,10 @@ Global
 		{7315B904-E47C-4851-AE15-7BBC273C62AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7315B904-E47C-4851-AE15-7BBC273C62AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7315B904-E47C-4851-AE15-7BBC273C62AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,10 +92,10 @@ Global
 		{4F9ACF11-EB9C-4396-A64F-E1191F3129CC} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
 		{2F896FD5-D483-443D-9CC2-62E28BD0B8D7} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
 		{B660BB9A-8AAA-4208-9C1F-9746E10B0C04} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
-		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
 		{B452AC80-2FDB-48DE-9234-3C5C99D34EE0} = {E9524D95-DDBF-4CF5-8EF2-5EDCAE50F2E7}
 		{420E50B7-0A95-40E7-AE86-FA6D1039F0FE} = {4711F8B7-2D63-41C9-8082-6C70E000A2D0}
 		{7315B904-E47C-4851-AE15-7BBC273C62AD} = {4711F8B7-2D63-41C9-8082-6C70E000A2D0}
+		{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A} = {03D292CF-8D5C-4052-8FE0-8BA89DAAA8DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {029D3E1C-1F09-4364-B8A0-29C51E516B24}

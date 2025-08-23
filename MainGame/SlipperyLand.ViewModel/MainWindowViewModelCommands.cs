@@ -3,7 +3,6 @@ using SlipperyLand.GameTypes.Extensions;
 
 namespace SlipperyLand.ViewModel
 {
-#nullable enable
     /// <summary>
     /// The commands for <see cref="MainWindowViewModel"/>
     /// </summary>
@@ -15,6 +14,16 @@ namespace SlipperyLand.ViewModel
         /// Restart the level from the start cell
         /// </summary>
         public NoParamCommand ResetLevelCommand { get; private set; }
+
+        /// <summary>
+        /// Open the settings window
+        /// </summary>
+        public NoParamCommand OpenSettingsCommand { get; private set; }
+
+        /// <summary>
+        /// Open the help window
+        /// </summary>
+        public NoParamCommand OpenHelpCommand { get; private set; }
 
         #endregion
 

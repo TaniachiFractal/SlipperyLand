@@ -19,9 +19,12 @@ namespace SlipperyLand.ViewModel
         /// <summary>
         /// ctor
         /// </summary>
-        public MainWindowViewModel(IDialogProvider dialogProvider, IApplication application)
+        public MainWindowViewModel(IDialogProvider dialogProvider, IWindowProvider windowProvider, IApplication application)
         {
             this.dialogProvider = dialogProvider;
+            this.windowProvider = windowProvider;
+
+            LoadCommands();
 
             levels = LevelLoader.GetLevels(dialogProvider, application);
             currLevelId = 0;
@@ -58,10 +61,15 @@ namespace SlipperyLand.ViewModel
 
             timer = new Timer(TimerProc, null, 0, FrameRate);
 
-            ResetLevelCommand = new NoParamCommand(ResetLevel);
-
             BP.Released += BP_Released;
             BP.BreakpointSet += BP_BreakpointSet;
+        }
+
+        private void LoadCommands()
+        {
+            ResetLevelCommand = new NoParamCommand(ResetLevel);
+            OpenSettingsCommand = new NoParamCommand(windowProvider.OpenSettings);
+            OpenHelpCommand = new NoParamCommand(windowProvider.OpenHelp);
         }
 
         private void LoadNewLevel()

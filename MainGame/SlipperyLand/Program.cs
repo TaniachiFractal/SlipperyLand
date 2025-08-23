@@ -1,6 +1,7 @@
 ﻿using System;
 using SlipperyLand.Providers;
 using SlipperyLand.ViewModel;
+using SlipperyLand.Windows;
 
 namespace SlipperyLand
 {
@@ -14,8 +15,9 @@ namespace SlipperyLand
         {
             var app = new App();
             var dialogProvider = new DialogProvider();
-            var mainWindowModel = new MainWindowViewModel(dialogProvider, app);
-            var mainWindow = new MainWindow(mainWindowModel);
+            var windowProvider = new WindowProvider();
+            var mainWindowViewModel = new MainWindowViewModel(dialogProvider, windowProvider, app);
+            var mainWindow = new MainWindow(mainWindowViewModel);
             app.Run(mainWindow);
         }
     }

@@ -3,9 +3,9 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using SlipperyLand.GameTypes;
-using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
+using SlipperyLand.Serialization.LevelMapper.SerializableTypes;
 
-namespace SlipperyLand.LevelMapper.Serialization
+namespace SlipperyLand.Serialization.LevelMapper
 {
     /// <summary>
     /// Serialization and Deserialization of <see cref="Level"/>

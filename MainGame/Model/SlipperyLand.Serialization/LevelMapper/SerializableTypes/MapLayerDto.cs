@@ -1,6 +1,6 @@
 ﻿using SlipperyLand.GameTypes.Layers;
 
-namespace SlipperyLand.LevelMapper.Serialization.SerializableTypes
+namespace SlipperyLand.Serialization.LevelMapper.SerializableTypes
 {
     /// <summary>
     /// A <see cref="MapLayer"/> data transfer object 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using SlipperyLand.Contracts;
 using SlipperyLand.GameTypes;
-using SlipperyLand.LevelMapper.Serialization;
+using SlipperyLand.Serialization.LevelMapper;
 using SlipperyLand.TextResources;
 
 namespace SlipperyLand.ViewModel

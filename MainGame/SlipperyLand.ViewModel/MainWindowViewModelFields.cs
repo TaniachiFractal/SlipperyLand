@@ -19,6 +19,8 @@ namespace SlipperyLand.ViewModel
         /// </summary>
         public Bitmap GameImage => renderer.GetGameImage();
 
+        #region events
+
         /// <summary>
         /// Invoked upon ending the game
         /// </summary>
@@ -33,6 +35,8 @@ namespace SlipperyLand.ViewModel
         /// Invoked upon having switched the level
         /// </summary>
         public event EventHandler<EventArgs> SwitchedLevels;
+
+        #endregion
 
         #region keyboard state
 
@@ -98,6 +102,7 @@ namespace SlipperyLand.ViewModel
         private readonly Timer timer = null;
 
         private readonly IDialogProvider dialogProvider;
+        private readonly IWindowProvider windowProvider;
 
         private GraphicsRenderer renderer;
 

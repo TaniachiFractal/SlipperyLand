@@ -1,7 +1,7 @@
 ﻿using SlipperyLand.GameTypes;
 using SlipperyLand.GameTypes.TileSpriteSetTypes;
 
-namespace SlipperyLand.LevelMapper.Serialization.SerializableTypes
+namespace SlipperyLand.Serialization.LevelMapper.SerializableTypes
 {
     /// <summary>
     /// A data transfer object for XML representation of <see cref="Level"/>

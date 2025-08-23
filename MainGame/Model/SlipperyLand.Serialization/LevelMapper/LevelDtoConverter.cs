@@ -1,15 +1,14 @@
-﻿using System;
-using SlipperyLand.GameTypes;
+﻿using SlipperyLand.GameTypes;
 using SlipperyLand.GameTypes.Extensions;
 using SlipperyLand.GameTypes.Layers;
-using SlipperyLand.LevelMapper.Serialization.SerializableTypes;
+using SlipperyLand.Serialization.LevelMapper.SerializableTypes;
 
-namespace SlipperyLand.LevelMapper.Serialization
+namespace SlipperyLand.Serialization.LevelMapper
 {
     /// <summary>
-    /// Converts <see cref="MapLayer"/> to <see cref="MapLayerDto"/>
+    /// Converts <see cref="Level"/> to <see cref="LevelDto"/> and back
     /// </summary>
-    internal static class DtoConverter
+    internal static class LevelDtoConverter
     {
         /// <summary>
         /// Convert <see cref="LevelDto"/> to <see cref="Level"/>

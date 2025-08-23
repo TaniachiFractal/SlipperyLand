@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A19DB0EB-7D68-4A54-9F6C-9FA6FE00E66A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SlipperyLand.LevelMapper</RootNamespace>
-    <AssemblyName>SlipperyLand.LevelMapper</AssemblyName>
+    <RootNamespace>SlipperyLand.Serialization</RootNamespace>
+    <AssemblyName>SlipperyLand.Serialization</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -23,7 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\SlipperyLand.LevelMapper.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\SlipperyLand.Serialization.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,16 +39,16 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Levels\Level1.slipland" />
+    <None Include="LevelMapper\Levels\Level1.slipland" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Serialization\DtoConverter.cs" />
-    <Compile Include="Serialization\Helpers\Base36Converter.cs" />
-    <Compile Include="Serialization\Helpers\MapGridSerializationHelper.cs" />
-    <Compile Include="Serialization\LevelSerializer.cs" />
-    <Compile Include="Serialization\SerializableTypes\LevelDto.cs" />
-    <Compile Include="Serialization\SerializableTypes\MapGrid.cs" />
-    <Compile Include="Serialization\SerializableTypes\MapLayerDto.cs" />
+    <Compile Include="LevelMapper\LevelDtoConverter.cs" />
+    <Compile Include="LevelMapper\Helpers\Base36Converter.cs" />
+    <Compile Include="LevelMapper\Helpers\MapGridSerializationHelper.cs" />
+    <Compile Include="LevelMapper\LevelSerializer.cs" />
+    <Compile Include="LevelMapper\SerializableTypes\LevelDto.cs" />
+    <Compile Include="LevelMapper\SerializableTypes\MapGrid.cs" />
+    <Compile Include="LevelMapper\SerializableTypes\MapLayerDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\SlipperyLand.TextResources\SlipperyLand.TextResources.csproj">

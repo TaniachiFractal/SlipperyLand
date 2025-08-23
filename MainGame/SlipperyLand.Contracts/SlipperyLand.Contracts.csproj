@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="IApplication.cs" />
     <Compile Include="IDialogProvider.cs" />
+    <Compile Include="IWindowProvider.cs" />
     <Compile Include="NoParamCommand.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,9 +2,9 @@
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using SlipperyLand.GameTypes.Cells.Map;
-using SlipperyLand.LevelMapper.Serialization.Helpers;
+using SlipperyLand.Serialization.LevelMapper.Helpers;
 
-namespace SlipperyLand.LevelMapper.Serialization.SerializableTypes
+namespace SlipperyLand.Serialization.LevelMapper.SerializableTypes
 {
     /// <summary>
     /// An XML serializable grid of <see cref="MapCell"/>

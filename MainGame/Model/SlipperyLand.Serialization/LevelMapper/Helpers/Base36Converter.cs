@@ -1,4 +1,4 @@
-﻿namespace SlipperyLand.LevelMapper.Serialization.Helpers
+﻿namespace SlipperyLand.Serialization.LevelMapper.Helpers
 {
     /// <summary>
     /// Convert to base 36
