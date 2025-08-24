@@ -94,7 +94,7 @@ namespace SlipperyLand.ViewModel
             }
         }
 
-        private KeyboardState KeyboardState => new() { LeftKeyDown = LeftKeyDown, DownKeyDown = DownKeyDown, RightKeyDown = RightKeyDown, UpKeyDown = UpKeyDown };
+        private InputState InputState => new() { LeftKeyDown = LeftKeyDown, DownKeyDown = DownKeyDown, RightKeyDown = RightKeyDown, UpKeyDown = UpKeyDown };
 
         #endregion
 

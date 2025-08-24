@@ -10,7 +10,7 @@
         Up = 0,
         UpRight = 4500,
         Right = 9000,
-        RightDown = 13500,
+        DownRight = 13500,
         Down = 18000,
         DownLeft = 22500,
         Left = 27000,

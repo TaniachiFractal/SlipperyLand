@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Timers;
 using SharpDX.DirectInput;
@@ -7,19 +8,20 @@ using SlipperyLand.ControllerInput;
 namespace SlipperyLand
 {
     /// <summary>
-    /// Handles <see cref="SharpDX"/> controller input
+    /// Handles <see cref="DirectInput"/> controller input
     /// </summary>
     public class GameControllerHandler
     {
         /// <summary>
-        /// Invoked upon the change of the game controller state
+        /// Invoked when the state of the controller is changed
         /// </summary>
         public event EventHandler<ControllerStateEventArgs> ControllerStateChanged;
 
         private readonly DirectInput directInput;
-        private readonly Joystick controller;
+        private Joystick controller;
         private readonly Timer controllerTimer;
-        private readonly bool enabled = false;
+
+        private bool controllerConnected = false;
 
         /// <summary>
         /// ctor
@@ -27,78 +29,58 @@ namespace SlipperyLand
         public GameControllerHandler()
         {
             directInput = new();
-            try
-            {
-                controller = InitController();
-                enabled = true;
 
-                controllerTimer.AutoReset = true;
-                controllerTimer.Elapsed += ControllerTimer_Elapsed;
-                controllerTimer.Start();
-            }
-            catch (InvalidOperationException)
-            {
-                return;
-            }
+            controllerTimer = new Timer();
+            controllerTimer.Elapsed += ControllerTimer_Elapsed;
+            controllerTimer.Start();
         }
-
         private void ControllerTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             CheckControllerState();
         }
 
+        private ControllerStateEventArgs previousState;
         private void CheckControllerState()
         {
-            if (enabled)
+            if (controllerConnected)
             {
-                var controllerState = GetGamePadState();
-                if (IsDifferent(controllerState))
+                if (TryGetGamePadState(out var controllerState))
                 {
-                    ControllerStateChanged.Invoke(this, controllerState);
+                    if (controllerState != previousState)
+                    {
+                        ControllerStateChanged?.Invoke(this, controllerState);
+                        previousState = controllerState;
+                    }
                 }
+                else
+                {
+                    controllerConnected = false;
+                }
+            }
+            else
+            {
+                controllerConnected = TryInitController(out controller);
             }
         }
 
-        private const int StickChangedPositionMargin = 10000;
         private const int DefaultStickPosition = 32767;
 
-        private bool IsDifferent(ControllerStateEventArgs controllerState)
+        private bool TryGetGamePadState(out ControllerStateEventArgs controllerState)
         {
-            static int abs(int val) => Math.Abs(val);
-
-            if (controllerState == null)
+            controllerState = new ControllerStateEventArgs();
+            JoystickUpdate[] bufferedData;
+            JoystickState axesState;
+            try
+            {
+                controller.Poll();
+                bufferedData = controller.GetBufferedData();
+                axesState = controller.GetCurrentState();
+            }
+            catch (SharpDX.SharpDXException)
             {
                 return false;
             }
-            if (controllerState.Buttons.Count > 0)
-            {
-                return true;
-            }
-            if (controllerState.Direction != DpadDirection.None)
-            {
-                return true;
-            }
-            if (controllerState.L2 > 0 || controllerState.R2 > 0)
-            {
-                return true;
-            }
-            if (abs(controllerState.RX) > StickChangedPositionMargin ||
-                abs(controllerState.RY) > StickChangedPositionMargin ||
-                abs(controllerState.LX) > StickChangedPositionMargin ||
-                abs(controllerState.LY) > StickChangedPositionMargin
-                )
-            {
-                return true;
-            }
-            return false;
-        }
 
-        private ControllerStateEventArgs GetGamePadState()
-        {
-            var controllerState = new ControllerStateEventArgs();
-            controller.Poll();
-
-            var bufferedData = controller.GetBufferedData();
             foreach (var state in bufferedData)
             {
                 if (state.Offset >= JoystickOffset.Buttons0 && state.Offset <= JoystickOffset.Buttons13)
@@ -106,8 +88,6 @@ namespace SlipperyLand
                     controllerState.Buttons.Add((ControllerButton)state.Offset);
                 }
             }
-
-            var axesState = controller.GetCurrentState();
 
             controllerState.LX = axesState.X - DefaultStickPosition;
             controllerState.LY = axesState.Y - DefaultStickPosition;
@@ -120,27 +100,37 @@ namespace SlipperyLand
 
             controllerState.Direction = (DpadDirection)axesState.PointOfViewControllers.FirstOrDefault();
 
-            return controllerState;
+            return true;
         }
 
-        private Joystick InitController()
+        private bool TryInitController(out Joystick pad)
         {
-            var pad = new Joystick(directInput, GetControllerGuid());
-            pad.Properties.BufferSize = byte.MaxValue;
-            pad.Acquire();
-            return pad;
+            pad = null;
+            if (TryGetControllerGuid(out var padGuid))
+            {
+                pad = new Joystick(directInput, padGuid);
+                pad.Properties.BufferSize = byte.MaxValue;
+                pad.Acquire();
+                return true;
+            }
+            return false;
         }
 
-        private Guid GetControllerGuid()
+        private bool TryGetControllerGuid(out Guid padGuid)
         {
+            padGuid = Guid.Empty;
             var gameDevices = directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AttachedOnly);
             if (gameDevices == null || gameDevices.Count == 0)
             {
-                throw new InvalidOperationException();
+                return false;
             }
-            var gameDevice = gameDevices.FirstOrDefault() ?? throw new InvalidOperationException();
-            var padGuid = gameDevice.InstanceGuid;
-            return padGuid;
+            var gameDevice = gameDevices.FirstOrDefault();
+            if (gameDevice == null)
+            {
+                return false;
+            }
+            padGuid = gameDevice.InstanceGuid;
+            return true;
         }
 
     }

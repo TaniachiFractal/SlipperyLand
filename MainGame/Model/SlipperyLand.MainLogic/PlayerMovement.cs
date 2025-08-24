@@ -42,7 +42,7 @@ namespace SlipperyLand.MainLogic
         /// <summary>
         /// Update the hero
         /// </summary>
-        public static void UpdateHero(this CharaCell hero, MapLayer map, KeyboardState ks)
+        public static void UpdateHero(this CharaCell hero, MapLayer map, InputState inp)
         {
             void IfFutureNullCopyFromHero(ref CharaCell futureHero)
             {
@@ -55,26 +55,26 @@ namespace SlipperyLand.MainLogic
             IfFutureNullCopyFromHero(ref futureHeroX);
             IfFutureNullCopyFromHero(ref futureHeroY);
 
-            hero.RotateHero(ks);
-            hero.UpdateLocationOfHero(map, ks);
+            hero.RotateHero(inp);
+            hero.UpdateLocationOfHero(map, inp);
         }
 
-        private static void RotateHero(this CharaCell hero, KeyboardState ks)
+        private static void RotateHero(this CharaCell hero, InputState inp)
         {
-            if (ks.LeftKeyDown)
+            if (inp.LeftKeyDown)
                 hero.CharaState = CharaCellStateType.LookToLeft;
-            if (ks.RightKeyDown)
+            if (inp.RightKeyDown)
                 hero.CharaState = CharaCellStateType.LookToRight;
-            if (ks.UpKeyDown)
+            if (inp.UpKeyDown)
                 hero.CharaState = CharaCellStateType.LookBack;
-            if (ks.DownKeyDown)
+            if (inp.DownKeyDown)
                 hero.CharaState = CharaCellStateType.LookFront;
         }
 
-        private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, KeyboardState ks)
+        private static void UpdateLocationOfHero(this CharaCell hero, MapLayer map, InputState inp)
         {
             var heroInter = hero.GetIntersections(map, TileSize);
-            var direction = DetermineDirection(heroInter, ks);
+            var direction = DetermineDirection(heroInter, inp);
             var velocity = direction.GetVelocity();
 
             hero.CopyLocatDataTo(futureHeroX, xData: true);
@@ -109,17 +109,17 @@ namespace SlipperyLand.MainLogic
 
         #region direction and velocity
 
-        private static Vector2 GetDirection(KeyboardState ks)
+        private static Vector2 GetDirection(InputState inp)
         {
             var velocity = Vector2.Zero;
 
-            if (ks.LeftKeyDown)
+            if (inp.LeftKeyDown)
                 velocity.X--;
-            if (ks.RightKeyDown)
+            if (inp.RightKeyDown)
                 velocity.X++;
-            if (ks.UpKeyDown)
+            if (inp.UpKeyDown)
                 velocity.Y--;
-            if (ks.DownKeyDown)
+            if (inp.DownKeyDown)
                 velocity.Y++;
 
             if (velocity.X != 0 || velocity.Y != 0)
@@ -160,13 +160,13 @@ namespace SlipperyLand.MainLogic
             }
         }
 
-        private static Vector2 DetermineDirection(SetOfMapInters heroInter, KeyboardState ks)
+        private static Vector2 DetermineDirection(SetOfMapInters heroInter, InputState inp)
         {
             if (heroInter.HasSlip() && !oldDirection.IsZero())
             {
                 return oldDirection;
             }
-            return GetDirection(ks);
+            return GetDirection(inp);
         }
 
         private static void CheckWin(SetOfMapInters inters)

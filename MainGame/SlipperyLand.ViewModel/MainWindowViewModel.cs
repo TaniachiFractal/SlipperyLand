@@ -121,7 +121,7 @@ namespace SlipperyLand.ViewModel
 
         private void TimerProc(object State)
         {
-            level.CharaLayer.MainChara.UpdateHero(level.MapLayer, KeyboardState);
+            level.CharaLayer.MainChara.UpdateHero(level.MapLayer, InputState);
             PropertyHasChanged();
         }
     }

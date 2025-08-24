@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using SlipperyLand.ControllerInput;
 using SlipperyLand.ViewModel;
 
 namespace SlipperyLand.Windows
@@ -31,11 +33,10 @@ namespace SlipperyLand.Windows
 
             gameControllerHandler.ControllerStateChanged += GameControllerHandler_ControllerStateChanged;
 
-            keyboardTimer.AutoReset = true;
-            keyboardTimer.Elapsed += KeyboardTimer_Elapsed;
-            keyboardTimer.Start();
+            inputTimer.AutoReset = true;
+            inputTimer.Elapsed += InputTimer_Elapsed;
+            inputTimer.Start();
         }
-
 
         private void ViewModel_SwitchedLevels(object sender, EventArgs e)
         {
@@ -52,9 +53,9 @@ namespace SlipperyLand.Windows
             Dispatcher.Invoke(() => Close());
         }
 
-        #region keyboard
+        #region input
 
-        private readonly Timer keyboardTimer = new(10);
+        private readonly Timer inputTimer = new(10);
 
         private readonly HashSet<Key> pressedKeys = [];
 
@@ -65,7 +66,7 @@ namespace SlipperyLand.Windows
         private readonly static HashSet<Key> rightKeys = [Key.Right, Key.D];
         #endregion
 
-        private void KeyboardTimer_Elapsed(object sender, ElapsedEventArgs e)
+        private void InputTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             viewModel.UpKeyDown = pressedKeys.Overlaps(upKeys);
             viewModel.DownKeyDown = pressedKeys.Overlaps(downKeys);
@@ -88,9 +89,14 @@ namespace SlipperyLand.Windows
             pressedKeys.Remove(e.Key);
         }
 
-        private void GameControllerHandler_ControllerStateChanged(object sender, ControllerInput.ControllerStateEventArgs e)
+        private void GameControllerHandler_ControllerStateChanged(object sender, ControllerStateEventArgs e)
         {
-            throw new NotImplementedException();
+            var keys = e.ToKeyboardKeySet();
+            pressedKeys.Clear();
+            foreach (var key in keys)
+            {
+                pressedKeys.Add(key);
+            }
         }
 
         #endregion
