@@ -29,7 +29,7 @@ namespace SlipperyLand.ViewModel
         /// <summary>
         /// Invoked upon switching the level
         /// </summary>
-        public event EventHandler SwithingLevels;
+        public event EventHandler SwitchingLevels;
 
         /// <summary>
         /// Invoked upon having switched the level

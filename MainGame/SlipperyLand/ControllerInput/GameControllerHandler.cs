@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Timers;
 using SharpDX.DirectInput;
@@ -34,6 +33,7 @@ namespace SlipperyLand
             controllerTimer.Elapsed += ControllerTimer_Elapsed;
             controllerTimer.Start();
         }
+
         private void ControllerTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             CheckControllerState();

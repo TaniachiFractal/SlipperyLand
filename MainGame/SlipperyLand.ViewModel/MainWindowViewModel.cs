@@ -95,7 +95,7 @@ namespace SlipperyLand.ViewModel
             else
             {
                 timer.Change(-1, -1);
-                SwithingLevels?.Invoke(null, null);
+                SwitchingLevels?.Invoke(null, null);
                 LoadNewLevel();
                 level = levels[currLevelId];
                 timer.Change(0, FrameRate);

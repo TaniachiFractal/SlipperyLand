@@ -28,7 +28,7 @@ namespace SlipperyLand.Windows
             InitializeComponent();
 
             viewModel.GameOver += ViewModel_GameOver;
-            viewModel.SwithingLevels += ViewModel_SwithingLevels;
+            viewModel.SwitchingLevels += ViewModel_SwithingLevels;
             viewModel.SwitchedLevels += ViewModel_SwitchedLevels;
 
             gameControllerHandler.ControllerStateChanged += GameControllerHandler_ControllerStateChanged;
