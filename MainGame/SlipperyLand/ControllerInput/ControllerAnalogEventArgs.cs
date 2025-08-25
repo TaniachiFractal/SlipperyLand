@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SlipperyLand.ControllerInput
+﻿namespace SlipperyLand.ControllerInput
 {
     /// <summary>
-    /// State of a controller for arguments of an event
+    /// Event arguments for analog input from a controller
     /// </summary>
-    public class ControllerStateEventArgs : EventArgs
+    public class ControllerAnalogEventArgs
     {
-        /// <summary>
-        /// <see cref="HashSet{T}"/> of <see cref="ControllerButton"/>s
-        /// </summary>
-        public HashSet<ControllerButton> Buttons = [];
-
-        /// <inheritdoc cref="DpadDirection"/>
-        public DpadDirection Direction = DpadDirection.None;
-
         /// <summary>
         /// X value of the left stick
         /// </summary>

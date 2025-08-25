@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
 using SharpDX.DirectInput;
@@ -12,9 +13,24 @@ namespace SlipperyLand
     public class GameControllerHandler
     {
         /// <summary>
-        /// Invoked when the state of the controller is changed
+        /// When a button on the controller is pressed
         /// </summary>
-        public event EventHandler<ControllerStateEventArgs> ControllerStateChanged;
+        public event EventHandler<ControllerButton> ControllerButtonDown;
+
+        /// <summary>
+        /// When a button on the controller is released
+        /// </summary>
+        public event EventHandler<ControllerButton> ControllerButtonUp;
+
+        /// <summary>
+        /// When the state of a controller analog input isn't default
+        /// </summary>
+        public event EventHandler<ControllerAnalogEventArgs> ControllerAnalogInputStart;
+
+        /// <summary>
+        /// When the state of a controller analog input is back to being default
+        /// </summary>
+        public event EventHandler<ControllerAnalogEventArgs> ControllerAnalogInputEnd;
 
         private readonly DirectInput directInput;
         private Joystick controller;
@@ -39,17 +55,23 @@ namespace SlipperyLand
             CheckControllerState();
         }
 
-        private ControllerStateEventArgs previousState;
+        private readonly static HashSet<ControllerButton> previousButtons = [];
         private void CheckControllerState()
         {
             if (controllerConnected)
             {
                 if (TryGetGamePadState(out var controllerState))
                 {
-                    if (controllerState != previousState)
+                    var justUnpressedButtons = previousButtons.Except(controllerState.Buttons);
+                    foreach (var button in justUnpressedButtons)
                     {
-                        ControllerStateChanged?.Invoke(this, controllerState);
-                        previousState = controllerState;
+                        ControllerButtonUp?.Invoke(this, button);
+                    }
+                    previousButtons.Clear();
+                    foreach (var button in controllerState.Buttons)
+                    {
+                        ControllerButtonDown?.Invoke(this, button);
+                        previousButtons.Add(button);
                     }
                 }
                 else
@@ -65,9 +87,9 @@ namespace SlipperyLand
 
         private const int DefaultStickPosition = 32767;
 
-        private bool TryGetGamePadState(out ControllerStateEventArgs controllerState)
+        private bool TryGetGamePadState(out ControllerState controllerState)
         {
-            controllerState = new ControllerStateEventArgs();
+            controllerState = new ControllerState();
             JoystickUpdate[] bufferedData;
             JoystickState axesState;
             try
@@ -98,10 +120,31 @@ namespace SlipperyLand
             controllerState.L2 = axesState.RotationX;
             controllerState.R2 = axesState.RotationY;
 
-            controllerState.Direction = (DpadDirection)axesState.PointOfViewControllers.FirstOrDefault();
+            var dir = (DpadDirection)axesState.PointOfViewControllers.FirstOrDefault();
+
+            if (leftDpad.Contains(dir))
+            {
+                controllerState.Buttons.Add(ControllerButton.DpadLeft);
+            }
+            if (rightDpad.Contains(dir))
+            {
+                controllerState.Buttons.Add(ControllerButton.DpadRight);
+            }
+            if (upDpad.Contains(dir))
+            {
+                controllerState.Buttons.Add(ControllerButton.DpadUp);
+            }
+            if (downDpad.Contains(dir))
+            {
+                controllerState.Buttons.Add(ControllerButton.DpadDown);
+            }
 
             return true;
         }
+        private readonly static HashSet<DpadDirection> leftDpad = [DpadDirection.Left, DpadDirection.UpLeft, DpadDirection.DownLeft];
+        private readonly static HashSet<DpadDirection> rightDpad = [DpadDirection.Right, DpadDirection.UpRight, DpadDirection.DownRight];
+        private readonly static HashSet<DpadDirection> upDpad = [DpadDirection.Up, DpadDirection.UpLeft, DpadDirection.UpRight];
+        private readonly static HashSet<DpadDirection> downDpad = [DpadDirection.Down, DpadDirection.DownLeft, DpadDirection.DownRight];
 
         private bool TryInitController(out Joystick pad)
         {

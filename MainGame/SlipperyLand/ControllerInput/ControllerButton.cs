@@ -30,5 +30,10 @@ namespace SlipperyLand.ControllerInput
         Icon = JoystickOffset.Buttons12,
 
         Touchpad = JoystickOffset.Buttons13,
+
+        DpadUp,
+        DpadDown,
+        DpadLeft,
+        DpadRight,
     }
 }

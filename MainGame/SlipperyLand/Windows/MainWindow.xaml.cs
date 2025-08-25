@@ -31,7 +31,8 @@ namespace SlipperyLand.Windows
             viewModel.SwitchingLevels += ViewModel_SwithingLevels;
             viewModel.SwitchedLevels += ViewModel_SwitchedLevels;
 
-            gameControllerHandler.ControllerStateChanged += GameControllerHandler_ControllerStateChanged;
+            gameControllerHandler.ControllerButtonDown += GameControllerHandler_ControllerButtonDown;
+            gameControllerHandler.ControllerButtonUp += GameControllerHandler_ControllerButtonUp;
 
             inputTimer.AutoReset = true;
             inputTimer.Elapsed += InputTimer_Elapsed;
@@ -82,6 +83,7 @@ namespace SlipperyLand.Windows
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             pressedKeys.Add(e.Key);
+            Debug.WriteLine(sender.ToString());
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
@@ -89,15 +91,21 @@ namespace SlipperyLand.Windows
             pressedKeys.Remove(e.Key);
         }
 
-        private void GameControllerHandler_ControllerStateChanged(object sender, ControllerStateEventArgs e)
+        #region controller
+
+        private void GameControllerHandler_ControllerButtonUp(object sender, ControllerButton bt)
         {
-            var keys = e.ToKeyboardKeySet();
-            pressedKeys.Clear();
-            foreach (var key in keys)
-            {
-                pressedKeys.Add(key);
-            }
+            ControllerToKeyboardDictionary.Dict.TryGetValue(bt, out var key);
+            pressedKeys.Remove(key);
         }
+
+        private void GameControllerHandler_ControllerButtonDown(object sender, ControllerButton bt)
+        {
+            ControllerToKeyboardDictionary.Dict.TryGetValue(bt, out var key);
+            pressedKeys.Add(key);
+        }
+
+        #endregion
 
         #endregion
 

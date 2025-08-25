@@ -63,8 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllerInput\ControllerButton.cs" />
-    <Compile Include="ControllerInput\ControllerStateEventArgs.cs" />
-    <Compile Include="ControllerInput\ControllerStateExtensions.cs" />
+    <Compile Include="ControllerInput\ControllerAnalogEventArgs.cs" />
+    <Compile Include="ControllerInput\ControllerState.cs" />
+    <Compile Include="ControllerInput\ControllerToKeyboardDictionary.cs" />
     <Compile Include="ControllerInput\DpadDirection.cs" />
     <Compile Include="ControllerInput\GameControllerHandler.cs" />
     <Compile Include="Providers\WindowProvider.cs" />
