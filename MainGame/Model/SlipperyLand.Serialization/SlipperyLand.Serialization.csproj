@@ -39,7 +39,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="LevelMapper\Levels\Level1.slipland" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LevelMapper\LevelDtoConverter.cs" />

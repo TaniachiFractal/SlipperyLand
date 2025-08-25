@@ -1,9 +1,9 @@
 ﻿namespace SlipperyLand.Common.Types
 {
     /// <summary>
-    /// The state of the keyboard
+    /// The state of the keyboard and/ot game controller
     /// </summary>
-    public class KeyboardState
+    public class InputState
     {
         /// <summary>
         /// Left key down

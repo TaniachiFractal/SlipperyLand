@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using SlipperyLand.ControllerInput;
 using SlipperyLand.ViewModel;
 
 namespace SlipperyLand.Windows
@@ -18,7 +20,7 @@ namespace SlipperyLand.Windows
         /// <summary>
         /// ctor
         /// </summary>
-        public MainWindow(MainWindowViewModel viewModel)
+        public MainWindow(MainWindowViewModel viewModel, GameControllerHandler gameControllerHandler)
         {
             this.viewModel = viewModel;
             DataContext = viewModel;
@@ -26,12 +28,15 @@ namespace SlipperyLand.Windows
             InitializeComponent();
 
             viewModel.GameOver += ViewModel_GameOver;
-            viewModel.SwithingLevels += ViewModel_SwithingLevels;
+            viewModel.SwitchingLevels += ViewModel_SwithingLevels;
             viewModel.SwitchedLevels += ViewModel_SwitchedLevels;
 
-            keyboardTimer.AutoReset = true;
-            keyboardTimer.Elapsed += KeyboardTimer_Elapsed;
-            keyboardTimer.Start();
+            gameControllerHandler.ControllerButtonDown += GameControllerHandler_ControllerButtonDown;
+            gameControllerHandler.ControllerButtonUp += GameControllerHandler_ControllerButtonUp;
+
+            inputTimer.AutoReset = true;
+            inputTimer.Elapsed += InputTimer_Elapsed;
+            inputTimer.Start();
         }
 
         private void ViewModel_SwitchedLevels(object sender, EventArgs e)
@@ -49,9 +54,9 @@ namespace SlipperyLand.Windows
             Dispatcher.Invoke(() => Close());
         }
 
-        #region keyboard
+        #region input
 
-        private readonly Timer keyboardTimer = new(10);
+        private readonly Timer inputTimer = new(10);
 
         private readonly HashSet<Key> pressedKeys = [];
 
@@ -62,7 +67,7 @@ namespace SlipperyLand.Windows
         private readonly static HashSet<Key> rightKeys = [Key.Right, Key.D];
         #endregion
 
-        private void KeyboardTimer_Elapsed(object sender, ElapsedEventArgs e)
+        private void InputTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             viewModel.UpKeyDown = pressedKeys.Overlaps(upKeys);
             viewModel.DownKeyDown = pressedKeys.Overlaps(downKeys);
@@ -78,12 +83,29 @@ namespace SlipperyLand.Windows
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             pressedKeys.Add(e.Key);
+            Debug.WriteLine(sender.ToString());
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
             pressedKeys.Remove(e.Key);
         }
+
+        #region controller
+
+        private void GameControllerHandler_ControllerButtonUp(object sender, ControllerButton bt)
+        {
+            ControllerToKeyboardDictionary.Dict.TryGetValue(bt, out var key);
+            pressedKeys.Remove(key);
+        }
+
+        private void GameControllerHandler_ControllerButtonDown(object sender, ControllerButton bt)
+        {
+            ControllerToKeyboardDictionary.Dict.TryGetValue(bt, out var key);
+            pressedKeys.Add(key);
+        }
+
+        #endregion
 
         #endregion
 

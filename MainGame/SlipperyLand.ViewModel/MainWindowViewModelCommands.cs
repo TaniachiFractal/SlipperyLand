@@ -31,7 +31,7 @@ namespace SlipperyLand.ViewModel
 
         private void ResetLevel()
         {
-            SwithingLevels?.Invoke(null, null);
+            SwitchingLevels?.Invoke(null, null);
             level.CharaLayer.MainChara.SetCharaRowColPos(level.StartRow, level.StartCol, tileSize);
             SwitchedLevels?.Invoke(null, null);
         }

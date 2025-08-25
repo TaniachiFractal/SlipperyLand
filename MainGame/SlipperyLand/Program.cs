@@ -17,7 +17,8 @@ namespace SlipperyLand
             var dialogProvider = new DialogProvider();
             var windowProvider = new WindowProvider();
             var mainWindowViewModel = new MainWindowViewModel(dialogProvider, windowProvider, app);
-            var mainWindow = new MainWindow(mainWindowViewModel);
+            var gameControllerHandler = new GameControllerHandler();
+            var mainWindow = new MainWindow(mainWindowViewModel, gameControllerHandler);
             app.Run(mainWindow);
         }
     }

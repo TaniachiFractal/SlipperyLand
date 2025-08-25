@@ -24,17 +24,17 @@ namespace SlipperyLand.ViewModel
         /// <summary>
         /// Invoked upon ending the game
         /// </summary>
-        public event EventHandler<EventArgs> GameOver;
+        public event EventHandler GameOver;
 
         /// <summary>
         /// Invoked upon switching the level
         /// </summary>
-        public event EventHandler<EventArgs> SwithingLevels;
+        public event EventHandler SwitchingLevels;
 
         /// <summary>
         /// Invoked upon having switched the level
         /// </summary>
-        public event EventHandler<EventArgs> SwitchedLevels;
+        public event EventHandler SwitchedLevels;
 
         #endregion
 
@@ -94,7 +94,7 @@ namespace SlipperyLand.ViewModel
             }
         }
 
-        private KeyboardState KeyboardState => new() { LeftKeyDown = LeftKeyDown, DownKeyDown = DownKeyDown, RightKeyDown = RightKeyDown, UpKeyDown = UpKeyDown };
+        private InputState InputState => new() { LeftKeyDown = LeftKeyDown, DownKeyDown = DownKeyDown, RightKeyDown = RightKeyDown, UpKeyDown = UpKeyDown };
 
         #endregion
 

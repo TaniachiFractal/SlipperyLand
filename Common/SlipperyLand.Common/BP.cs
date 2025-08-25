@@ -11,12 +11,12 @@ namespace SlipperyLand.Common
         /// <summary>
         /// Invoked upon setting the breakpoint state
         /// </summary>
-        public static event EventHandler<EventArgs> BreakpointSet;
+        public static event EventHandler BreakpointSet;
 
         /// <summary>
         /// Invoked upon releasing the breakpoint state
         /// </summary>
-        public static event EventHandler<EventArgs> Released;
+        public static event EventHandler Released;
 
         /// <summary>
         /// Set the breakpoint state

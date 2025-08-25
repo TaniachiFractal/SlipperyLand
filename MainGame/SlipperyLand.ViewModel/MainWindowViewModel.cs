@@ -95,7 +95,7 @@ namespace SlipperyLand.ViewModel
             else
             {
                 timer.Change(-1, -1);
-                SwithingLevels?.Invoke(null, null);
+                SwitchingLevels?.Invoke(null, null);
                 LoadNewLevel();
                 level = levels[currLevelId];
                 timer.Change(0, FrameRate);
@@ -121,7 +121,7 @@ namespace SlipperyLand.ViewModel
 
         private void TimerProc(object State)
         {
-            level.CharaLayer.MainChara.UpdateHero(level.MapLayer, KeyboardState);
+            level.CharaLayer.MainChara.UpdateHero(level.MapLayer, InputState);
             PropertyHasChanged();
         }
     }

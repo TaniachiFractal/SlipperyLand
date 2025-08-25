@@ -13,26 +13,26 @@
         /// <summary>
         /// Continue moving
         /// </summary>
-        Slippery,
+        Slippery = 1,
 
         /// <summary>
         /// Stop moving and stay on it
         /// </summary>
-        Rough,
+        Rough = 2,
 
         /// <summary>
         /// Stop moving and stay on previous
         /// </summary>
-        Wall,
+        Wall = 3,
 
         /// <summary>
         /// The start cell
         /// </summary>
-        Start,
+        Start = 4,
 
         /// <summary>
         /// The end cell
         /// </summary>
-        End,
+        End = 5,
     }
 }

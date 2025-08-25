@@ -46,7 +46,7 @@
     <Compile Include="Extensions\NumericsExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="RandomSh.cs" />
-    <Compile Include="Types\KeyboardState.cs" />
+    <Compile Include="Types\InputState.cs" />
     <Compile Include="Types\NotifyPropertyChanged.cs" />
     <Compile Include="Types\SimpleRect.cs" />
   </ItemGroup>
