@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Animation;
 using SlipperyLand.ControllerInput;
 using SlipperyLand.ViewModel;
 
@@ -13,14 +12,14 @@ namespace SlipperyLand.Windows
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : ParentWindow
     {
         private readonly MainWindowViewModel viewModel;
 
         /// <summary>
         /// ctor
         /// </summary>
-        public MainWindow(MainWindowViewModel viewModel, GameControllerHandler gameControllerHandler)
+        public MainWindow(MainWindowViewModel viewModel) : base(300)
         {
             this.viewModel = viewModel;
             DataContext = viewModel;
@@ -30,9 +29,6 @@ namespace SlipperyLand.Windows
             viewModel.GameOver += ViewModel_GameOver;
             viewModel.SwitchingLevels += ViewModel_SwithingLevels;
             viewModel.SwitchedLevels += ViewModel_SwitchedLevels;
-
-            gameControllerHandler.ControllerButtonDown += GameControllerHandler_ControllerButtonDown;
-            gameControllerHandler.ControllerButtonUp += GameControllerHandler_ControllerButtonUp;
 
             inputTimer.AutoReset = true;
             inputTimer.Elapsed += InputTimer_Elapsed;
@@ -93,13 +89,15 @@ namespace SlipperyLand.Windows
 
         #region controller
 
-        private void GameControllerHandler_ControllerButtonUp(object sender, ControllerButton bt)
+        /// <inheritdoc/>
+        protected override void GameControllerHandler_ControllerButtonUp(object sender, ControllerButton bt)
         {
             ControllerToKeyboardDictionary.Dict.TryGetValue(bt, out var key);
             pressedKeys.Remove(key);
         }
 
-        private void GameControllerHandler_ControllerButtonDown(object sender, ControllerButton bt)
+        /// <inheritdoc/>
+        protected override void GameControllerHandler_ControllerButtonDown(object sender, ControllerButton bt)
         {
             ControllerToKeyboardDictionary.Dict.TryGetValue(bt, out var key);
             pressedKeys.Add(key);
@@ -109,72 +107,10 @@ namespace SlipperyLand.Windows
 
         #endregion
 
-        private void TopGrid_Loaded(object sender, RoutedEventArgs e)
+        private void TopBar_Loaded(object sender, RoutedEventArgs e)
         {
-            TopGrid.Width = GameImage.Source.Width + 5;
+            TopBar.Width = GameImage.Source.Width + 5;
         }
-
-        private bool canTopGridMouseDown = true;
-
-        private void TopGrid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (canTopGridMouseDown && e.ChangedButton == MouseButton.Left)
-            {
-                DragMove();
-            }
-            canTopGridMouseDown = true;
-        }
-
-        private void ExitButton_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            canTopGridMouseDown = false;
-            Close();
-        }
-
-        private void SettingsButton_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            canTopGridMouseDown = false;
-            viewModel.OpenSettingsCommand?.Execute();
-        }
-
-        private void HelpButton_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            canTopGridMouseDown = false;
-            viewModel.OpenHelpCommand?.Execute();
-        }
-
-        #region fade
-
-        private void FadeAnimation(double from, double to, EventHandler completed = null)
-        {
-            static DoubleAnimation NewAnim(double from, double to)
-                => new(from, to, new Duration(TimeSpan.FromMilliseconds(300)));
-
-            var opacityFade = NewAnim(from, to);
-            if (completed != null)
-            { opacityFade.Completed += completed; }
-            BeginAnimation(OpacityProperty, opacityFade);
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = true;
-            TopGrid.MouseDown -= TopGrid_MouseDown;
-            ExitButton.MouseDown -= ExitButton_MouseDown;
-            void completed(object s, EventArgs _)
-            {
-                Closing -= Window_Closing;
-                Close();
-            }
-            FadeAnimation(1, 0, completed);
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            FadeAnimation(0, 1);
-        }
-
-        #endregion
 
     }
 }

@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="SlipperyLand.Controls.TopBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SlipperyLand.Controls"
+             d:DataContext="{d:DesignInstance Type=local:TopBar}"
+             mc:Ignorable="d"
+             Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="TopButton"
+                   TargetType="Label">
+                <Setter Property="Focusable"
+                        Value="True" />
+                <Setter Property="Foreground"
+                        Value="White" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Width"
+                        Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" />
+            </Style>
+
+            <Style x:Key="ExitButton"
+                   TargetType="Label"
+                   BasedOn="{StaticResource TopButton}">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver"
+                             Value="True">
+                        <Setter Property="Background"
+                                Value="Red" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="TopGrid"
+          Grid.Row="0"
+          MouseDown="TopBar_MouseDown">
+        <Rectangle Fill="#55000000" />
+        <Label Foreground="White"
+               VerticalAlignment="Center" Content="{Binding Title}"/>
+
+        <Grid HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="2"
+                   Name="ExitButton"
+                   Style="{StaticResource ExitButton}"
+                   MouseDown="ExitButton_MouseDown"
+                   Content="❌"
+                   ToolTip="Alt+F4" />
+        </Grid>
+    </Grid>
+</UserControl>

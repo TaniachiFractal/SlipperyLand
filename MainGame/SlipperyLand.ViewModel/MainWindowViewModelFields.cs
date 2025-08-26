@@ -38,7 +38,7 @@ namespace SlipperyLand.ViewModel
 
         #endregion
 
-        #region keyboard state
+        #region input state
 
         private bool leftKeyDown;
         private bool rightKeyDown;
@@ -102,7 +102,6 @@ namespace SlipperyLand.ViewModel
         private readonly Timer timer = null;
 
         private readonly IDialogProvider dialogProvider;
-        private readonly IWindowProvider windowProvider;
 
         private GraphicsRenderer renderer;
 

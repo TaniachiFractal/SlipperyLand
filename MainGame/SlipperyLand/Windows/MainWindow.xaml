@@ -1,4 +1,4 @@
-﻿<Window x:Class="SlipperyLand.Windows.MainWindow"
+﻿<local:ParentWindow x:Class="SlipperyLand.Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,19 +7,15 @@
         xmlns:local="clr-namespace:SlipperyLand.Windows"
         xmlns:viewmodel="clr-namespace:SlipperyLand.ViewModel;assembly=SlipperyLand.ViewModel"
         xmlns:txt="clr-namespace:SlipperyLand.TextResources;assembly=SlipperyLand.TextResources"
+        xmlns:controls="clr-namespace:SlipperyLand.Controls"
         d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="{x:Static txt:MainRes.AppName}"
         ResizeMode="NoResize"
-        AllowsTransparency="True"
-        FontFamily="Cascadia Mono"
-        WindowStyle="None"
         MinWidth="200"
-        Background="Transparent"
         KeyDown="Window_KeyDown"
         KeyUp="Window_KeyUp"
-        Closing="Window_Closing"
-        Loaded="Window_Loaded"
+        Background="Transparent"
         Icon="{Binding Source, ElementName=GameImage}"
         LostKeyboardFocus="Window_LostKeyboardFocus">
 
@@ -27,56 +23,6 @@
         <ResourceDictionary>
 
             <conv:BitmapConverter x:Key="BitmapConverter" />
-
-            <Style x:Key="TopButton"
-                   TargetType="Label">
-                <Setter Property="Focusable"
-                        Value="True" />
-                <Setter Property="Foreground"
-                        Value="White" />
-                <Setter Property="HorizontalContentAlignment"
-                        Value="Center" />
-                <Setter Property="VerticalContentAlignment"
-                        Value="Center" />
-                <Setter Property="Width"
-                        Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" />
-            </Style>
-
-            <Style x:Key="ExitButton"
-                   TargetType="Label"
-                   BasedOn="{StaticResource TopButton}">
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver"
-                             Value="True">
-                        <Setter Property="Background"
-                                Value="Red" />
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-
-            <Style x:Key="HelpButton"
-                   TargetType="Label"
-                   BasedOn="{StaticResource TopButton}">
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver"
-                             Value="True">
-                        <Setter Property="Background"
-                                Value="DarkCyan" />
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-
-            <Style x:Key="SettingsButton"
-                   TargetType="Label"
-                   BasedOn="{StaticResource TopButton}">
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver"
-                             Value="True">
-                        <Setter Property="Background"
-                                Value="DarkGoldenrod" />
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
 
             <Style TargetType="Image">
                 <Setter Property="Stretch"
@@ -89,10 +35,6 @@
     <Window.InputBindings>
         <KeyBinding Command="{Binding ResetLevelCommand}"
                     Gesture="Ctrl+R" />
-        <KeyBinding Command="{Binding OpenHelpCommand}"
-                    Gesture="Alt+F1" />
-        <KeyBinding Command="{Binding OpenSettingsCommand}"
-                    Gesture="Alt+F2" />
     </Window.InputBindings>
 
     <Grid>
@@ -103,41 +45,8 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Grid x:Name="TopGrid"
-                  Grid.Row="0"
-                  MouseDown="TopGrid_MouseDown"
-                  Loaded="TopGrid_Loaded">
-                <Rectangle Fill="#55000000" />
-                <Label Content="{x:Static txt:MainRes.AppName}"
-                       Foreground="White"
-                       VerticalAlignment="Center" />
-
-                <Grid HorizontalAlignment="Right">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Label x:Name="HelpButton"
-                           Grid.Column="0"
-                           Style="{StaticResource HelpButton}"
-                           Content="❓"
-                           MouseDown="HelpButton_MouseDown"
-                           ToolTip="Alt+F1" />
-                    <Label x:Name="SettingsButton"
-                           Grid.Column="1"
-                           Style="{StaticResource SettingsButton}"
-                           Content="⚙️"
-                           MouseDown="SettingsButton_MouseDown"
-                           ToolTip="Alt+F2" />
-                    <Label Grid.Column="2"
-                           Name="ExitButton"
-                           Style="{StaticResource ExitButton}"
-                           MouseDown="ExitButton_MouseDown"
-                           Content="❌"
-                           ToolTip="Alt+F4" />
-                </Grid>
-            </Grid>
+            <controls:TopBar x:Name="TopBar"
+                             Loaded="TopBar_Loaded"/>
 
             <Grid Grid.Row="1"
                   Margin="0,10,0,0"
@@ -149,4 +58,4 @@
 
         </Grid>
     </Grid>
-</Window>
+</local:ParentWindow>

@@ -15,16 +15,6 @@ namespace SlipperyLand.ViewModel
         /// </summary>
         public NoParamCommand ResetLevelCommand { get; private set; }
 
-        /// <summary>
-        /// Open the settings window
-        /// </summary>
-        public NoParamCommand OpenSettingsCommand { get; private set; }
-
-        /// <summary>
-        /// Open the help window
-        /// </summary>
-        public NoParamCommand OpenHelpCommand { get; private set; }
-
         #endregion
 
         #region methods for commands

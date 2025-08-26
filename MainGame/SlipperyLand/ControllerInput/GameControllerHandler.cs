@@ -22,16 +22,6 @@ namespace SlipperyLand
         /// </summary>
         public event EventHandler<ControllerButton> ControllerButtonUp;
 
-        /// <summary>
-        /// When the state of a controller analog input isn't default
-        /// </summary>
-        public event EventHandler<ControllerAnalogEventArgs> ControllerAnalogInputStart;
-
-        /// <summary>
-        /// When the state of a controller analog input is back to being default
-        /// </summary>
-        public event EventHandler<ControllerAnalogEventArgs> ControllerAnalogInputEnd;
-
         private readonly DirectInput directInput;
         private Joystick controller;
         private readonly Timer controllerTimer;

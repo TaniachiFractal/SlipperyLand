@@ -19,10 +19,9 @@ namespace SlipperyLand.ViewModel
         /// <summary>
         /// ctor
         /// </summary>
-        public MainWindowViewModel(IDialogProvider dialogProvider, IWindowProvider windowProvider, IApplication application)
+        public MainWindowViewModel(IDialogProvider dialogProvider, IApplication application)
         {
             this.dialogProvider = dialogProvider;
-            this.windowProvider = windowProvider;
 
             LoadCommands();
 
@@ -68,8 +67,6 @@ namespace SlipperyLand.ViewModel
         private void LoadCommands()
         {
             ResetLevelCommand = new NoParamCommand(ResetLevel);
-            OpenSettingsCommand = new NoParamCommand(windowProvider.OpenSettings);
-            OpenHelpCommand = new NoParamCommand(windowProvider.OpenHelp);
         }
 
         private void LoadNewLevel()

@@ -8,6 +8,11 @@ namespace SlipperyLand
     internal class Program
     {
         /// <summary>
+        /// The controller handler for this application
+        /// </summary>
+        public static readonly GameControllerHandler GameControllerHandler = new();
+
+        /// <summary>
         /// The application entry point
         /// </summary>
         [STAThread]
@@ -15,10 +20,8 @@ namespace SlipperyLand
         {
             var app = new App();
             var dialogProvider = new DialogProvider();
-            var windowProvider = new WindowProvider();
-            var mainWindowViewModel = new MainWindowViewModel(dialogProvider, windowProvider, app);
-            var gameControllerHandler = new GameControllerHandler();
-            var mainWindow = new MainWindow(mainWindowViewModel, gameControllerHandler);
+            var mainWindowViewModel = new MainWindowViewModel(dialogProvider, app);
+            var mainWindow = new MainWindow(mainWindowViewModel);
             app.Run(mainWindow);
         }
     }
