@@ -45,23 +45,23 @@
   <ItemGroup>
     <EmbeddedResource Include="DialogRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>DialogRes.Designer.cs</LastGenOutput>  
+      <LastGenOutput>DialogRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="DialogRes.ru.resx" >
+    <EmbeddedResource Include="DialogRes.ru.resx">
       <DependentUpon>DialogRes.resx</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ErrorRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ErrorRes.ru.resx" >
+    <EmbeddedResource Include="ErrorRes.ru.resx">
       <DependentUpon>ErrorRes.resx</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MainRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainRes.ru.resx" >
+    <EmbeddedResource Include="MainRes.ru.resx">
       <DependentUpon>MainRes.resx</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -76,6 +76,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Language.cs" />
     <Compile Include="MainRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

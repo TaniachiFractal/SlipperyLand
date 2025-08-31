@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6AA27A8C-CFBE-45B6-908E-06D8F7DD655F}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>SlipperyLand</RootNamespace>
     <AssemblyName>SlipperyLand</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>

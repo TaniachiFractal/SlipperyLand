@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Media;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 using SlipperyLand.ControllerInput;
 
@@ -14,11 +15,21 @@ namespace SlipperyLand.Windows
         /// <summary>
         /// ctor
         /// </summary>
-        public CustomMessageBox(string message, string title, MessageBoxImage messageBoxImage) : base(100)
+        public CustomMessageBox(string message, string title, MessageBoxImage messageBoxImage, bool? bigText = null, bool? centeredText = null) : base(100)
         {
             InitializeComponent();
             TopBar.Title = title;
-            Message.Content = message;
+            var para = new Paragraph(new Run(message));
+            if (bigText == true)
+            {
+                para.FontSize = 22;
+            }
+            if (centeredText == true)
+            {
+                para.TextAlignment = TextAlignment.Center;
+            }
+            Message.Document.Blocks.Clear();
+            Message.Document.Blocks.Add(para);
 
             KeyDown += Window_KeyDown;
 
